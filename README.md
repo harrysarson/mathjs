@@ -4,4 +4,4 @@
 
 This repository is used to hold any branches of mathjs I am developing on or have submitted pull requests for.
 
-It seemed unnessessy to maintain an upto date master branch so I have replaced it with this placeholder.
+It seemed unnessessy to maintain an uptodate master branch so I have replaced it with this placeholder.
