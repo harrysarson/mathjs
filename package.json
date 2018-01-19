@@ -101,11 +101,15 @@
     "javascript-natural-sort": "0.7.1",
     "seed-random": "2.2.0",
     "tiny-emitter": "2.0.2",
-    "typed-function": "1.0.3"
+    "typed-function": "0.10.6"
   },
   "devDependencies": {
     "benchmark": "2.1.4",
     "expr-eval": "1.2.1",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "expr-eval": "1.2.0",
     "glob": "7.1.2",
     "gulp": "3.9.1",
     "gulp-util": "3.0.8",
@@ -150,7 +154,7 @@
     "mathjs": "./bin/cli.js"
   },
   "engines": {
-    "node": ">= 4"
+    "node": ">= 0.1"
   },
   "bugs": {
     "url": "https://github.com/josdejong/mathjs/issues"
