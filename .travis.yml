@@ -23,4 +23,5 @@ jobs:
       script: 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run test:browserstack; else true; fi'
       env: NAME=browserstack
     - stage: lint
+      node_js: 8
       script: npm run lint
