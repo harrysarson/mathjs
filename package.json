@@ -101,7 +101,7 @@
     "javascript-natural-sort": "0.7.1",
     "seed-random": "2.2.0",
     "tiny-emitter": "2.0.2",
-    "typed-function": "0.10.6"
+    "typed-function": "1.0.3"
   },
   "devDependencies": {
     "benchmark": "2.1.4",
@@ -151,7 +151,7 @@
     "mathjs": "./bin/cli.js"
   },
   "engines": {
-    "node": ">= 0.1"
+    "node": ">= 4"
   },
   "bugs": {
     "url": "https://github.com/josdejong/mathjs/issues"
