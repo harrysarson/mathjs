@@ -141,6 +141,7 @@
     "build": "gulp",
     "watch": "gulp watch",
     "docs": "gulp docs",
+    "lint": "eslint .",
     "test": "mocha test node-test --recursive",
     "test:browser": "karma start ./browser-test-config/local-karma.js",
     "test:browserstack": "karma start ./browser-test-config/browserstack-karma.js",
