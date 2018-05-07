@@ -2,6 +2,8 @@
 var assert = require('assert');
 var math = require('../../../index');
 var OperatorNode = math.expression.node.OperatorNode;
+var ConstantNode = math.expression.node.ConstantNode;
+var SymbolNode = math.expression.node.SymbolNode;
 var derivative = math.derivative;
 
 describe('derivative', function() {
@@ -83,8 +85,8 @@ describe('derivative', function() {
     compareString(derivativeWithoutSimplify('2(x + x)', 'x'), '2 * (1 + 1)');
     compareString(derivativeWithoutSimplify('(x + x)*2', 'x'), '2 * (1 + 1)');
 
-    // Product Rule, d/dx(5x*3x) = 5*(3*1*x + x*3*1) = 30x
-    compareString(derivativeWithoutSimplify('5x*3x', 'x'), '3 * 5 * 1 * x + 5 x * 3 * 1');
+    // Product Rule, d/dx(5x*3x) = 5 * 1 * 3 x + 5 x * 3 * 1 = 30x
+    compareString(derivativeWithoutSimplify('5x*3x', 'x'), '5 * 1 * 3 x + 5 x * 3 * 1');
 
 
     // Basic division, d/dx(7x / 2) = 7 * 1 / 2 = 7 / 2
@@ -207,15 +209,34 @@ describe('derivative', function() {
 
   });
 
+  it ('should not drop any additional operator arguments', function() {
+    // This case cannot happen when parsing via the expression parser,
+    // but it can when you create your own operator nodes. See #1014
+
+    var c12 = new ConstantNode(12);
+    var c4 = new ConstantNode(4);
+    var x = new SymbolNode('x');
+
+    assert.throws(function () {
+      var node = new OperatorNode('/', 'myDivide', [c12, c4, x]);
+      derivative(node, 'x')
+    }, /Error: Operator "\/" is not supported by derivative, or a wrong number of arguments is passed/ );
+
+    assert.throws(function () {
+      var node = new OperatorNode('^', 'myPow', [c12, c4, x]);
+      derivative(node, 'x')
+    }, /Error: Operator "\^" is not supported by derivative, or a wrong number of arguments is passed/ );
+  });
+
   it('should throw error if expressions contain unsupported operators or functions', function() {
-    assert.throws(function () { derivative('x << 2', 'x'); }, /Error: Operator "<<" not supported by derivative/);
-    assert.throws(function () { derivative('subset(x)', 'x'); }, /Error: Function "subset" not supported by derivative/);
+    assert.throws(function () { derivative('x << 2', 'x'); }, /Error: Operator "<<" is not supported by derivative/);
+    assert.throws(function () { derivative('subset(x)', 'x'); }, /Error: Function "subset" is not supported by derivative/);
   });
 
   it('should have controlled behavior on arguments errors', function() {
     assert.throws(function() {
       derivative('sqrt()', 'x');
-    }, /TypeError: Too few arguments in function sqrt \(expected: number or Complex or BigNumber or Unit or Array or Matrix, index: 0\)/);
+    }, /TypeError: Too few arguments in function sqrt \(expected: number or Complex or BigNumber or Unit or Array or Matrix or Fraction or string or boolean, index: 0\)/);
     assert.throws(function() {
       derivative('sqrt(12, 2x)', 'x');
     }, /TypeError: Too many arguments in function sqrt \(expected: 1, actual: 2\)/);
@@ -224,7 +245,7 @@ describe('derivative', function() {
   it('should throw error for incorrect argument types', function() {
     assert.throws(function () {
       derivative('42', '42');
-    }, /TypeError: Unexpected type of argument in function derivative \(expected: string or SymbolNode, actual: ConstantNode, index: 1\)/);
+    }, /TypeError: Unexpected type of argument in function derivative \(expected: string or SymbolNode or number or boolean, actual: ConstantNode, index: 1\)/);
 
     assert.throws(function () {
       derivative('[1, 2; 3, 4]', 'x');
@@ -238,7 +259,7 @@ describe('derivative', function() {
   it('should throw error if incorrect number of arguments', function() {
     assert.throws(function () {
       derivative('x + 2');
-    }, /TypeError: Too few arguments in function derivative \(expected: string or SymbolNode, index: 1\)/);
+    }, /TypeError: Too few arguments in function derivative \(expected: string or SymbolNode or number or boolean, index: 1\)/);
 
     assert.throws(function () {
       derivative('x + 2', 'x', {}, true, 42);

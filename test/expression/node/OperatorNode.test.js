@@ -38,6 +38,30 @@ describe('OperatorNode', function() {
     assert.equal(expr.eval(), 5);
   });
 
+  it ('should test whether a unary or binary operator', function () {
+    var n1 = new OperatorNode('-', 'unaryMinus', [new ConstantNode(2)]);
+    assert.strictEqual(n1.isUnary(), true);
+    assert.strictEqual(n1.isBinary(), false);
+
+    // change the args of an operator node (bad practice, but should keep working correctly)
+    n1.args.push(new ConstantNode(3))
+    assert.strictEqual(n1.isUnary(), false);
+    assert.strictEqual(n1.isBinary(), true);
+
+    var n2 = new OperatorNode('+', 'add', [new ConstantNode(2), new ConstantNode(3)]);
+    assert.strictEqual(n2.isUnary(), false);
+    assert.strictEqual(n2.isBinary(), true);
+
+    var n3 = new OperatorNode('+', 'add', [new ConstantNode(2), new ConstantNode(3), new ConstantNode(4)]);
+    assert.strictEqual(n3.isUnary(), false);
+    assert.strictEqual(n3.isBinary(), false);
+
+    // change the args of an operator node (bad practice, but should keep working correctly)
+    n3.args.splice(2, 1);
+    assert.strictEqual(n3.isUnary(), false);
+    assert.strictEqual(n3.isBinary(), true);
+  });
+
   it ('should throw an error in case of unresolved operator function', function () {
     var a = new ConstantNode(2);
     var b = new ConstantNode(3);
@@ -367,7 +391,7 @@ describe('OperatorNode', function() {
           + ', ' +  node.args[1].toString(options) + ')';
       }
       else if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ', ' + node.valueType + ')'
+        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')'
       }
     };
 
@@ -390,7 +414,7 @@ describe('OperatorNode', function() {
           node.args[1].toString(options);
       }
       else if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ', ' + node.valueType + ')'
+        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')'
       }
     };
 
@@ -591,7 +615,7 @@ describe('OperatorNode', function() {
           + ', ' +  node.args[1].toTex(options) + ')';
       }
       else if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + ', ' + node.valueType + '\\right)'
+        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)'
       }
     };
 
@@ -614,7 +638,7 @@ describe('OperatorNode', function() {
           node.args[1].toTex(options);
       }
       else if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + ', ' + node.valueType + '\\right)'
+        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)'
       }
     };
 
