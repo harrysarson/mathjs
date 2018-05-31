@@ -26,14 +26,14 @@ describe('BlockNode', function() {
   });
 
   it ('should throw an error when calling without new operator', function () {
-    assert.throws(function () {BlockNode()}, SyntaxError);
+    assert.throws(function () {BlockNode();}, SyntaxError);
   });
 
   it ('should throw an error when adding invalid blocks', function () {
-    assert.throws(function () {new BlockNode()}, /Array expected/);
-    assert.throws(function () {new BlockNode([2])}, /Property "node" must be a Node/);
-    assert.throws(function () {new BlockNode([{node: 2, visible:true}])}, /Property "node" must be a Node/);
-    assert.throws(function () {new BlockNode([{node: new Node(), visible: 2}])}, /Property "visible" must be a boolean/);
+    assert.throws(function () {new BlockNode();}, /Array expected/);
+    assert.throws(function () {new BlockNode([2]);}, /Property "node" must be a Node/);
+    assert.throws(function () {new BlockNode([{node: 2, visible:true}]);}, /Property "node" must be a Node/);
+    assert.throws(function () {new BlockNode([{node: new Node(), visible: 2}]);}, /Property "visible" must be a boolean/);
   });
 
   it ('should compile and evaluate a BlockNode', function () {
@@ -77,11 +77,11 @@ describe('BlockNode', function() {
       {node: c, visible: true}
     ]);
 
-    assert.deepEqual(d.filter(function (node) {return node instanceof BlockNode}),     [d]);
-    assert.deepEqual(d.filter(function (node) {return node instanceof SymbolNode}),    [foo, c]);
-    assert.deepEqual(d.filter(function (node) {return node instanceof RangeNode}),     []);
-    assert.deepEqual(d.filter(function (node) {return node instanceof ConstantNode}),  [a, b2]);
-    assert.deepEqual(d.filter(function (node) {return node instanceof ConstantNode && node.value == '3'}),  [b2]);
+    assert.deepEqual(d.filter(function (node) {return node instanceof BlockNode;}),     [d]);
+    assert.deepEqual(d.filter(function (node) {return node instanceof SymbolNode;}),    [foo, c]);
+    assert.deepEqual(d.filter(function (node) {return node instanceof RangeNode;}),     []);
+    assert.deepEqual(d.filter(function (node) {return node instanceof ConstantNode;}),  [a, b2]);
+    assert.deepEqual(d.filter(function (node) {return node instanceof ConstantNode && node.value == '3';}),  [b2]);
   });
 
   it ('should run forEach on a BlockNode', function () {
@@ -153,7 +153,7 @@ describe('BlockNode', function() {
 
     assert.throws(function () {
       a.map(function () {});
-    }, /Callback function must return a Node/)
+    }, /Callback function must return a Node/);
   });
 
   it ('should transform a BlockNodes parameters', function () {
@@ -201,23 +201,23 @@ describe('BlockNode', function() {
       count++;
 
       switch(count) {
-        case 1:
-          assert.strictEqual(node, c);
-          assert.strictEqual(index, null);
-          assert.strictEqual(parent, null);
-          break;
+      case 1:
+        assert.strictEqual(node, c);
+        assert.strictEqual(index, null);
+        assert.strictEqual(parent, null);
+        break;
 
-        case 2:
-          assert.strictEqual(node, a);
-          assert.strictEqual(index, 'blocks[0].node');
-          assert.strictEqual(parent, c);
-          break;
+      case 2:
+        assert.strictEqual(node, a);
+        assert.strictEqual(index, 'blocks[0].node');
+        assert.strictEqual(parent, c);
+        break;
 
-        case 3:
-          assert.strictEqual(node, b);
-          assert.strictEqual(index, 'blocks[1].node');
-          assert.strictEqual(parent, c);
-          break;
+      case 3:
+        assert.strictEqual(node, b);
+        assert.strictEqual(index, 'blocks[1].node');
+        assert.strictEqual(parent, c);
+        break;
       }
     });
 
@@ -281,7 +281,7 @@ describe('BlockNode', function() {
         return string;
       }
       else if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')'
+        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')';
       }
     };
 
@@ -335,7 +335,7 @@ describe('BlockNode', function() {
         return latex;
       }
       else if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)'
+        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)';
       }
     };
 

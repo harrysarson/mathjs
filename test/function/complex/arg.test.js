@@ -19,7 +19,7 @@ describe('arg', function() {
   it('should compute the argument of a bignumber', function () {
     assert.deepEqual(arg(math.bignumber(1)), math.bignumber(0));
     assert.deepEqual(arg(math.bignumber(-2)),
-        math.bignumber('3.141592653589793238462643383279502884197169399375105820974944592'));
+      math.bignumber('3.141592653589793238462643383279502884197169399375105820974944592'));
   });
 
   it('should compute the argument of a complex number correctly', function() {
@@ -54,16 +54,16 @@ describe('arg', function() {
   });
 
   it('should throw an error if used with a string', function() {
-    assert.throws(function () {arg('string')});
+    assert.throws(function () {arg('string');});
   });
 
   it('should throw an error if used with a unit', function() {
-    assert.throws(function () {arg(math.unit('5cm'))});
+    assert.throws(function () {arg(math.unit('5cm'));});
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {arg()}, /TypeError: Too few arguments/);
-    assert.throws(function () {arg(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {arg();}, /TypeError: Too few arguments/);
+    assert.throws(function () {arg(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX arg', function () {

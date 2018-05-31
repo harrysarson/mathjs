@@ -1,12 +1,12 @@
 // test expm1
 var assert = require('assert'),
-    approx = require('../../../tools/approx'),
-    math = require('../../../index'),
-    complex = math.complex,
-    matrix = math.matrix,
-    sparse = math.sparse,
-    unit = math.unit,
-    expm1 = math.expm1;
+  approx = require('../../../tools/approx'),
+  math = require('../../../index'),
+  complex = math.complex,
+  matrix = math.matrix,
+  sparse = math.sparse,
+  unit = math.unit,
+  expm1 = math.expm1;
 
 describe('expm1', function() {
 

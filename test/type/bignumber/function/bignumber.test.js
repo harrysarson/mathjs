@@ -1,8 +1,8 @@
 var assert = require('assert'),
-    error = require('../../../../lib/error/index'),
-    math = require('../../../../index'),
-    bignumber = math.bignumber,
-    BigNumber = math.type.BigNumber;
+  error = require('../../../../lib/error/index'),
+  math = require('../../../../index'),
+  bignumber = math.bignumber,
+  BigNumber = math.type.BigNumber;
 
 describe('bignumber', function() {
 
@@ -79,15 +79,15 @@ describe('bignumber', function() {
     });
 
     var a = mymath.bignumber(1).dividedBy(3);
-    assert.equal(a.toString(), '0.33333333333333333333333333333333')
+    assert.equal(a.toString(), '0.33333333333333333333333333333333');
   });
 
   it('should throw an error in case of unsupported type of argument', function() {
-    assert.throws(function () {math.bignumber(new Date())}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {math.bignumber(new Date());}, /TypeError: Unexpected type of argument/);
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {math.bignumber(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {math.bignumber(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX bignumber', function () {

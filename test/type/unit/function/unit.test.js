@@ -31,15 +31,15 @@ describe('unit', function() {
   });
 
   it('should throw an error if called with an invalid string', function() {
-    assert.throws(function () {unit('invalid unit')}, SyntaxError);
+    assert.throws(function () {unit('invalid unit');}, SyntaxError);
   });
 
   it('should throw an error if called with a number', function() {
-    assert.throws(function () {unit(2)}, /SyntaxError: "2" contains no units/);
+    assert.throws(function () {unit(2);}, /SyntaxError: "2" contains no units/);
   });
 
   it('should throw an error if called with a complex', function() {
-    assert.throws(function () {unit(math.complex(2,3))}, TypeError);
+    assert.throws(function () {unit(math.complex(2,3));}, TypeError);
   });
 
   it('should take a number as the quantity and a string as the unit', function() {
@@ -60,16 +60,16 @@ describe('unit', function() {
   });
 
   it('should throw an error if called with an invalid argument', function() {
-    assert.throws(function () {unit(2, math.complex(2,3))}, TypeError);
-    assert.throws(function () {unit(true)}, TypeError);
+    assert.throws(function () {unit(2, math.complex(2,3));}, TypeError);
+    assert.throws(function () {unit(true);}, TypeError);
   });
 
   it('should throw an error if called with no argument', function() {
-    assert.throws(function () {unit()}, /TypeError: Too few arguments/);
+    assert.throws(function () {unit();}, /TypeError: Too few arguments/);
   });
 
   it('should throw an error if called with an invalid number of arguments', function() {  
-    assert.throws(function () {unit(1,'cm',3)}, /TypeError: Too many arguments/);
+    assert.throws(function () {unit(1,'cm',3);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX unit', function () {

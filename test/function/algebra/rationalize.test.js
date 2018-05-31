@@ -16,9 +16,9 @@ var math = require('../../../index');
    */
 function stri(arg) { 
   if (arg===null)  
-    return null
+    return null;
   else
-    return arg.toString().replace(/ /g,'') 
+    return arg.toString().replace(/ /g,''); 
 }
 /**
    * Transform Obj properties in an array of string-converted values of 
@@ -32,7 +32,7 @@ function stri(arg) {
    * @return {array}          Arrey of sorted properties converted to strings
    */
 function objToStrings(obj) {
-  var vet = Object.keys(obj).sort()
+  var vet = Object.keys(obj).sort();
   var strObj = {};
   for (var i=0;i<vet.length;i++) { strObj[vet[i]] = stri(obj[vet[i]]);}
   return strObj;
@@ -43,24 +43,24 @@ function objToStrings(obj) {
 describe('rationalize', function() {
   this.timeout(120000);
 
- it('invalid expression', function() {
-    assert.throws(function () { math.rationalize('(x*/2)') }, /Value expected \(char 4\)/)
- });
+  it('invalid expression', function() {
+    assert.throws(function () { math.rationalize('(x*/2)'); }, /Value expected \(char 4\)/);
+  });
 
   it('valid expression but not appropriate', function() {
-    assert.throws(function () { math.rationalize('a=2') }, /Unimplemented node type in simplifyConstant: AssignmentNode/)
-    assert.throws(function () { math.rationalize('sin(x)+x') }, /There is an unsolved function call/)
-    assert.throws(function () { math.rationalize('(x+2)/(x % 2)') }, /Operator % invalid in polynomial expression/)
+    assert.throws(function () { math.rationalize('a=2'); }, /Unimplemented node type in simplifyConstant: AssignmentNode/);
+    assert.throws(function () { math.rationalize('sin(x)+x'); }, /There is an unsolved function call/);
+    assert.throws(function () { math.rationalize('(x+2)/(x % 2)'); }, /Operator % invalid in polynomial expression/);
   });
 
   it('non-integer exponent', function() {
-    assert.throws(function () { math.rationalize('x^2.5 - 2*x + 3') }, /There is a non-integer exponent/)
-    assert.throws(function () { math.rationalize('x^x') }, /There is a non-integer exponent/)
-    assert.throws(function () { math.rationalize('x^2.5') }, /There is a non-integer exponent/)
+    assert.throws(function () { math.rationalize('x^2.5 - 2*x + 3'); }, /There is a non-integer exponent/);
+    assert.throws(function () { math.rationalize('x^x'); }, /There is a non-integer exponent/);
+    assert.throws(function () { math.rationalize('x^2.5'); }, /There is a non-integer exponent/);
   });
 
   it('calling error', function() {
-    assert.throws(function () { math.rationalize('x^2 + 2*x + 3',23) }, /Unexpected type of argument in function rationalize \(expected: boolean or Object, actual: number, index: 1\)/)
+    assert.throws(function () { math.rationalize('x^2 + 2*x + 3',23); }, /Unexpected type of argument in function rationalize \(expected: boolean or Object, actual: number, index: 1\)/);
   });
 
   it('processing constant expressions', function() {
@@ -121,9 +121,9 @@ describe('rationalize', function() {
   it('processing tougher expressions', function() {
     assert.equal(stri(math.rationalize('2x/(x+2) - x/(x+1)')),'x^2/(x^2+3*x+2)');
     assert.equal(stri(math.rationalize('2x/( (2x-1) / (3x+2) ) - 5x/ ( (3x+4) / (2x^2-5) ) + 3')),
-                 '(-20*x^4+28*x^3+104*x^2+6*x-12)/(6*x^2+5*x-4)');
+      '(-20*x^4+28*x^3+104*x^2+6*x-12)/(6*x^2+5*x-4)');
     assert.equal(stri(math.rationalize('x/(1-x)/(x-2)/(x-3)/(x-4) + 2x/ ( (1-2x)/(2-3x) )/ ((3-4x)/(4-5x) )')),
-          '(-30*x^7+344*x^6-1506*x^5+3200*x^4-3472*x^3+1846*x^2-381*x)/(-8*x^6+90*x^5-383*x^4+780*x^3-797*x^2+390*x-72)');
+      '(-30*x^7+344*x^6-1506*x^5+3200*x^4-3472*x^3+1846*x^2-381*x)/(-8*x^6+90*x^5-383*x^4+780*x^3-797*x^2+390*x-72)');
     var no = math.parse('2x/( (2x-1) / (3x+2) ) - 5x/ ( (3x+4) / (2x^2-5) ) + 3'); 
     assert.equal(stri(math.rationalize(no)),'(-20*x^4+28*x^3+104*x^2+6*x-12)/(6*x^2+5*x-4)');
   });
@@ -175,8 +175,8 @@ describe('rationalize', function() {
       expression:'x+0.49999999999999994',
       numerator: 'x+0.49999999999999994',
       variables:'x'
-    })
+    });
   });
 
 
-})  // Describe rationalize 
+});  // Describe rationalize 

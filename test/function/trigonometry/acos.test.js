@@ -84,12 +84,12 @@ describe('acos', function() {
   });
 
   it('should throw an error if called with a unit', function() {
-    assert.throws(function () {acos(unit('45deg'))});
-    assert.throws(function () {acos(unit('5 celsius'))});
+    assert.throws(function () {acos(unit('45deg'));});
+    assert.throws(function () {acos(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {acos('string')});
+    assert.throws(function () {acos('string');});
   });
 
   it('should calculate the arccos element-wise for arrays and matrices', function() {
@@ -101,8 +101,8 @@ describe('acos', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {acos()}, /TypeError: Too few arguments/);
-    assert.throws(function () {acos(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {acos();}, /TypeError: Too few arguments/);
+    assert.throws(function () {acos(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX acos', function () {

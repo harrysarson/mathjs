@@ -16,7 +16,7 @@ describe('std', function() {
 
   it('should return the standard deviation of big numbers', function() {
     assert.deepEqual(std(new BigNumber(2),new BigNumber(4),new BigNumber(6)),
-        new math.type.BigNumber(2));
+      new math.type.BigNumber(2));
   });
 
   it('should return the standard deviation of complex numbers', function() {
@@ -44,7 +44,7 @@ describe('std', function() {
   });
 
   it('should throw an error in case of unknown type of normalization', function() {
-    assert.throws(function () {std([2,8], 'foo')}, /Unknown normalization/);
+    assert.throws(function () {std([2,8], 'foo');}, /Unknown normalization/);
   });
 
   it('should return the standard deviation from an 1d matrix', function() {
@@ -67,19 +67,19 @@ describe('std', function() {
   });
 
   it('should throw an error if called with invalid number of arguments', function() {
-    assert.throws(function() {std()});
+    assert.throws(function() {std();});
   });
 
   it('should throw an error if called with invalid type of arguments', function() {
-    assert.throws(function() {std(new Date(), 2)}, /Cannot calculate std, unexpected type of argument/);
-    assert.throws(function() {std(new Unit(5, 'cm'), new Unit(10, 'cm'))}, /Cannot calculate std, unexpected type of argument/);
-    assert.throws(function() {std(2, 3, null)}, /Cannot calculate std, unexpected type of argument/);
-    assert.throws(function() {std([2, 3, null])}, /Cannot calculate std, unexpected type of argument/);
-    assert.throws(function() {std([2,3,4], 5)}, /Unknown normalization "5"/);
+    assert.throws(function() {std(new Date(), 2);}, /Cannot calculate std, unexpected type of argument/);
+    assert.throws(function() {std(new Unit(5, 'cm'), new Unit(10, 'cm'));}, /Cannot calculate std, unexpected type of argument/);
+    assert.throws(function() {std(2, 3, null);}, /Cannot calculate std, unexpected type of argument/);
+    assert.throws(function() {std([2, 3, null]);}, /Cannot calculate std, unexpected type of argument/);
+    assert.throws(function() {std([2,3,4], 5);}, /Unknown normalization "5"/);
   });
 
   it('should throw an error if called with an empty array', function() {
-    assert.throws(function() {std([])});
+    assert.throws(function() {std([]);});
   });
 
   it('should LaTeX std', function () {

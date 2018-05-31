@@ -1,13 +1,13 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    pi = math.pi,
-    complex = math.complex,
-    matrix = math.matrix,
-    unit = math.unit,
-    tanh = math.tanh,
-    bigmath = math.create({number: 'BigNumber', precision: 20});
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  pi = math.pi,
+  complex = math.complex,
+  matrix = math.matrix,
+  unit = math.unit,
+  tanh = math.tanh,
+  bigmath = math.create({number: 'BigNumber', precision: 20});
 
 describe('tanh', function() {
   it('should return the tanh of a boolean', function () {
@@ -64,11 +64,11 @@ describe('tanh', function() {
   });
 
   it('should throw an error if called with an invalid unit', function() {
-    assert.throws(function () {tanh(unit('5 celsius'))});
+    assert.throws(function () {tanh(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {tanh('string')});
+    assert.throws(function () {tanh('string');});
   });
 
   var tanh123 = [0.76159415595576, 0.96402758007582, 0.99505475368673];
@@ -82,8 +82,8 @@ describe('tanh', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {tanh()}, /TypeError: Too few arguments/);
-    assert.throws(function () {tanh(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {tanh();}, /TypeError: Too few arguments/);
+    assert.throws(function () {tanh(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX tanh', function () {

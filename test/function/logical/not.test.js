@@ -73,14 +73,14 @@ describe('not', function () {
   });
 
   it('should throw an error in case of invalid number of arguments', function () {
-    assert.throws(function () {not()}, /TypeError: Too few arguments/);
-    assert.throws(function () {not(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {not();}, /TypeError: Too few arguments/);
+    assert.throws(function () {not(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an error in case of invalid type if arguments', function () {
-    assert.throws(function () {not(null)}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {not(new Date())}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {not({})}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {not(null);}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {not(new Date());}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {not({});}, /TypeError: Unexpected type of argument/);
   });
 
   it('should LaTeX not', function () {

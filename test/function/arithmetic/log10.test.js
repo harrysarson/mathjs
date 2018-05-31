@@ -69,8 +69,8 @@ describe('log10', function() {
   });
 
   it('should throw an error if used with a wrong number of arguments', function() {
-    assert.throws(function () {log10()}, /TypeError: Too few arguments/);
-    assert.throws(function () {log10(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {log10();}, /TypeError: Too few arguments/);
+    assert.throws(function () {log10(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an in case of wrong type of arguments', function() {
@@ -88,11 +88,11 @@ describe('log10', function() {
   });
 
   it('should throw an error when used on a unit', function() {
-    assert.throws(function () {log10(unit('5cm'))});
+    assert.throws(function () {log10(unit('5cm'));});
   });
 
   it('should throw an error when used on a string', function() {
-    assert.throws(function () {log10('text')});
+    assert.throws(function () {log10('text');});
   });
 
   it('should return the log base 10 of each element of a matrix', function() {
@@ -100,9 +100,9 @@ describe('log10', function() {
     approx.deepEqual(log10([1,2,3,4]), res);
     approx.deepEqual(log10(matrix([1,2,3,4])), matrix(res));
     approx.deepEqual(math.divide(log10(matrix([1,2,3,4])), math.LOG10E),
-        matrix([0, 0.693147180559945, 1.098612288668110, 1.386294361119891]));
+      matrix([0, 0.693147180559945, 1.098612288668110, 1.386294361119891]));
     approx.deepEqual(log10(matrix([[1,2],[3,4]])),
-        matrix([[0, 0.301029995663981], [0.477121254719662, 0.602059991327962]]));
+      matrix([[0, 0.301029995663981], [0.477121254719662, 0.602059991327962]]));
   });
 
   it('should LaTeX log10', function () {

@@ -23,7 +23,7 @@ describe('distance', function() {
     assert.deepEqual(math.distance({pointX: 1, pointY: 4}, {lineOnePtX: 6, lineOnePtY: 3}, {lineTwoPtX: 2, lineTwoPtY: 8}), 2.720549372624744);
     assert.deepEqual(math.distance({pointX: 10, pointY: 10}, {xCoeffLine: 8, yCoeffLine: 1, constant: 3}), 11.535230316796387);
     assert.equal(math.distance({pointOneX: 0, pointOneY: 0}, {pointTwoX: 10, pointTwoY: 10}), 14.142135623730951);
-    assert.throws(function() {math.distance({pointX: 1, pointY: 4}, {lineOnePtX: 'l', lineOnePtY: 3}, {lineTwoPtX: 2, lineTwoPtY: 8})}, TypeError);
+    assert.throws(function() {math.distance({pointX: 1, pointY: 4}, {lineOnePtX: 'l', lineOnePtY: 3}, {lineTwoPtX: 2, lineTwoPtY: 8});}, TypeError);
     assert.equal(math.distance({pointOneX: 4, pointOneY: 5, pointOneZ: 8}, {pointTwoX: 2, pointTwoY: 7, pointTwoZ: 9}), 3);
   });
 
@@ -38,19 +38,19 @@ describe('distance', function() {
   });
 
   it('should throw an error for incompatible parameter types', function() {
-    assert.throws(function() {math.distance(0.5)}, TypeError);
-    assert.throws(function() {math.distance('1')}, TypeError);
-    assert.throws(function() {math.distance(["abc", "def"], [1, 3])}, TypeError);
-    assert.throws(function() {math.distance(['2', '3'], math.matrix(["a", "c"]), [1, -0.445364786543434])}, TypeError);
-    assert.throws(function() {math.distance({pointX: 1, pointY: 4}, {lineOnePtX: 'l', lineOnePtY: 3}, {lineTwoPtX: 2, lineTwoPtY: 8})}, TypeError);
-    assert.throws(function() {math.distance({wrongkeyname: 2, english: 3, pointZ: 1}, {x0: 1, y0: 1, z0: 2, a: 5, b: 0, c: 1})}, TypeError);
+    assert.throws(function() {math.distance(0.5);}, TypeError);
+    assert.throws(function() {math.distance('1');}, TypeError);
+    assert.throws(function() {math.distance(["abc", "def"], [1, 3]);}, TypeError);
+    assert.throws(function() {math.distance(['2', '3'], math.matrix(["a", "c"]), [1, -0.445364786543434]);}, TypeError);
+    assert.throws(function() {math.distance({pointX: 1, pointY: 4}, {lineOnePtX: 'l', lineOnePtY: 3}, {lineTwoPtX: 2, lineTwoPtY: 8});}, TypeError);
+    assert.throws(function() {math.distance({wrongkeyname: 2, english: 3, pointZ: 1}, {x0: 1, y0: 1, z0: 2, a: 5, b: 0, c: 1});}, TypeError);
   });
 
   it('should throw an error for unsupported number of parameters', function() {
-    assert.throws(function() {math.distance([0, 0])}, TypeError);
-    assert.throws(function() {math.distance([9, 4, 3.6])}, TypeError);
-    assert.throws(function() {math.distance([[1, 2, 4],math.matrix([1, 2]),[8, 1, 3]])}, TypeError);
-    assert.throws(function() {math.distance([-0.5, 4.3],[3.2, -4.654323, 3.3, 6.5, 3.4])}, TypeError);
+    assert.throws(function() {math.distance([0, 0]);}, TypeError);
+    assert.throws(function() {math.distance([9, 4, 3.6]);}, TypeError);
+    assert.throws(function() {math.distance([[1, 2, 4],math.matrix([1, 2]),[8, 1, 3]]);}, TypeError);
+    assert.throws(function() {math.distance([-0.5, 4.3],[3.2, -4.654323, 3.3, 6.5, 3.4]);}, TypeError);
   });
 
   it('should calculate pairwise distance between more than two 2D points accurately', function(){

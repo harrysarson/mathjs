@@ -1,10 +1,10 @@
 var assert = require('assert'),
-    math = require('../../../index'),
-    subset = math.subset,
-    matrix = math.matrix,
-    Range = math.type.Range,
-    Set = math.type.Set,
-    index = math.index;
+  math = require('../../../index'),
+  subset = math.subset,
+  matrix = math.matrix,
+  Range = math.type.Range,
+  Set = math.type.Set,
+  index = math.index;
 
 describe('subset', function() {
 
@@ -164,7 +164,7 @@ describe('subset', function() {
 
   it('should throw an error in case of invalid type of arguments', function() {
     assert.throws(function () {subset([1,2], [0]);}, /TypeError: Unexpected type of argument/);
-     //assert.throws(function () {subset(new Date(), index(0));}, /TypeError: Unexpected type of argument/); // FIXME: should fail too. Problem is, Date is also an Object
+    //assert.throws(function () {subset(new Date(), index(0));}, /TypeError: Unexpected type of argument/); // FIXME: should fail too. Problem is, Date is also an Object
     // assert.throws(function () {subset(/foo/, index(0));}, /TypeError: Unexpected type of argument/); // FIXME: should fail too. Problem is, Date is also an Object
   });
 

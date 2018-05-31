@@ -1,10 +1,10 @@
 // test bitXor
 var assert = require('assert'),
-    math = require('../../../index'),
-    matrix = math.matrix,
-    sparse = math.sparse,
-    bignumber = math.bignumber,
-    bitXor = math.bitXor;
+  math = require('../../../index'),
+  matrix = math.matrix,
+  sparse = math.sparse,
+  bignumber = math.bignumber,
+  bitXor = math.bitXor;
 
 describe('bitXor', function () {
 

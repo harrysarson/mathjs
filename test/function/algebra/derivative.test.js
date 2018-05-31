@@ -199,14 +199,14 @@ describe('derivative', function() {
 
     it('should evaluate a derivative containing string value', function() {
       var res = math.eval('derivative("x^2", "x")');
-      assert.ok(res && res.isNode)
+      assert.ok(res && res.isNode);
 
       assert.equal(res.toString(), '2 * x');
     });
 
     it('should evaluate a derivative containing nodes', function() {
       var res = math.eval('derivative(parse("x^2"), parse("x"))');
-      assert.ok(res && res.isNode)
+      assert.ok(res && res.isNode);
 
       assert.equal(res.toString(), '2 * x');
     });
@@ -223,12 +223,12 @@ describe('derivative', function() {
 
     assert.throws(function () {
       var node = new OperatorNode('/', 'myDivide', [c12, c4, x]);
-      derivative(node, 'x')
+      derivative(node, 'x');
     }, /Error: Operator "\/" is not supported by derivative, or a wrong number of arguments is passed/ );
 
     assert.throws(function () {
       var node = new OperatorNode('^', 'myPow', [c12, c4, x]);
-      derivative(node, 'x')
+      derivative(node, 'x');
     }, /Error: Operator "\^" is not supported by derivative, or a wrong number of arguments is passed/ );
   });
 

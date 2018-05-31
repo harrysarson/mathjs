@@ -1,16 +1,16 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    pi = math.pi,
-    complex = math.complex,
-    matrix = math.matrix,
-    unit = math.unit,
-    atan = math.atan,
-    tan = math.tan,
-    bigmath = math.create({number: 'BigNumber', precision: 20}),
-    atanBig = bigmath.atan,
-    Big = bigmath.bignumber;
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  pi = math.pi,
+  complex = math.complex,
+  matrix = math.matrix,
+  unit = math.unit,
+  atan = math.atan,
+  tan = math.tan,
+  bigmath = math.create({number: 'BigNumber', precision: 20}),
+  atanBig = bigmath.atan,
+  Big = bigmath.bignumber;
 
 describe('atan', function() {
   it('should return the arctan of a boolean', function () {
@@ -72,7 +72,7 @@ describe('atan', function() {
 
   it('should return the arctan of a complex number', function() {
     var re = 1.409921049596575,
-        im = 0.229072682968539;
+      im = 0.229072682968539;
     approx.deepEqual(atan(complex('2+3i')), complex(re, im));
     approx.deepEqual(atan(complex('2-3i')), complex(re, -im));
     approx.deepEqual(atan(complex('-2+3i')), complex(-re, im));
@@ -84,12 +84,12 @@ describe('atan', function() {
   });
 
   it('should throw an error if called with a unit', function() {
-    assert.throws(function () {atan(unit('45deg'))});
-    assert.throws(function () {atan(unit('5 celsius'))});
+    assert.throws(function () {atan(unit('45deg'));});
+    assert.throws(function () {atan(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {atan('string')});
+    assert.throws(function () {atan('string');});
   });
 
   it('should calculate the arctan element-wise for arrays and matrices', function() {
@@ -100,8 +100,8 @@ describe('atan', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {atan()}, /TypeError: Too few arguments/);
-    assert.throws(function () {atan(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {atan();}, /TypeError: Too few arguments/);
+    assert.throws(function () {atan(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX atan', function () {

@@ -1,6 +1,6 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index');
+  error = require('../../../lib/error/index'),
+  math = require('../../../index');
 
 describe('sort', function() {
 
@@ -39,19 +39,19 @@ describe('sort', function() {
   });
 
   it('should throw an error if called with a multi dimensional matrix', function() {
-    assert.throws(function() { math.sort(math.matrix([[1,2],[3,4]])) }, /One dimensional matrix expected/);
+    assert.throws(function() { math.sort(math.matrix([[1,2],[3,4]])); }, /One dimensional matrix expected/);
   });
 
   it('should throw an error if called with unsupported type', function() {
-    assert.throws(function() { math.sort(2) });
-    assert.throws(function() { math.sort('string') });
-    assert.throws(function() { math.sort([], 'string') }, /String "asc", "desc", or "natural" expected/);
-    assert.throws(function() { math.sort([], {}) });
+    assert.throws(function() { math.sort(2); });
+    assert.throws(function() { math.sort('string'); });
+    assert.throws(function() { math.sort([], 'string'); }, /String "asc", "desc", or "natural" expected/);
+    assert.throws(function() { math.sort([], {}); });
   });
 
   it('should throw an error if called with invalid number of arguments', function() {
-    assert.throws(function() { math.sort([], 'asc', 'foo') });
-    assert.throws(function() { math.sort() });
+    assert.throws(function() { math.sort([], 'asc', 'foo'); });
+    assert.throws(function() { math.sort(); });
   });
 
   it('should LaTeX sort', function () {

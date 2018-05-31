@@ -10,5 +10,5 @@ describe('deprecated stuff', function() {
       new math.expression.node.UpdateNode();
     }, /UpdateNode is deprecated/);
 
-  })
+  });
 });

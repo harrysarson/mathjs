@@ -57,7 +57,7 @@ describe('isNegative', function() {
     assert.strictEqual(isNaN('2'), false);
     assert.strictEqual(isNaN('-2'), false);
     assert.strictEqual(isNaN('0'), false);
-    assert.throws(function () {isNaN('NaN')}, /Error: Cannot convert "NaN" to a number/);
+    assert.throws(function () {isNaN('NaN');}, /Error: Cannot convert "NaN" to a number/);
     assert.strictEqual(isNaN(''), false);
   });
 
@@ -70,8 +70,8 @@ describe('isNegative', function() {
   });
 
   it('should throw an error in case of unsupported data types', function() {
-    assert.throws(function () {isNaN(new Date())}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {isNaN({})}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {isNaN(new Date());}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {isNaN({});}, /TypeError: Unexpected type of argument/);
   });
 
 });

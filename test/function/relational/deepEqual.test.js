@@ -1,11 +1,11 @@
 // test deepEqual
 var assert = require('assert'),
-    math = require('../../../index'),
-    bignumber = math.bignumber,
-    complex = math.complex,
-    matrix = math.matrix,
-    unit = math.unit,
-    deepEqual = math.deepEqual;
+  math = require('../../../index'),
+  bignumber = math.bignumber,
+  complex = math.complex,
+  matrix = math.matrix,
+  unit = math.unit,
+  deepEqual = math.deepEqual;
 
 describe('deepEqual', function() {
 
@@ -51,12 +51,12 @@ describe('deepEqual', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {deepEqual(1)}, /TypeError: Too few arguments/);
-    assert.throws(function () {deepEqual(1, 2, 3)}, /TypeError: Too many arguments/);
+    assert.throws(function () {deepEqual(1);}, /TypeError: Too few arguments/);
+    assert.throws(function () {deepEqual(1, 2, 3);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an error in case of invalid type of arguments', function() {
-    assert.throws(function () {deepEqual(['A'], ['B'])}, /Error: Cannot convert "A" to a number/);
+    assert.throws(function () {deepEqual(['A'], ['B']);}, /Error: Cannot convert "A" to a number/);
   });
 
   it('should LaTeX deepEqual', function () {

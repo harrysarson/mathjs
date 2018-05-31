@@ -37,15 +37,15 @@ math.import(require('../../lib'));
 // will simply be a Fraction (default behavior of math.js).
 var ans1 = math.eval('1/3 + 1/4');
 console.log(math.typeof(ans1), math.format(ans1));
-    // outputs "Fraction 7/12"
+// outputs "Fraction 7/12"
 
 // Function sqrt doesn't have Fraction support, will now fall back to BigNumber
 // instead of number.
 var ans2 = math.eval('sqrt(4)');
 console.log(math.typeof(ans2), math.format(ans2));
-    // outputs "BigNumber 2"
+// outputs "BigNumber 2"
 
 // We can now do operations with mixed Fractions and BigNumbers
 var ans3 = math.add(math.fraction(2, 5), math.bignumber(3));
 console.log(math.typeof(ans3), math.format(ans3));
-    // outputs "BigNumber 3.4"
+// outputs "BigNumber 3.4"

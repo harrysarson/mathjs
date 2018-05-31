@@ -6,18 +6,18 @@ describe('simplify', function() {
 
   function simplifyAndCompare(left, right, scope) {
     try {
-        if (scope) {
-            assert.equal(math.simplify(left, scope).toString(), math.parse(right).toString());
-        } else {
-            assert.equal(math.simplify(left).toString(), math.parse(right).toString());
-        }
+      if (scope) {
+        assert.equal(math.simplify(left, scope).toString(), math.parse(right).toString());
+      } else {
+        assert.equal(math.simplify(left).toString(), math.parse(right).toString());
+      }
     } catch (err) {
-        if (err instanceof Error) {
-            console.log(err.stack);
-        } else {
-            console.log(new Error(err));
-        }
-        throw err;
+      if (err instanceof Error) {
+        console.log(err.stack);
+      } else {
+        console.log(new Error(err));
+      }
+      throw err;
     }
   }
 
@@ -78,9 +78,9 @@ describe('simplify', function() {
 
   it('simplifyCore should handle different node types', function() {
     var testSimplifyCore = function(expr, expected) {
-        var actual = math.simplify.simplifyCore(math.parse(expr)).toString();
-        assert.equal(actual, expected);
-    }
+      var actual = math.simplify.simplifyCore(math.parse(expr)).toString();
+      assert.equal(actual, expected);
+    };
     testSimplifyCore("5*x*3", "15 * x");
     testSimplifyCore("5*x*3*x", "15 * x * x");
 
@@ -111,9 +111,9 @@ describe('simplify', function() {
   });
 
   it('should simplifyCore convert +unaryMinus to subtract', function() {
-      simplifyAndCompareEval('--2', '2');
-      var result = math.simplify('x + y + a', [math.simplify.simplifyCore], {a: -1}).toString()
-      assert.equal(result, "x + y - 1");
+    simplifyAndCompareEval('--2', '2');
+    var result = math.simplify('x + y + a', [math.simplify.simplifyCore], {a: -1}).toString();
+    assert.equal(result, "x + y - 1");
   });
 
   it('should simplify convert minus and unary minus', function() {
@@ -128,7 +128,7 @@ describe('simplify', function() {
   });
 
   it('should handle custom functions', function() {
-    function doubleIt (x) { return x + x }
+    function doubleIt (x) { return x + x; }
     var node = math.expression.node;
     var f = new node.FunctionNode(new node.SymbolNode('doubleIt'), [new node.SymbolNode('value')]);
     assert.equal(f.toString(), 'doubleIt(value)');
@@ -147,7 +147,7 @@ describe('simplify', function() {
     var fsimplified = math.simplify.simplifyCore(f);
     assert.equal(fsimplified.toString(), '(sigma(x) = 1 / (1 + exp(-x)))(x)');
     assert.equal(fsimplified.eval({x: 5}), 0.9933071490757153);
-  })
+  });
 
   it('should simplify (n- -n1)', function() {
     simplifyAndCompare('2 + -3', '-1');
@@ -245,8 +245,8 @@ describe('simplify', function() {
   });
 
   it ('should support custom rules', function() {
-      var node = math.simplify("y+x",[{l:'n1-n2',r:'-n2+n1'}],{x:5})
-      assert.equal(node.toString(), 'y + 5');
+    var node = math.simplify("y+x",[{l:'n1-n2',r:'-n2+n1'}],{x:5});
+    assert.equal(node.toString(), 'y + 5');
   });
 
   it('should handle valid built-in constant symbols in rules', function() {
@@ -280,8 +280,8 @@ describe('simplify', function() {
 
   it('resolve() should substitute scoped constants', function() {
     assert.equal(
-        math.simplify.resolve(math.parse('x+y'), {x:1}).toString(),
-        "1 + y"
+      math.simplify.resolve(math.parse('x+y'), {x:1}).toString(),
+      "1 + y"
     ); // direct
     simplifyAndCompare('x+y', 'x+y', {}); // operator
     simplifyAndCompare('x+y', 'y+1', {x:1});
@@ -295,7 +295,7 @@ describe('simplify', function() {
     simplifyAndCompare('x+(y+2-1-1)', '6', {x:2,y:math.parse("x+x")}); // parentheses
     simplifyAndCompare('log(x+y)', String(Math.log(6)), {x:2,y:math.parse("x+x")}); // function
     simplifyAndCompare('combinations( ceil(abs(sin(x)) * y), abs(x) )',
-        'combinations(ceil(0.9092974268256817 * y ), 2)', {x:-2});
+      'combinations(ceil(0.9092974268256817 * y ), 2)', {x:-2});
 
     // TODO(deal with accessor nodes) simplifyAndCompare('size(text)[1]', '11', {text: "hello world"})
   });
@@ -304,27 +304,27 @@ describe('simplify', function() {
 
     it('should evaluate simplify containing string value', function() {
       var res = math.eval('simplify("2x + 3x")');
-      assert.ok(res && res.isNode)
+      assert.ok(res && res.isNode);
       assert.equal(res.toString(), '5 * x');
     });
 
     it('should evaluate simplify containing nodes', function() {
       var res = math.eval('simplify(parse("2x + 3x"))');
-      assert.ok(res && res.isNode)
+      assert.ok(res && res.isNode);
       assert.equal(res.toString(), '5 * x');
     });
 
     it('should compute and simplify derivatives', function() {
       var res = math.eval('derivative("5x*3x", "x")');
-      assert.ok(res && res.isNode)
+      assert.ok(res && res.isNode);
       assert.equal(res.toString(), '30 * x');
     });
 
     it('should compute and simplify derivatives (2)', function() {
-      var scope = {}
-      math.eval('a = derivative("5x*3x", "x")', scope)
+      var scope = {};
+      math.eval('a = derivative("5x*3x", "x")', scope);
       var res = math.eval('simplify(a)', scope);
-      assert.ok(res && res.isNode)
+      assert.ok(res && res.isNode);
       assert.equal(res.toString(), '30 * x');
     });
 
@@ -332,7 +332,7 @@ describe('simplify', function() {
       // TODO: this requires the + operator to support Nodes,
       //       i.e.   math.add(5, math.parse('2')) => return an OperatorNode
       var res = math.eval('simplify(5+derivative(5/(3x), x))');
-      assert.ok(res && res.isNode)
+      assert.ok(res && res.isNode);
       assert.equal(res.toString(), '5 - 15 / (3 * x) ^ 2');
     });
 

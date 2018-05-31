@@ -1,17 +1,17 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    pi = math.pi,
-    complex = math.complex,
-    matrix = math.matrix,
-    unit = math.unit,
-    acot = math.acot,
-    cot = math.cot,
-    bigmath = math.create({number: 'BigNumber', precision: 20}),
-    acotBig = bigmath.acot,
-    cotBig = bigmath.cot,
-    Big = bigmath.bignumber;
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  pi = math.pi,
+  complex = math.complex,
+  matrix = math.matrix,
+  unit = math.unit,
+  acot = math.acot,
+  cot = math.cot,
+  bigmath = math.create({number: 'BigNumber', precision: 20}),
+  acotBig = bigmath.acot,
+  cotBig = bigmath.cot,
+  Big = bigmath.bignumber;
 
 describe('acot', function() {
   it('should return the arccot of a boolean', function () {
@@ -89,12 +89,12 @@ describe('acot', function() {
   });
 
   it('should throw an error if called with a unit', function() {
-    assert.throws(function () {acot(unit('45deg'))});
-    assert.throws(function () {acot(unit('5 celsius'))});
+    assert.throws(function () {acot(unit('45deg'));});
+    assert.throws(function () {acot(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {acot('string')});
+    assert.throws(function () {acot('string');});
   });
 
   it('should calculate the arccot element-wise for arrays and matrices', function() {
@@ -105,8 +105,8 @@ describe('acot', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {acot()}, /TypeError: Too few arguments/);
-    assert.throws(function () {acot(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {acot();}, /TypeError: Too few arguments/);
+    assert.throws(function () {acot(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX acot', function () {

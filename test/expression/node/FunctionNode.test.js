@@ -31,15 +31,15 @@ describe('FunctionNode', function() {
   it ('should throw an error when calling without new operator', function () {
     var s = new SymbolNode('sqrt');
     var c = new ConstantNode(4);
-    assert.throws(function () {FunctionNode(s, [c])}, SyntaxError);
+    assert.throws(function () {FunctionNode(s, [c]);}, SyntaxError);
   });
 
   it ('should throw an error when calling with wrong arguments', function () {
     var s = new SymbolNode('sqrt');
     var c = new ConstantNode(4);
-    assert.throws(function () {new FunctionNode(new Date(), [])}, TypeError);
-    assert.throws(function () {new FunctionNode(s, [2, 3])}, TypeError);
-    assert.throws(function () {new FunctionNode(s, [c, 3])}, TypeError);
+    assert.throws(function () {new FunctionNode(new Date(), []);}, TypeError);
+    assert.throws(function () {new FunctionNode(s, [2, 3]);}, TypeError);
+    assert.throws(function () {new FunctionNode(s, [c, 3]);}, TypeError);
   });
 
   it ('should get the name of a FunctionNode', function () {
@@ -176,11 +176,11 @@ describe('FunctionNode', function() {
     var c = new ConstantNode(1);
     var n = new FunctionNode(s, [b, c]);
 
-    assert.deepEqual(n.filter(function (node) {return node instanceof FunctionNode}),  [n]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof RangeNode}),     []);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode}),  [b, c]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '2'}),  [b]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '4'}),  []);
+    assert.deepEqual(n.filter(function (node) {return node instanceof FunctionNode;}),  [n]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof RangeNode;}),     []);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode;}),  [b, c]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '2';}),  [b]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '4';}),  []);
   });
 
   it ('should run forEach on a FunctionNode', function () {
@@ -246,7 +246,7 @@ describe('FunctionNode', function() {
 
     assert.throws(function () {
       f.map(function () {});
-    }, /Callback function must return a Node/)
+    }, /Callback function must return a Node/);
   });
 
   it ('should transform a FunctionNodes (nested) parameters', function () {
@@ -315,23 +315,23 @@ describe('FunctionNode', function() {
       count++;
 
       switch(count) {
-        case 1:
-          assert.strictEqual(node, d);
-          assert.strictEqual(path, null);
-          assert.strictEqual(parent, null);
-          break;
+      case 1:
+        assert.strictEqual(node, d);
+        assert.strictEqual(path, null);
+        assert.strictEqual(parent, null);
+        break;
 
-        case 2:
-          assert.strictEqual(node, b);
-          assert.strictEqual(path, 'args[0]');
-          assert.strictEqual(parent, d);
-          break;
+      case 2:
+        assert.strictEqual(node, b);
+        assert.strictEqual(path, 'args[0]');
+        assert.strictEqual(parent, d);
+        break;
 
-        case 3:
-          assert.strictEqual(node, c);
-          assert.strictEqual(path, 'args[1]');
-          assert.strictEqual(parent, d);
-          break;
+      case 3:
+        assert.strictEqual(node, c);
+        assert.strictEqual(path, 'args[1]');
+        assert.strictEqual(parent, d);
+        break;
       }
     });
 
@@ -379,7 +379,7 @@ describe('FunctionNode', function() {
   });
 
   it ('should stringify a FunctionNode with an immediately invoked function assignment', function () {
-    var f = new FunctionAssignmentNode('f', ['x'], new SymbolNode('x')) // f(x) = x
+    var f = new FunctionAssignmentNode('f', ['x'], new SymbolNode('x')); // f(x) = x
     var c = new ConstantNode(4);
     var n = new FunctionNode(f, [c]);
 
@@ -410,7 +410,7 @@ describe('FunctionNode', function() {
         return string;
       }
       else if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')'
+        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')';
       }
     };
 
@@ -496,7 +496,7 @@ describe('FunctionNode', function() {
         return latex;
       }
       else if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)'
+        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)';
       }
     };
 
@@ -582,7 +582,7 @@ describe('FunctionNode', function() {
     var customMath = math.create();
     customMath.add.toTex = '${some_property}';
 
-    assert.throws(function () {customMath.parse('add(1,2)').toTex()}, ReferenceError);
+    assert.throws(function () {customMath.parse('add(1,2)').toTex();}, ReferenceError);
   });
 
   it ('should throw an Error for templates with properties that aren\'t Nodes or Strings or Arrays of Nodes', function () {
@@ -591,11 +591,11 @@ describe('FunctionNode', function() {
     var tree = customMath.parse('add(1,2)');
 
     tree.some_property = {};
-    assert.throws(function () {tree.toTex()}, TypeError);
+    assert.throws(function () {tree.toTex();}, TypeError);
 
     customMath.add.prototype.some_property = 1;
     tree.some_property = 1;
-    assert.throws(function () {tree.toTex()}, TypeError);
+    assert.throws(function () {tree.toTex();}, TypeError);
   });
 
   it ('should throw an Error for templates with properties that are arrays of non Nodes', function () {
@@ -604,7 +604,7 @@ describe('FunctionNode', function() {
     var tree = customMath.parse('add(1,2)');
     tree.some_property = [1,2];
 
-    assert.throws(function () {tree.toTex()}, TypeError);
+    assert.throws(function () {tree.toTex();}, TypeError);
   });
 
 });

@@ -1,8 +1,8 @@
 var assert = require('assert'),
-    array = require('../../lib/utils/array'),
-    resize = array.resize,
-    reshape = array.reshape,
-    size = array.size;
+  array = require('../../lib/utils/array'),
+  resize = array.resize,
+  reshape = array.reshape,
+  size = array.size;
 
 describe('util.array', function() {
 
@@ -158,10 +158,10 @@ describe('util.array', function() {
 
       a = resize(a, [4, 2], 4);
       assert.deepEqual(a, [
-          [1, 4],
-          [2, 4],
-          [3, 4],
-          [3, 4]
+        [1, 4],
+        [2, 4],
+        [3, 4],
+        [3, 4]
       ]);
 
       // without default value
@@ -172,10 +172,10 @@ describe('util.array', function() {
 
       b = resize(b, [4, 2]);
       assert.deepEqual(b, [
-          [1, 0],
-          [2, 0],
-          [0, 0],
-          [0, 0]
+        [1, 0],
+        [2, 0],
+        [0, 0],
+        [0, 0]
       ]);
       // TODO: would be nicer if this returns uninit everwhere and not undefined on some places
     });
@@ -222,8 +222,8 @@ describe('util.array', function() {
     });
 
     it('should throw an error in case of wrong type of arguments', function () {
-      assert.throws(function () {resize([], 2)}, /Array expected/);
-      assert.throws(function () {resize(2)}, /Array expected/);
+      assert.throws(function () {resize([], 2);}, /Array expected/);
+      assert.throws(function () {resize(2);}, /Array expected/);
     });
   });
 
@@ -235,14 +235,14 @@ describe('util.array', function() {
       assert.deepEqual(
         reshape(a, [2, 4]),
         [[1, 2, 3, 4],
-         [5, 6, 7, 8]]
+          [5, 6, 7, 8]]
       );
       assert.deepEqual(
         reshape(a, [4, 2]),
         [[1, 2],
-         [3, 4],
-         [5, 6],
-         [7, 8]]
+          [3, 4],
+          [5, 6],
+          [7, 8]]
       );
       assert.deepEqual(
         reshape(a, [1, 8]),
@@ -268,10 +268,10 @@ describe('util.array', function() {
 
     it('should reshape a 3 dimensional array', function () {
       var a = [[[1, 2],
-                [3, 4]],
+        [3, 4]],
 
-               [[5, 6],
-                [7, 8]]];
+      [[5, 6],
+        [7, 8]]];
 
       assert.deepEqual(
         reshape(a, [8]),
@@ -281,7 +281,7 @@ describe('util.array', function() {
       assert.deepEqual(
         reshape(a, [2, 4]),
         [[1, 2, 3, 4],
-         [5, 6, 7, 8]]
+          [5, 6, 7, 8]]
       );
 
     });
@@ -302,8 +302,8 @@ describe('util.array', function() {
       assert.deepEqual(
         reshape(a, [3, 3]),
         [[1, 2, 3],
-         [4, 5, 6],
-         [7, 8, 9]]
+          [4, 5, 6],
+          [7, 8, 9]]
       );
       assert.throws(function () {reshape(a, [3, 2]);}, /DimensionError/);
       assert.throws(function () {reshape(a, [2, 3]);}, /DimensionError/);
@@ -436,26 +436,26 @@ describe('util.array', function() {
     it('should validate whether an index contains integers', function () {
       assert.equal(array.validateIndex(2), undefined);
       assert.equal(array.validateIndex(10), undefined);
-      assert.throws(function () {array.validateIndex(2.3)}, /Index must be an integer/);
-      assert.throws(function () {array.validateIndex('str')}, /Index must be an integer/);
-      assert.throws(function () {array.validateIndex(true)}, /Index must be an integer/);
+      assert.throws(function () {array.validateIndex(2.3);}, /Index must be an integer/);
+      assert.throws(function () {array.validateIndex('str');}, /Index must be an integer/);
+      assert.throws(function () {array.validateIndex(true);}, /Index must be an integer/);
     });
 
     it('should validate whether an index doesn\'t exceed the minimum 0', function () {
       assert.equal(array.validateIndex(2), undefined);
       assert.equal(array.validateIndex(0), undefined);
-      assert.throws(function () {array.validateIndex(-1)}, /Index out of range/);
-      assert.throws(function () {array.validateIndex(-100)}, /Index out of range/);
+      assert.throws(function () {array.validateIndex(-1);}, /Index out of range/);
+      assert.throws(function () {array.validateIndex(-100);}, /Index out of range/);
     });
 
     it('should validate whether an index doesn\'t exceed both minimum and maximum', function () {
       assert.equal(array.validateIndex(0, 10), undefined);
       assert.equal(array.validateIndex(4, 10), undefined);
       assert.equal(array.validateIndex(9, 10), undefined);
-      assert.throws(function () {array.validateIndex(-1, 10)}, /Index out of range/);
-      assert.throws(function () {array.validateIndex(10, 10)}, /Index out of range/);
-      assert.throws(function () {array.validateIndex(11, 10)}, /Index out of range/);
-      assert.throws(function () {array.validateIndex(100, 10)}, /Index out of range/);
+      assert.throws(function () {array.validateIndex(-1, 10);}, /Index out of range/);
+      assert.throws(function () {array.validateIndex(10, 10);}, /Index out of range/);
+      assert.throws(function () {array.validateIndex(11, 10);}, /Index out of range/);
+      assert.throws(function () {array.validateIndex(100, 10);}, /Index out of range/);
     });
 
     it('thrown IndexError should contain the right index, max, and min properties', function () {
@@ -505,13 +505,13 @@ describe('util.array', function() {
       assert.equal(array.validate([1,2,3], [3]), undefined);
 
       // valid matrix but wrong size
-      assert.throws(function () {array.validate([1,2,3], [2])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([1,2,3], [4])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([1,2,3], [])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([1,2,3], [3,2])}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([1,2,3], [2]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([1,2,3], [4]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([1,2,3], []);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([1,2,3], [3,2]);}, /Dimension mismatch/);
 
       // invalid vector
-      assert.throws(function () {array.validate([1,[2],3], [3])}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([1,[2],3], [3]);}, /Dimension mismatch/);
     });
 
     it('should validate whether all elements in a 2d matrix have correct size', function () {
@@ -521,17 +521,17 @@ describe('util.array', function() {
       assert.equal(array.validate([[1,2],[3,4],[5,6]], [3,2]), undefined);
 
       // valid matrix with wrong size
-      assert.throws(function () {array.validate([[1,2],[3,4]], [2,1])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([[1,2],[3,4]], [3,2])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([[1,2,3],[4,5,6]], [2,4])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([[1,2],[3,4],[5,6]], [4,3])}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[1,2],[3,4]], [2,1]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[1,2],[3,4]], [3,2]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[1,2,3],[4,5,6]], [2,4]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[1,2],[3,4],[5,6]], [4,3]);}, /Dimension mismatch/);
 
       // invalid matrix
-      assert.throws(function () {array.validate([[1,2],[3,4,5]], [2,2])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([[1,2],[3]], [2,2])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([[1,2],3], [2,2])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([1,2], [2,2])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([[[1,2],[3,4]]], [2,2])}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[1,2],[3,4,5]], [2,2]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[1,2],[3]], [2,2]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[1,2],3], [2,2]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([1,2], [2,2]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[[1,2],[3,4]]], [2,2]);}, /Dimension mismatch/);
     });
 
     it('should validate whether all elements in a multi dimensional matrix have correct size', function () {
@@ -542,17 +542,17 @@ describe('util.array', function() {
       assert.equal(array.validate([[[1,2],[3,4]],[[5,6],[7,8]],[[9,10],[11,12]]], [3,2,2]), undefined);
 
       // valid matrix with wrong size
-      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6],[7,8]]], [2,2,3])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6],[7,8]]], [2,2])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6],[7,8]]], [2,2,2,2])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6],[7,8]]], [3,2,2])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6],[7,8]]], [2,3,2])}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6],[7,8]]], [2,2,3]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6],[7,8]]], [2,2]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6],[7,8]]], [2,2,2,2]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6],[7,8]]], [3,2,2]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6],[7,8]]], [2,3,2]);}, /Dimension mismatch/);
 
       // invalid matrix
-      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6],[7,8,9]]], [2,2,2])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6,6.5],[7,8]]], [2,2,2])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6],7]], [2,2,2])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([[[1,2],[3,4]],[6,[7,8]]], [2,2,2])}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6],[7,8,9]]], [2,2,2]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6,6.5],[7,8]]], [2,2,2]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[[1,2],[3,4]],[[5,6],7]], [2,2,2]);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[[1,2],[3,4]],[6,[7,8]]], [2,2,2]);}, /Dimension mismatch/);
     });
 
     it('should validate whether a variable contains a scalar', function () {
@@ -560,9 +560,9 @@ describe('util.array', function() {
       assert.equal(array.validate(new Date(), []), undefined);
       assert.equal(array.validate({}, []), undefined);
 
-      assert.throws(function () {array.validate([], [])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([1,2,3], [])}, /Dimension mismatch/);
-      assert.throws(function () {array.validate([[1,2],[3,4]], [])}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([], []);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([1,2,3], []);}, /Dimension mismatch/);
+      assert.throws(function () {array.validate([[1,2],[3,4]], []);}, /Dimension mismatch/);
     });
 
   });

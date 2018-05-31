@@ -153,5 +153,5 @@ describe('FibonacciHeap', function () {
     h.clear();
     assert.equal(h.isEmpty(), true);
     assert.equal(h.size(), 0);
-  })
+  });
 });

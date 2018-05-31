@@ -32,13 +32,13 @@ describe('help', function() {
   it('should throw an error when constructed without new operator', function() {
     assert.throws(function () {
       Help(math.expression.docs.sin);
-    }, /Constructor must be called with the new operator/)
+    }, /Constructor must be called with the new operator/);
   });
 
   it('should throw an error when constructed without doc argument', function() {
     assert.throws(function () {
       new Help();
-    }, /Argument "doc" missing/)
+    }, /Argument "doc" missing/);
   });
 
   it('should have a property isHelp', function () {
@@ -54,7 +54,7 @@ describe('help', function() {
   it('should stringify a help', function() {
     var help = new Help(doc);
     assert.equal(help.toString(),
-        '\nName: add\n' +
+      '\nName: add\n' +
         '\n'+
         'Category: Operators\n' +
         '\n' +
@@ -89,7 +89,7 @@ describe('help', function() {
     });
 
     assert.equal(help.toString(),
-        '\nName: add\n' +
+      '\nName: add\n' +
         '\n'+
         'Examples:\n' +
         '    2 + 3\n' +
@@ -107,7 +107,7 @@ describe('help', function() {
     });
 
     assert.equal(help.toString(),
-        '\nName: add\n' +
+      '\nName: add\n' +
         '\n'+
         'Examples:\n' +
         '    2 ^^ 3\n' +
@@ -124,7 +124,7 @@ describe('help', function() {
     });
 
     assert.strictEqual(help.valueOf(),
-            '\nName: add\n' +
+      '\nName: add\n' +
             '\n'+
             'Examples:\n' +
             '    2 ^^ 3\n' +

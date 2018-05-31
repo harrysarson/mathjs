@@ -22,18 +22,18 @@ describe('SymbolNode', function() {
   });
 
   it ('should throw an error when calling without new operator', function () {
-    assert.throws(function () {SymbolNode('sqrt')}, SyntaxError);
+    assert.throws(function () {SymbolNode('sqrt');}, SyntaxError);
   });
 
   it ('should throw an error when calling with wrong arguments', function () {
-    assert.throws(function () {new SymbolNode()}, TypeError);
-    assert.throws(function () {new SymbolNode(2)}, TypeError);
+    assert.throws(function () {new SymbolNode();}, TypeError);
+    assert.throws(function () {new SymbolNode(2);}, TypeError);
   });
 
   it ('should throw an error when evaluating an undefined symbol', function () {
     var scope = {};
     var s = new SymbolNode('foo');
-    assert.throws(function () {s.compile().eval(scope)}, Error);
+    assert.throws(function () {s.compile().eval(scope);}, Error);
   });
 
   it ('should compile a SymbolNode', function () {
@@ -42,7 +42,7 @@ describe('SymbolNode', function() {
     var expr = s.compile();
     var scope = {a: 5};
     assert.equal(expr.eval(scope), 5);
-    assert.throws(function () {expr.eval({})}, Error);
+    assert.throws(function () {expr.eval({});}, Error);
 
     var s2 = new SymbolNode('sqrt');
     var expr2 = s2.compile();
@@ -52,16 +52,16 @@ describe('SymbolNode', function() {
 
   it ('should filter a SymbolNode', function () {
     var n = new SymbolNode('x');
-    assert.deepEqual(n.filter(function (node) {return node instanceof SymbolNode}),  [n]);
-    assert.deepEqual(n.filter(function (node) {return node.name == 'x'}),  [n]);
-    assert.deepEqual(n.filter(function (node) {return node.name == 'q'}),  []);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode}),  []);
+    assert.deepEqual(n.filter(function (node) {return node instanceof SymbolNode;}),  [n]);
+    assert.deepEqual(n.filter(function (node) {return node.name == 'x';}),  [n]);
+    assert.deepEqual(n.filter(function (node) {return node.name == 'q';}),  []);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode;}),  []);
   });
 
   it ('should run forEach on a SymbolNode', function () {
     var a = new SymbolNode('a');
     a.forEach(function () {
-      assert.ok(false, 'should not execute, symbol has no childs')
+      assert.ok(false, 'should not execute, symbol has no childs');
     });
   });
 
@@ -69,7 +69,7 @@ describe('SymbolNode', function() {
     var a = new SymbolNode('a');
     var c = new SymbolNode('c');
     var b = a.map(function () {
-      assert.ok(false, 'should not execute, symbol has no childs')
+      assert.ok(false, 'should not execute, symbol has no childs');
     });
 
     assert.notStrictEqual(b, a);

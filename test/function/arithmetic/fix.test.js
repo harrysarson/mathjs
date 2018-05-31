@@ -70,7 +70,7 @@ describe('fix', function() {
   
   it('should throw an error on unit as parameter', function() {
     // unit
-    assert.throws(function () {fix(unit('5cm'))}, TypeError, 'Function fix(unit) not supported');
+    assert.throws(function () {fix(unit('5cm'));}, TypeError, 'Function fix(unit) not supported');
   });
 
   it('should convert a string to a number', function() {
@@ -84,8 +84,8 @@ describe('fix', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {fix()}, /TypeError: Too few arguments/);
-    assert.throws(function () {fix(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {fix();}, /TypeError: Too few arguments/);
+    assert.throws(function () {fix(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an in case of wrong type of arguments', function() {

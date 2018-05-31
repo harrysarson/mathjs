@@ -29,12 +29,12 @@ describe('ObjectNode', function() {
   });
 
   it ('should throw an error when calling without new operator', function () {
-    assert.throws(function () {ObjectNode()}, SyntaxError);
+    assert.throws(function () {ObjectNode();}, SyntaxError);
   });
 
   it ('should throw an error on wrong constructor arguments', function () {
-    assert.throws(function () {new ObjectNode(2)}, TypeError);
-    assert.throws(function () {new ObjectNode({a: 2, b: 3})}, TypeError);
+    assert.throws(function () {new ObjectNode(2);}, TypeError);
+    assert.throws(function () {new ObjectNode({a: 2, b: 3});}, TypeError);
   });
 
   it ('should evaluate an ObjectNode', function () {
@@ -66,11 +66,11 @@ describe('ObjectNode', function() {
     var c = new ConstantNode(2);
     var d = new ObjectNode({a: a, b: b, c: c});
 
-    assert.deepEqual(d.filter(function (node) {return node instanceof ObjectNode}),    [d]);
-    assert.deepEqual(d.filter(function (node) {return node instanceof SymbolNode}),    [b]);
-    assert.deepEqual(d.filter(function (node) {return node instanceof RangeNode}),     []);
-    assert.deepEqual(d.filter(function (node) {return node instanceof ConstantNode}),  [a, c]);
-    assert.deepEqual(d.filter(function (node) {return node instanceof ConstantNode && node.value == '2'}),  [c]);
+    assert.deepEqual(d.filter(function (node) {return node instanceof ObjectNode;}),    [d]);
+    assert.deepEqual(d.filter(function (node) {return node instanceof SymbolNode;}),    [b]);
+    assert.deepEqual(d.filter(function (node) {return node instanceof RangeNode;}),     []);
+    assert.deepEqual(d.filter(function (node) {return node instanceof ConstantNode;}),  [a, c]);
+    assert.deepEqual(d.filter(function (node) {return node instanceof ConstantNode && node.value == '2';}),  [c]);
   });
 
   it ('should run forEach on an ObjectNode', function () {
@@ -125,7 +125,7 @@ describe('ObjectNode', function() {
 
     assert.throws(function () {
       c.map(function () {});
-    }, /Callback function must return a Node/)
+    }, /Callback function must return a Node/);
   });
 
   it ('should transform an ObjectNodes parameters', function () {
@@ -169,35 +169,35 @@ describe('ObjectNode', function() {
       count++;
 
       switch(count) {
-        case 1:
-          assert.strictEqual(path, null);
-          assert.strictEqual(node, e);
-          assert.strictEqual(parent, null);
-          break;
+      case 1:
+        assert.strictEqual(path, null);
+        assert.strictEqual(node, e);
+        assert.strictEqual(parent, null);
+        break;
 
-        case 2:
-          assert.strictEqual(path, 'properties["c"]');
-          assert.strictEqual(node, c);
-          assert.strictEqual(parent, e);
-          break;
+      case 2:
+        assert.strictEqual(path, 'properties["c"]');
+        assert.strictEqual(node, c);
+        assert.strictEqual(parent, e);
+        break;
 
-        case 3:
-          assert.strictEqual(path, 'properties["d"]');
-          assert.strictEqual(node, d);
-          assert.strictEqual(parent, e);
-          break;
+      case 3:
+        assert.strictEqual(path, 'properties["d"]');
+        assert.strictEqual(node, d);
+        assert.strictEqual(parent, e);
+        break;
 
-        case 4:
-          assert.strictEqual(path, 'properties["a"]');
-          assert.strictEqual(node, a);
-          assert.strictEqual(parent, d);
-          break;
+      case 4:
+        assert.strictEqual(path, 'properties["a"]');
+        assert.strictEqual(node, a);
+        assert.strictEqual(parent, d);
+        break;
 
-        case 5:
-          assert.strictEqual(path, 'properties["b"]');
-          assert.strictEqual(node, b);
-          assert.strictEqual(parent, d);
-          break;
+      case 5:
+        assert.strictEqual(path, 'properties["b"]');
+        assert.strictEqual(node, b);
+        assert.strictEqual(parent, d);
+        break;
       }
     });
 
@@ -247,7 +247,7 @@ describe('ObjectNode', function() {
   it ('should stringify an ObjectNode with custom toString', function () {
     var customFunction = function (node, options) {
       if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')'
+        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')';
       }
     };
 
@@ -282,13 +282,13 @@ describe('ObjectNode', function() {
     var n1 = new ObjectNode({a: a, b: b});
     var n2 = new ObjectNode({c: c, n1: n1});
 
-    assert.equal(n2.toTex(), '\\left\\{\\begin{array}{ll}\\mathbf{c:} & 3\\\\\n\\mathbf{n1:} & \\left\\{\\begin{array}{ll}\\mathbf{a:} & 1\\\\\n\\mathbf{b:} & 2\\\\\\end{array}\\right\\}\\\\\\end{array}\\right\\}')
+    assert.equal(n2.toTex(), '\\left\\{\\begin{array}{ll}\\mathbf{c:} & 3\\\\\n\\mathbf{n1:} & \\left\\{\\begin{array}{ll}\\mathbf{a:} & 1\\\\\n\\mathbf{b:} & 2\\\\\\end{array}\\right\\}\\\\\\end{array}\\right\\}');
   });
 
   it ('should LaTeX an ObjectNode with custom toTex', function () {
     var customFunction = function (node, options) {
       if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)'
+        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)';
       }
     };
 

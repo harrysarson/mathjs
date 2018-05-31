@@ -30,7 +30,7 @@ describe('ConstantNode', function() {
   });
 
   it ('should throw an error when calling without new operator', function () {
-    assert.throws(function () {ConstantNode(3)}, SyntaxError);
+    assert.throws(function () {ConstantNode(3);}, SyntaxError);
   });
 
   it ('should compile a ConstantNode', function () {
@@ -63,32 +63,32 @@ describe('ConstantNode', function() {
 
   it ('should find a ConstantNode', function () {
     var a = new ConstantNode(2);
-    assert.deepEqual(a.filter(function (node) {return node instanceof ConstantNode}),  [a]);
-    assert.deepEqual(a.filter(function (node) {return node instanceof SymbolNode}), []);
+    assert.deepEqual(a.filter(function (node) {return node instanceof ConstantNode;}),  [a]);
+    assert.deepEqual(a.filter(function (node) {return node instanceof SymbolNode;}), []);
   });
 
   it ('should leave quotes in strings as is (no escaping)', function () {
-    assert.strictEqual( new ConstantNode('"+foo+"').compile().eval(), '"+foo+"')
-    assert.strictEqual( new ConstantNode('\\"escaped\\"').compile().eval(), '\\"escaped\\"')
+    assert.strictEqual( new ConstantNode('"+foo+"').compile().eval(), '"+foo+"');
+    assert.strictEqual( new ConstantNode('\\"escaped\\"').compile().eval(), '\\"escaped\\"');
   });
 
   it ('should find a ConstantNode', function () {
     var a = new ConstantNode(2);
-    assert.deepEqual(a.filter(function (node) {return node instanceof ConstantNode}),  [a]);
-    assert.deepEqual(a.filter(function (node) {return node instanceof SymbolNode}), []);
+    assert.deepEqual(a.filter(function (node) {return node instanceof ConstantNode;}),  [a]);
+    assert.deepEqual(a.filter(function (node) {return node instanceof SymbolNode;}), []);
   });
 
   it ('should run forEach on a ConstantNode', function () {
     var a = new ConstantNode(2);
     a.forEach(function () {
-      assert.ok(false, 'should not execute, constant has no childs')
+      assert.ok(false, 'should not execute, constant has no childs');
     });
   });
 
   it ('should map a ConstantNode', function () {
     var a = new ConstantNode(2);
     var b = a.map(function () {
-      assert.ok(false, 'should not execute, constant has no childs')
+      assert.ok(false, 'should not execute, constant has no childs');
     });
 
     assert.notStrictEqual(b, a);
@@ -150,7 +150,7 @@ describe('ConstantNode', function() {
     //Also checks if the custom functions get passed on to the children
     var customFunction = function (node, options) {
       if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ')'
+        return 'const(' + node.value + ')';
       }
     };
 
@@ -193,7 +193,7 @@ describe('ConstantNode', function() {
     //Also checks if the custom functions get passed on to the children
     var customFunction = function (node, options) {
       if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + '\\right)'
+        return 'const\\left(' + node.value + '\\right)';
       }
     };
 

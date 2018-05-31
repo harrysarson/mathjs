@@ -47,8 +47,8 @@ describe('log', function() {
   });
 
   it('should throw an error if invalid number of arguments', function() {
-    assert.throws(function () {log()}, /TypeError: Too few arguments in function log \(expected: any, index: 0\)/);
-    assert.throws(function () {log(1, 2, 3)}, /TypeError: Too many arguments in function log \(expected: 2, actual: 3\)/);
+    assert.throws(function () {log();}, /TypeError: Too few arguments in function log \(expected: any, index: 0\)/);
+    assert.throws(function () {log(1, 2, 3);}, /TypeError: Too many arguments in function log \(expected: 2, actual: 3\)/);
   });
 
   it('should throw an in case of wrong type of arguments', function() {
@@ -95,11 +95,11 @@ describe('log', function() {
   });
 
   it('should throw an error when used on a unit', function() {
-    assert.throws(function () {log(unit('5cm'))});
+    assert.throws(function () {log(unit('5cm'));});
   });
 
   it('should throw an error when used on a string', function() {
-    assert.throws(function () {log('text')});
+    assert.throws(function () {log('text');});
   });
 
   it('should return the log of each element of a matrix', function() {
@@ -107,7 +107,7 @@ describe('log', function() {
     approx.deepEqual(log([1,2,3,4]), res);
     approx.deepEqual(log(matrix([1,2,3,4])), matrix(res));
     approx.deepEqual(log(matrix([[1,2],[3,4]])),
-        matrix([[0, 0.693147180559945], [1.098612288668110, 1.386294361119891]]));
+      matrix([[0, 0.693147180559945], [1.098612288668110, 1.386294361119891]]));
   });
 
   it('should LaTeX log', function () {

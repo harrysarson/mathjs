@@ -25,7 +25,7 @@ describe('OperatorNode', function() {
   it ('should throw an error when calling without new operator', function () {
     var a = new ConstantNode(2);
     var b = new ConstantNode(3);
-    assert.throws(function () {OperatorNode('+', 'add', [a, b])}, SyntaxError);
+    assert.throws(function () {OperatorNode('+', 'add', [a, b]);}, SyntaxError);
   });
 
   it ('should compile an OperatorNode', function () {
@@ -44,7 +44,7 @@ describe('OperatorNode', function() {
     assert.strictEqual(n1.isBinary(), false);
 
     // change the args of an operator node (bad practice, but should keep working correctly)
-    n1.args.push(new ConstantNode(3))
+    n1.args.push(new ConstantNode(3));
     assert.strictEqual(n1.isUnary(), false);
     assert.strictEqual(n1.isBinary(), true);
 
@@ -77,18 +77,18 @@ describe('OperatorNode', function() {
     var b = new ConstantNode(3);
     var n = new OperatorNode('+', 'add', [a, b]);
 
-    assert.deepEqual(n.filter(function (node) {return node instanceof OperatorNode}),  [n]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof SymbolNode}),    []);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode}),  [a, b]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '2'}),  [a]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '4'}),  []);
+    assert.deepEqual(n.filter(function (node) {return node instanceof OperatorNode;}),  [n]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof SymbolNode;}),    []);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode;}),  [a, b]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '2';}),  [a]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '4';}),  []);
   });
 
   it ('should filter an OperatorNode without contents', function () {
     var n = new OperatorNode('op', 'fn', []);
 
-    assert.deepEqual(n.filter(function (node) {return node instanceof OperatorNode}),  [n]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof SymbolNode}),    []);
+    assert.deepEqual(n.filter(function (node) {return node instanceof OperatorNode;}),  [n]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof SymbolNode;}),    []);
   });
 
   it ('should run forEach on an OperatorNode', function () {
@@ -159,7 +159,7 @@ describe('OperatorNode', function() {
 
     assert.throws(function () {
       c.map(function () {});
-    }, /Callback function must return a Node/)
+    }, /Callback function must return a Node/);
   });
 
   it ('should transform an OperatorNodes parameters', function () {
@@ -391,7 +391,7 @@ describe('OperatorNode', function() {
           + ', ' +  node.args[1].toString(options) + ')';
       }
       else if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')'
+        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')';
       }
     };
 
@@ -414,7 +414,7 @@ describe('OperatorNode', function() {
           node.args[1].toString(options);
       }
       else if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')'
+        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')';
       }
     };
 
@@ -615,7 +615,7 @@ describe('OperatorNode', function() {
           + ', ' +  node.args[1].toTex(options) + ')';
       }
       else if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)'
+        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)';
       }
     };
 
@@ -638,7 +638,7 @@ describe('OperatorNode', function() {
           node.args[1].toTex(options);
       }
       else if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)'
+        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)';
       }
     };
 

@@ -1,12 +1,12 @@
 // test unequal
 var assert = require('assert'),
-    math = require('../../../index'),
-    bignumber = math.bignumber,
-    complex = math.complex,
-    matrix = math.matrix,
-    sparse = math.sparse,
-    unit = math.unit,
-    unequal = math.unequal;
+  math = require('../../../index'),
+  bignumber = math.bignumber,
+  complex = math.complex,
+  matrix = math.matrix,
+  sparse = math.sparse,
+  unit = math.unit,
+  unequal = math.unequal;
 
 describe('unequal', function() {
 
@@ -161,7 +161,7 @@ describe('unequal', function() {
     assert.equal(unequal('1000', '1e3'), false);
     assert.equal(unequal('20', '1'), true);
 
-    assert.throws(function () {unequal('A', 'B')}, /Cannot convert "A" to a number/);
+    assert.throws(function () {unequal('A', 'B');}, /Cannot convert "A" to a number/);
   });
 
   describe('Array', function () {

@@ -23,7 +23,7 @@ describe('addScalar', function() {
   });
 
   it('does not support null', function() {
-    assert.throws(function () {add(null, 0) }, /Unexpected type of argument/);
+    assert.throws(function () {add(null, 0); }, /Unexpected type of argument/);
   });
 
   it('should add mixed numbers and booleans', function() {
@@ -80,7 +80,7 @@ describe('addScalar', function() {
 
   it('should throw an error when converting a number to a fraction that is not an exact representation', function() {
     assert.throws(function () {
-      add(math.pi, math.fraction(1,3))
+      add(math.pi, math.fraction(1,3));
     }, /Cannot implicitly convert a number to a Fraction when there will be a loss of precision/);
   });
 
@@ -93,19 +93,19 @@ describe('addScalar', function() {
   it('should add strings to BigNumbers', function() {
     assert.deepEqual(add('2', math.bignumber(3)), math.bignumber(5));
     assert.deepEqual(add(math.bignumber(3), '2'), math.bignumber(5));
-    assert.throws(function () { add('foo', math.bignumber(3)) }, /Error: Cannot convert "foo" to BigNumber/)
+    assert.throws(function () { add('foo', math.bignumber(3)); }, /Error: Cannot convert "foo" to BigNumber/);
   });
 
   it('should add strings to Fractions', function() {
     assert.deepEqual(add('2', math.fraction(3)), math.fraction(5));
     assert.deepEqual(add(math.fraction(3), '2'), math.fraction(5));
-    assert.throws(function () { add('foo', math.fraction(3)) }, /Error: Cannot convert "foo" to Fraction/)
+    assert.throws(function () { add('foo', math.fraction(3)); }, /Error: Cannot convert "foo" to Fraction/);
   });
 
   it('should add strings to Complex numbers', function() {
     assert.deepEqual(add('2', math.complex(0, 3)), math.complex(2, 3));
     assert.deepEqual(add(math.complex(0, 3), '2'), math.complex(2, 3));
-    assert.throws(function () { add('foo', math.complex(0, 3)) }, /Error: Cannot convert "foo" to Complex/)
+    assert.throws(function () { add('foo', math.complex(0, 3)); }, /Error: Cannot convert "foo" to Complex/);
   });
 
   it('should add two measures of the same unit', function() {

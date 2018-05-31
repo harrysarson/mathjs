@@ -106,12 +106,12 @@ describe('asin', function() {
   });
 
   it('should throw an error if called with a unit', function() {
-    assert.throws(function () {asin(unit('45deg'))});
-    assert.throws(function () {asin(unit('5 celsius'))});
+    assert.throws(function () {asin(unit('45deg'));});
+    assert.throws(function () {asin(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {asin('string')});
+    assert.throws(function () {asin('string');});
   });
 
   it('should calculate the arcsin element-wise for arrays and matrices', function() {
@@ -126,8 +126,8 @@ describe('asin', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {asin()}, /TypeError: Too few arguments/);
-    assert.throws(function () {asin(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {asin();}, /TypeError: Too few arguments/);
+    assert.throws(function () {asin(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX asin', function () {

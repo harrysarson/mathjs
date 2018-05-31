@@ -173,11 +173,11 @@ function completer (text) {
  */
 function runStream (input, output, mode, parenthesis) {
   var readline = require('readline'),
-      rl = readline.createInterface({
-        input: input || process.stdin,
-        output: output || process.stdout,
-        completer: completer
-      });
+    rl = readline.createInterface({
+      input: input || process.stdin,
+      output: output || process.stdout,
+      completer: completer
+    });
 
   if (rl.output.isTTY) {
     rl.setPrompt('> ');
@@ -193,87 +193,87 @@ function runStream (input, output, mode, parenthesis) {
     var expr = line.trim();
 
     switch (expr.toLowerCase()) {
-      case 'quit':
-      case 'exit':
-        // exit application
-        rl.close();
-        break;
-      case 'clear':
-        // clear memory
-        scope = {};
-        console.log('memory cleared');
+    case 'quit':
+    case 'exit':
+      // exit application
+      rl.close();
+      break;
+    case 'clear':
+      // clear memory
+      scope = {};
+      console.log('memory cleared');
 
-        // get next input
-        if (rl.output.isTTY) {
-          rl.prompt();
-        }
+      // get next input
+      if (rl.output.isTTY) {
+        rl.prompt();
+      }
+      break;
+    default:
+      if (!expr) {
         break;
-      default:
-        if (!expr) {
-          break;
-        }
-        switch (mode) {
-          case 'eval':
-            // evaluate expression
-            try {
-              var node = math.parse(expr);
-              var res = node.eval(scope);
+      }
+      switch (mode) {
+      case 'eval':
+        // evaluate expression
+        try {
+          var node = math.parse(expr);
+          var res = node.eval(scope);
 
-              if (math.type.isResultSet(res)) {
-                // we can have 0 or 1 results in the ResultSet, as the CLI
-                // does not allow multiple expressions separated by a return
-                res = res.entries[0];
-                node = node.blocks
-                    .filter(function (entry) { return entry.visible; })
-                    .map(function (entry) { return entry.node })[0];
+          if (math.type.isResultSet(res)) {
+            // we can have 0 or 1 results in the ResultSet, as the CLI
+            // does not allow multiple expressions separated by a return
+            res = res.entries[0];
+            node = node.blocks
+              .filter(function (entry) { return entry.visible; })
+              .map(function (entry) { return entry.node; })[0];
+          }
+
+          if (node) {
+            if (math.type.isAssignmentNode(node)) {
+              var name = findSymbolName(node);
+              if (name != null) {
+                scope.ans = scope[name];
+                console.log(name + ' = ' + format(scope[name]));
               }
-
-              if (node) {
-                if (math.type.isAssignmentNode(node)) {
-                  var name = findSymbolName(node);
-                  if (name != null) {
-                    scope.ans = scope[name];
-                    console.log(name + ' = ' + format(scope[name]));
-                  }
-                  else {
-                    scope.ans = res;
-                    console.log(format(res));
-                  }
-                }
-                else if (math.type.isHelp(res)) {
-                  console.log(res.toString());
-                }
-                else {
-                  scope.ans = res;
-                  console.log(format(res));
-                }
+              else {
+                scope.ans = res;
+                console.log(format(res));
               }
             }
-            catch (err) {
-              console.log(err.toString());
+            else if (math.type.isHelp(res)) {
+              console.log(res.toString());
             }
-            break;
-
-          case 'string':
-            try {
-              var string = math.parse(expr).toString({parenthesis: parenthesis});
-              console.log(string);
+            else {
+              scope.ans = res;
+              console.log(format(res));
             }
-            catch (err) {
-              console.log(err.toString());
-            }
-            break;
-
-          case 'tex':
-            try {
-              var tex = math.parse(expr).toTex({parenthesis: parenthesis});
-              console.log(tex);
-            }
-            catch (err) {
-              console.log(err.toString());
-            }
-            break;
+          }
         }
+        catch (err) {
+          console.log(err.toString());
+        }
+        break;
+
+      case 'string':
+        try {
+          var string = math.parse(expr).toString({parenthesis: parenthesis});
+          console.log(string);
+        }
+        catch (err) {
+          console.log(err.toString());
+        }
+        break;
+
+      case 'tex':
+        try {
+          var tex = math.parse(expr).toTex({parenthesis: parenthesis});
+          console.log(tex);
+        }
+        catch (err) {
+          console.log(err.toString());
+        }
+        break;
+      }
     }
 
     // get next input
@@ -375,40 +375,40 @@ process.argv.forEach(function (arg, index) {
   }
 
   switch (arg) {
-    case '-v':
-    case '--version':
-      version = true;
-      break;
+  case '-v':
+  case '--version':
+    version = true;
+    break;
 
-    case '-h':
-    case '--help':
-      help = true;
-      break;
+  case '-h':
+  case '--help':
+    help = true;
+    break;
 
-    case '--tex':
-      mode = 'tex';
-      break;
+  case '--tex':
+    mode = 'tex';
+    break;
 
-    case '--string':
-      mode = 'string';
-      break;
+  case '--string':
+    mode = 'string';
+    break;
 
-    case '--parenthesis=keep':
-      parenthesis = 'keep';
-      break;
+  case '--parenthesis=keep':
+    parenthesis = 'keep';
+    break;
 
-    case '--parenthesis=auto':
-      parenthesis = 'auto';
-      break;
+  case '--parenthesis=auto':
+    parenthesis = 'auto';
+    break;
 
-    case '--parenthesis=all':
-      parenthesis = 'all';
-      break;
+  case '--parenthesis=all':
+    parenthesis = 'all';
+    break;
 
     // TODO: implement configuration via command line arguments
 
-    default:
-      scripts.push(arg);
+  default:
+    scripts.push(arg);
   }
 });
 
@@ -425,13 +425,13 @@ else if (scripts.length === 0) {
 else {
   fs.stat(scripts[0], function(e, f) {
     if (e) {
-      console.log(getMath().eval(scripts.join(' ')).toString())
+      console.log(getMath().eval(scripts.join(' ')).toString());
     } else {
     //work through the queue of scripts
       scripts.forEach(function (arg) {
         // run a script file
-          runStream(fs.createReadStream(arg), process.stdout, mode, parenthesis);
+        runStream(fs.createReadStream(arg), process.stdout, mode, parenthesis);
       });
     }
-  })
+  });
 }

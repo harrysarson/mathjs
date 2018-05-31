@@ -46,20 +46,20 @@ describe('mad', function() {
   });
 
   it('should throw an error if called with invalid number of arguments', function() {
-    assert.throws(function() {mad()});
+    assert.throws(function() {mad();});
   });
 
   it('should throw an error if called with an empty array', function() {
-    assert.throws(function() {mad([])});
+    assert.throws(function() {mad([]);});
   });
 
   it('should throw an error if called with invalid type of arguments', function() {
-    assert.throws(function () {mad(2, new Complex(2,5))}, /TypeError: Cannot calculate mad, no ordering relation is defined for complex numbers/);
-    assert.throws(function () {mad(new Complex(2,3), new Complex(2,1))}, /TypeError: Cannot calculate mad, no ordering relation is defined for complex numbers/);
+    assert.throws(function () {mad(2, new Complex(2,5));}, /TypeError: Cannot calculate mad, no ordering relation is defined for complex numbers/);
+    assert.throws(function () {mad(new Complex(2,3), new Complex(2,1));}, /TypeError: Cannot calculate mad, no ordering relation is defined for complex numbers/);
 
-    assert.throws(function() {mad([2,new Date(), 4])}, /TypeError: Cannot calculate mad, unexpected type of argument/);
-    assert.throws(function() {mad([2,null, 4])}, /TypeError: Cannot calculate mad, unexpected type of argument/);
-    assert.throws(function() {mad([[2, 5], [4, null], [1, 7]], 0)}, /TypeError: Cannot calculate mad, unexpected type of argument/);
+    assert.throws(function() {mad([2,new Date(), 4]);}, /TypeError: Cannot calculate mad, unexpected type of argument/);
+    assert.throws(function() {mad([2,null, 4]);}, /TypeError: Cannot calculate mad, unexpected type of argument/);
+    assert.throws(function() {mad([[2, 5], [4, null], [1, 7]], 0);}, /TypeError: Cannot calculate mad, unexpected type of argument/);
   });
 
   it('should LaTeX mad', function () {

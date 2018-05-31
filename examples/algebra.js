@@ -20,7 +20,7 @@ var f = math.parse('2x + x');
 var simplified = math.simplify(f);
 console.log(simplified.toString());    // '3 * x'
 console.log(simplified.eval({x: 4}));  // 12
-console.log()
+console.log();
 
 // calculate a derivative
 console.log('calculate derivatives');

@@ -1,16 +1,16 @@
 // test dotMultiply (element-wise multiply)
 var assert = require('assert'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    error = require('../../../lib/error/index'),
-    dotMultiply = math.dotMultiply,
-    divide = math.divide,
-    matrix = math.matrix,
-    sparse = math.sparse,
-    complex = math.complex,
-    range = math.range,
-    i = math.i,
-    unit = math.unit;
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  error = require('../../../lib/error/index'),
+  dotMultiply = math.dotMultiply,
+  divide = math.divide,
+  matrix = math.matrix,
+  sparse = math.sparse,
+  complex = math.complex,
+  range = math.range,
+  i = math.i,
+  unit = math.unit;
 
 describe('dotMultiply', function() {
 
@@ -57,8 +57,8 @@ describe('dotMultiply', function() {
 
   it('should throw an error with strings', function() {
     // string
-    assert.throws(function () {dotMultiply("hello", "world")});
-    assert.throws(function () {dotMultiply("hello", 2)});
+    assert.throws(function () {dotMultiply("hello", "world");});
+    assert.throws(function () {dotMultiply("hello", 2);});
   });
 
   it('should throw an in case of wrong type of arguments', function() {
@@ -94,11 +94,11 @@ describe('dotMultiply', function() {
     });
     
     it('should throw an error if arrays are of different sizes', function() {
-      assert.throws(function () {dotMultiply(a, c)});
-      assert.throws(function () {dotMultiply(d, a)});
-      assert.throws(function () {dotMultiply(d, b)});
-      assert.throws(function () {dotMultiply(d, c)});
-      assert.throws(function () {dotMultiply(c, b)});
+      assert.throws(function () {dotMultiply(a, c);});
+      assert.throws(function () {dotMultiply(d, a);});
+      assert.throws(function () {dotMultiply(d, b);});
+      assert.throws(function () {dotMultiply(d, c);});
+      assert.throws(function () {dotMultiply(c, b);});
     });
   });
   
@@ -131,11 +131,11 @@ describe('dotMultiply', function() {
     });
 
     it('should throw an error if arrays are of different sizes', function() {
-      assert.throws(function () {dotMultiply(a, c)});
-      assert.throws(function () {dotMultiply(d, a)});
-      assert.throws(function () {dotMultiply(d, b)});
-      assert.throws(function () {dotMultiply(d, c)});
-      assert.throws(function () {dotMultiply(c, b)});
+      assert.throws(function () {dotMultiply(a, c);});
+      assert.throws(function () {dotMultiply(d, a);});
+      assert.throws(function () {dotMultiply(d, b);});
+      assert.throws(function () {dotMultiply(d, c);});
+      assert.throws(function () {dotMultiply(c, b);});
     });
   });
   
@@ -168,17 +168,17 @@ describe('dotMultiply', function() {
     });
 
     it('should throw an error if arrays are of different sizes', function() {
-      assert.throws(function () {dotMultiply(a, c)});
-      assert.throws(function () {dotMultiply(d, a)});
-      assert.throws(function () {dotMultiply(d, b)});
-      assert.throws(function () {dotMultiply(d, c)});
-      assert.throws(function () {dotMultiply(c, b)});
+      assert.throws(function () {dotMultiply(a, c);});
+      assert.throws(function () {dotMultiply(d, a);});
+      assert.throws(function () {dotMultiply(d, b);});
+      assert.throws(function () {dotMultiply(d, c);});
+      assert.throws(function () {dotMultiply(c, b);});
     });
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {dotMultiply(1)}, /TypeError: Too few arguments/);
-    assert.throws(function () {dotMultiply(1, 2, 3)}, /TypeError: Too many arguments/);
+    assert.throws(function () {dotMultiply(1);}, /TypeError: Too few arguments/);
+    assert.throws(function () {dotMultiply(1, 2, 3);}, /TypeError: Too many arguments/);
   });
   
   it('should LaTeX dotMultiply', function () {

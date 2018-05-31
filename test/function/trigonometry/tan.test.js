@@ -1,16 +1,16 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    pi = math.pi,
-    complex = math.complex,
-    matrix = math.matrix,
-    unit = math.unit,
-    tan = math.tan,
-    piBigmath = math.create({number: 'BigNumber', precision: 21}),
-    bigmath = math.create({precision: 20}),
-    Big = bigmath.bignumber,
-    bigTan = bigmath.tan;
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  pi = math.pi,
+  complex = math.complex,
+  matrix = math.matrix,
+  unit = math.unit,
+  tan = math.tan,
+  piBigmath = math.create({number: 'BigNumber', precision: 21}),
+  bigmath = math.create({precision: 20}),
+  Big = bigmath.bignumber,
+  bigTan = bigmath.tan;
 
 describe('tan', function() {
   it('should return the tangent of a boolean', function () {
@@ -44,7 +44,7 @@ describe('tan', function() {
 
   it('should return the tangent of a complex number', function() {
     var re = 0.00376402564150425,
-        im = 1.00323862735360980;
+      im = 1.00323862735360980;
     approx.deepEqual(tan(complex('2+3i')), complex(-re, im));
     approx.deepEqual(tan(complex('2-3i')), complex(-re, -im));
     approx.deepEqual(tan(complex('-2+3i')), complex(re, im));
@@ -65,11 +65,11 @@ describe('tan', function() {
   });
 
   it('should throw an error if called with an invalid unit', function() {
-    assert.throws(function () {tan(unit('5 celsius'))});
+    assert.throws(function () {tan(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {tan('string')});
+    assert.throws(function () {tan('string');});
   });
 
   var tan123 = [1.557407724654902, -2.185039863261519, -0.142546543074278];
@@ -83,8 +83,8 @@ describe('tan', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {tan()}, /TypeError: Too few arguments/);
-    assert.throws(function () {tan(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {tan();}, /TypeError: Too few arguments/);
+    assert.throws(function () {tan(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX tan', function () {

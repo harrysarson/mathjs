@@ -1,8 +1,8 @@
 // test index construction
 var assert = require('assert'),
-    math = require('../../../../index'),
-    Range = math.type.Range,
-    ImmutableDenseMatrix = math.type.ImmutableDenseMatrix;
+  math = require('../../../../index'),
+  Range = math.type.Range,
+  ImmutableDenseMatrix = math.type.ImmutableDenseMatrix;
 
 describe('index', function() {
 

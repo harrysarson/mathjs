@@ -1,31 +1,31 @@
 // test kronecker product
 var assert = require('assert'),
-    math = require('../../../index');
+  math = require('../../../index');
 
 describe('kron', function() {
 
   it('should calculate the kronecker product of two arrays', function() {
-      assert.deepEqual(math.kron([
-          [1, -2, 1],
-          [1, 1, 0]
-      ], [
-          [1, 0],
-          [0, 1]
-      ]), [
-          [1, 0, -2, -0, 1, 0],
-          [0, 1, -0, -2, 0, 1],
-          [1, 0, 1, 0, 0, 0],
-          [0, 1, 0, 1, 0, 0]
-      ]);
-      assert.deepEqual(math.kron([
-          [53, 12, -9, 0],
-          [2, 2, 5, 2]
-      ], [
-          [99, 56, 22, 7]
-      ]), [
-          [5247, 2968, 1166, 371, 1188, 672, 264, 84, -891, -504, -198, -63, 0, 0, 0, 0],
-          [198, 112, 44, 14, 198, 112, 44, 14, 495, 280, 110, 35, 198, 112, 44, 14]
-      ]);
+    assert.deepEqual(math.kron([
+      [1, -2, 1],
+      [1, 1, 0]
+    ], [
+      [1, 0],
+      [0, 1]
+    ]), [
+      [1, 0, -2, -0, 1, 0],
+      [0, 1, -0, -2, 0, 1],
+      [1, 0, 1, 0, 0, 0],
+      [0, 1, 0, 1, 0, 0]
+    ]);
+    assert.deepEqual(math.kron([
+      [53, 12, -9, 0],
+      [2, 2, 5, 2]
+    ], [
+      [99, 56, 22, 7]
+    ]), [
+      [5247, 2968, 1166, 371, 1188, 672, 264, 84, -891, -504, -198, -63, 0, 0, 0, 0],
+      [198, 112, 44, 14, 198, 112, 44, 14, 495, 280, 110, 35, 198, 112, 44, 14]
+    ]);
   });
 
   it('should calculate product for empty 2D Arrays', function() {
@@ -83,7 +83,7 @@ describe('kron', function() {
     it('should throw an error for invalid kronecker product of matrix', function() {
       y = math.matrix([[[]]]);
       x = math.matrix([[[1,1], [1,1]], [[1,1], [1,1]]]);
-      assert.throws(function () { math.kron(y, x) });
+      assert.throws(function () { math.kron(y, x); });
     });
   });
 

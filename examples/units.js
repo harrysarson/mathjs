@@ -56,7 +56,7 @@ console.log('gas constant (Rg) = ', format(Rg));
 console.log('P = ' + format(P));
 console.log('T = ' + format(T));
 console.log('v = Rg * T / P = ' + format(math.to(v, 'L/mol')));
-    // 23.910432393453 L / mol
+// 23.910432393453 L / mol
 console.log();
 
 console.log('compute speed of fluid flowing out of hole in a container');
@@ -66,7 +66,7 @@ var v = math.pow(math.multiply(2, math.multiply(g, h)), 0.5); // Can also use ma
 console.log('g = ' + format(g));
 console.log('h = ' + format(h));
 console.log('v = (2 g h) ^ 0.5 = ' + format(v));
-    // 4.42944691807 m / s
+// 4.42944691807 m / s
 console.log();
 
 console.log('electrical power consumption:');

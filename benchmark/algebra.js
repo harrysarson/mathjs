@@ -18,15 +18,15 @@ console.log('    ' + math.derivative(derivativeExpr, 'x'));
 
 var suite = new Benchmark.Suite();
 suite
-    .add(pad('algebra simplify '), function() {
-      var res = math.simplify(simplifyExpr);
-    })
-    .add(pad('algebra derivative'), function() {
-      var res = math.derivative(derivativeExpr, 'x');
-    })
-    .on('cycle', function(event) {
-      console.log(String(event.target));
-    })
-    .on('complete', function() {
-    })
-    .run();
+  .add(pad('algebra simplify '), function() {
+    var res = math.simplify(simplifyExpr);
+  })
+  .add(pad('algebra derivative'), function() {
+    var res = math.derivative(derivativeExpr, 'x');
+  })
+  .on('cycle', function(event) {
+    console.log(String(event.target));
+  })
+  .on('complete', function() {
+  })
+  .run();

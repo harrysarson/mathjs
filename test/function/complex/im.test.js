@@ -33,13 +33,13 @@ describe('im', function() {
   });
 
   it('should throw an error when called with an unsupported type of argument', function() {
-    assert.throws(function () {math.im(new Date())}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {math.im(math.unit('5cm'))}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {math.im(new Date());}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {math.im(math.unit('5cm'));}, /TypeError: Unexpected type of argument/);
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {math.im()}, /TypeError: Too few arguments/);
-    assert.throws(function () {math.im(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {math.im();}, /TypeError: Too few arguments/);
+    assert.throws(function () {math.im(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX im', function () {

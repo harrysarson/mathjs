@@ -20,12 +20,12 @@ describe('ParenthesisNode', function() {
 
   it ('should throw an error when calling without new operator', function () {
     var a = new ConstantNode(1);
-    assert.throws(function () {ParenthesisNode(a)}, SyntaxError);
+    assert.throws(function () {ParenthesisNode(a);}, SyntaxError);
   });
 
   it ('should throw an error when calling with wrong arguments', function () {
-    assert.throws(function () {new ParenthesisNode()}, TypeError);
-    assert.throws(function () {new ParenthesisNode(2)}, TypeError);
+    assert.throws(function () {new ParenthesisNode();}, TypeError);
+    assert.throws(function () {new ParenthesisNode(2);}, TypeError);
   });
 
   it ('should compile a ParenthesisNode', function () {
@@ -42,10 +42,10 @@ describe('ParenthesisNode', function() {
     assert.deepEqual(n.filter(function (node) {return node instanceof ParenthesisNode;}),  [n]);
     assert.deepEqual(n.filter(function (node) {return node.content instanceof ConstantNode;}),  [n]);
     assert.deepEqual(n.filter(function (node) {
-        return (typeof node.content !== 'undefined') && (node.content.value == '1');
+      return (typeof node.content !== 'undefined') && (node.content.value == '1');
     }),  [n]);
     assert.deepEqual(n.filter(function (node) {
-        return (typeof node.content !== 'undefined') && (node.content.type == 'ConstantNode');
+      return (typeof node.content !== 'undefined') && (node.content.type == 'ConstantNode');
     }),  [n]);
     assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode;}),  [a]);
   });

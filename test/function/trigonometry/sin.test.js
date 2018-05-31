@@ -1,13 +1,13 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    pi = math.pi,
-    complex = math.complex,
-    matrix = math.matrix,
-    unit = math.unit,
-    sin = math.sin,
-    bigmath = math.create({precision: 242});
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  pi = math.pi,
+  complex = math.complex,
+  matrix = math.matrix,
+  unit = math.unit,
+  sin = math.sin,
+  bigmath = math.create({precision: 242});
 
 describe('sin', function() {
   it('should return the sine of a boolean', function () {
@@ -69,7 +69,7 @@ describe('sin', function() {
 
   it('should return the sine of a complex number', function() {
     var re = 9.15449914691143,
-        im = 4.16890695996656;
+      im = 4.16890695996656;
     approx.deepEqual(sin(complex('2+3i')), complex(re, -im));
     approx.deepEqual(sin(complex('2-3i')), complex(re, im));
     approx.deepEqual(sin(complex('-2+3i')), complex(-re, -im));
@@ -91,11 +91,11 @@ describe('sin', function() {
   });
 
   it('should throw an error if called with an invalid unit', function() {
-    assert.throws(function () {sin(unit('5 celsius'))});
+    assert.throws(function () {sin(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {sin('string')});
+    assert.throws(function () {sin('string');});
   });
 
   var sin123 = [0.84147098480789, 0.909297426825682, 0.141120008059867];
@@ -109,8 +109,8 @@ describe('sin', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {sin()}, /TypeError: Too few arguments/);
-    assert.throws(function () {sin(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {sin();}, /TypeError: Too few arguments/);
+    assert.throws(function () {sin(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX sin', function () {

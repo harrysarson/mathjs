@@ -1,16 +1,16 @@
 'use strict';
 
 var fs = require('fs'),
-    zlib = require('zlib'),
-    tar = require('tar'),
-    math = require('../index'),
-    Q = require('q'),
-    typed = require('typed-function'),
+  zlib = require('zlib'),
+  tar = require('tar'),
+  math = require('../index'),
+  Q = require('q'),
+  typed = require('typed-function'),
     
-    Spa = math.type.Spa,
-    DenseMatrix = math.type.DenseMatrix,
-    SparseMatrix = math.type.SparseMatrix,
-    FibonacciHeap = math.type.FibonacciHeap;
+  Spa = math.type.Spa,
+  DenseMatrix = math.type.DenseMatrix,
+  SparseMatrix = math.type.SparseMatrix,
+  FibonacciHeap = math.type.FibonacciHeap;
 
 var _importFromStream = function (stream, deferred) {
 
@@ -91,38 +91,38 @@ var _importFromStream = function (stream, deferred) {
     var matches;
     // check matrix format
     switch (mm.format) {
-      case 'coordinate':
-        // rows columns entries
-        matches = line.match(coordinateHeaderRegex);
-        if (matches !== null) {
-          // read structure
-          mm.rows = parseInt(matches[1]);
-          mm.columns = parseInt(matches[2]);
-          mm.entries = parseInt(matches[3]);
-          // initialize data
-          mm.data = new FibonacciHeap();
-        }
-        break;
-      case 'array':
-        matches = line.match(arrayHeaderRegex);
-        if (matches !== null) {
-          // read structure
-          mm.rows = parseInt(matches[1]);
-          mm.columns = parseInt(matches[2]);
-          // initialize data
-          mm.data = [];
-        }
-        break;
+    case 'coordinate':
+      // rows columns entries
+      matches = line.match(coordinateHeaderRegex);
+      if (matches !== null) {
+        // read structure
+        mm.rows = parseInt(matches[1]);
+        mm.columns = parseInt(matches[2]);
+        mm.entries = parseInt(matches[3]);
+        // initialize data
+        mm.data = new FibonacciHeap();
+      }
+      break;
+    case 'array':
+      matches = line.match(arrayHeaderRegex);
+      if (matches !== null) {
+        // read structure
+        mm.rows = parseInt(matches[1]);
+        mm.columns = parseInt(matches[2]);
+        // initialize data
+        mm.data = [];
+      }
+      break;
     }
   };
 
   var readValue = function (text) {
     // check datatype
     switch (mm.datatype) {
-      case 'real':
-        return parseFloat(text);
-      case 'pattern':
-        return 1;
+    case 'real':
+      return parseFloat(text);
+    case 'pattern':
+      return 1;
     }
   };
 
@@ -131,37 +131,37 @@ var _importFromStream = function (stream, deferred) {
     var matches;
     // check matrix format
     switch (mm.format) {
-      case 'coordinate':
-        // regex to use
-        var rx = mm.datatype !== 'pattern' ? coordinateDataRegex : coordinatePatternRegex;
-        // check data line is correct
-        matches = line.match(rx);
-        if (matches !== null) {
-          // row, columns, value
-          var r = parseInt(matches[1]) - 1;
-          var c = parseInt(matches[2]) - 1;
-          var v = readValue(matches.length === 4 ? matches[3] : null);
+    case 'coordinate':
+      // regex to use
+      var rx = mm.datatype !== 'pattern' ? coordinateDataRegex : coordinatePatternRegex;
+      // check data line is correct
+      matches = line.match(rx);
+      if (matches !== null) {
+        // row, columns, value
+        var r = parseInt(matches[1]) - 1;
+        var c = parseInt(matches[2]) - 1;
+        var v = readValue(matches.length === 4 ? matches[3] : null);
+        // insert entry
+        mm.data.insert(c, {i: r, j: c, v: v});
+        // check matrix is simmetric
+        if (mm.qualifier === 'symmetric' && c !== r) {
           // insert entry
-          mm.data.insert(c, {i: r, j: c, v: v});
-          // check matrix is simmetric
-          if (mm.qualifier === 'symmetric' && c !== r) {
-            // insert entry
-            mm.data.insert(r, {i: c, j: r, v: v});
-          }
+          mm.data.insert(r, {i: c, j: r, v: v});
         }
-        break;
-      case 'array':          
-        // check data line is correct
-        matches = line.match(arrayDataRegex);
-        if (matches !== null) {
-          // get values in row
-          var values = [];
-          for (var j = 1; j < matches.length; j++)
-            values.push(readValue(matches[j]));
+      }
+      break;
+    case 'array':          
+      // check data line is correct
+      matches = line.match(arrayDataRegex);
+      if (matches !== null) {
+        // get values in row
+        var values = [];
+        for (var j = 1; j < matches.length; j++)
+          values.push(readValue(matches[j]));
           // push entry
-          mm.data.push(values);
-        }
-        break;
+        mm.data.push(values);
+      }
+      break;
     }
   };
 
@@ -210,67 +210,67 @@ var _importFromStream = function (stream, deferred) {
     if (mm !== null) {
       // process matrix format
       switch (mm.format) {
-        case 'coordinate':
-          // CCS structure
-          var values = mm.datatype !== 'pattern' ? [] : undefined;
-          var index = [];
-          var ptr = [];
-          var datatype = mm.datatype === 'real' ? 'number' : undefined;
-          // mm data & pointer
-          var d = mm.data;
-          var p = -1;
-          var spa = new Spa(mm.rows);
-          // push value 
-          var pushValue = function (i, v) {
-            // push row
-            index.push(i);
-            // check there is a value (pattern matrix)
-            if (values)
-              values.push(v);
-          };
+      case 'coordinate':
+        // CCS structure
+        var values = mm.datatype !== 'pattern' ? [] : undefined;
+        var index = [];
+        var ptr = [];
+        var datatype = mm.datatype === 'real' ? 'number' : undefined;
+        // mm data & pointer
+        var d = mm.data;
+        var p = -1;
+        var spa = new Spa(mm.rows);
+        // push value 
+        var pushValue = function (i, v) {
+          // push row
+          index.push(i);
+          // check there is a value (pattern matrix)
+          if (values)
+            values.push(v);
+        };
           // extract node (column sorted)            
-          var n = d.extractMinimum();
-          // loop all nodes
-          while (n !== null) {
-            // check column changed
-            if (p !== n.key) {
-              // process sparse accumulator
-              spa.forEach(0, mm.rows, pushValue);
-              // process columns from p + 1 to n.j
-              for (var j = p + 1; j <= n.key; j++) {
-                // ptr update
-                ptr.push(index.length);
-              }
-              // create sparse accumulator
-              spa = new Spa(mm.rows);
-              // reset p
-              p = n.key;
+        var n = d.extractMinimum();
+        // loop all nodes
+        while (n !== null) {
+          // check column changed
+          if (p !== n.key) {
+            // process sparse accumulator
+            spa.forEach(0, mm.rows, pushValue);
+            // process columns from p + 1 to n.j
+            for (var j = p + 1; j <= n.key; j++) {
+              // ptr update
+              ptr.push(index.length);
             }
-            // store value in spa
-            spa.set(n.value.i, n.value.v);
-            // extract node
-            n = d.extractMinimum();
+            // create sparse accumulator
+            spa = new Spa(mm.rows);
+            // reset p
+            p = n.key;
           }
-          // process sparse accumulator
-          spa.forEach(0, mm.rows, pushValue);
-          // ptr update
-          ptr.push(index.length);
-          // resolve promise
-          deferred.resolve(new SparseMatrix({
-            values: values,
-            index: index,
-            ptr: ptr,
-            size: [mm.rows, mm.columns],
-            datatype: datatype
-          }));   
-          break;
-        case 'array':
-          // resolve promise
-          deferred.resolve(new DenseMatrix({
-            data: mm.data,
-            size: [mm.rows, mm.columns]
-          }));
-          break;
+          // store value in spa
+          spa.set(n.value.i, n.value.v);
+          // extract node
+          n = d.extractMinimum();
+        }
+        // process sparse accumulator
+        spa.forEach(0, mm.rows, pushValue);
+        // ptr update
+        ptr.push(index.length);
+        // resolve promise
+        deferred.resolve(new SparseMatrix({
+          values: values,
+          index: index,
+          ptr: ptr,
+          size: [mm.rows, mm.columns],
+          datatype: datatype
+        }));   
+        break;
+      case 'array':
+        // resolve promise
+        deferred.resolve(new DenseMatrix({
+          data: mm.data,
+          size: [mm.rows, mm.columns]
+        }));
+        break;
       }
     }
   });

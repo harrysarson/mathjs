@@ -1,12 +1,12 @@
 // test largerEq
 var assert = require('assert'),
-    math = require('../../../index'),
-    bignumber = math.bignumber,
-    complex = math.complex,
-    matrix = math.matrix,
-    sparse = math.sparse,
-    unit = math.unit,
-    largerEq = math.largerEq;
+  math = require('../../../index'),
+  bignumber = math.bignumber,
+  complex = math.complex,
+  matrix = math.matrix,
+  sparse = math.sparse,
+  unit = math.unit,
+  largerEq = math.largerEq;
 
 describe('largerEq', function() {
 
@@ -119,7 +119,7 @@ describe('largerEq', function() {
     assert.equal(largerEq('10', '2'), true);
     assert.equal(largerEq('1e3', '1000'), true);
 
-    assert.throws(function () {largerEq('A', 'B')}, /Cannot convert "A" to a number/);
+    assert.throws(function () {largerEq('A', 'B');}, /Cannot convert "A" to a number/);
   });
 
   describe('Array', function () {

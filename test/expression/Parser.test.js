@@ -1,9 +1,9 @@
 // test parser
 
 var assert = require('assert'),
-    approx = require('../../tools/approx'),
-    math = require('../../index'),
-    Parser = math.expression.Parser;
+  approx = require('../../tools/approx'),
+  math = require('../../index'),
+  Parser = math.expression.Parser;
 
 describe('parser', function() {
 
@@ -94,13 +94,13 @@ describe('parser', function() {
 
     parser.remove('qq');
     assert.equal(parser.get('qq'), null);
-    assert.throws(function () {parser.eval('qq')});
+    assert.throws(function () {parser.eval('qq');});
 
     assert.equal(parser.eval('ww = 5'), 5);
     assert.equal(parser.get('ww'), 5);
     parser.remove('ww');
     assert.equal(parser.get('ww'), null);
-    assert.throws(function () {parser.eval('ww')});
+    assert.throws(function () {parser.eval('ww');});
   });
 
   it ('should clear the parsers namespace ', function () {
@@ -127,9 +127,9 @@ describe('parser', function() {
     assert.equal(parser.get('zz'), null);
     approx.equal(parser.get('pi'), null);
 
-    assert.throws(function () {parser.eval('xx')});
-    assert.throws(function () {parser.eval('yy')});
-    assert.throws(function () {parser.eval('zz')});
+    assert.throws(function () {parser.eval('xx');});
+    assert.throws(function () {parser.eval('yy');});
+    assert.throws(function () {parser.eval('zz');});
     assert.equal(parser.eval('pi'), Math.PI);
   });
 
@@ -143,7 +143,7 @@ describe('parser', function() {
 
         parser.clear();
 
-        assert.throws(function () {parser.get('foo')}, /No access/);
+        assert.throws(function () {parser.get('foo');}, /No access/);
       }
       finally {
         delete Object.prototype.foo;
@@ -154,16 +154,16 @@ describe('parser', function() {
 
       try {
         var parser = new Parser();
-        assert.throws(function () {parser.set('toString', null)}, /No access/);
+        assert.throws(function () {parser.set('toString', null);}, /No access/);
       }
       finally {
         delete Object.prototype.foo;
       }
     });
 
-  })
+  });
 
   it ('should throw an exception when creating a parser without new', function () {
-    assert.throws(function () {Parser()}, /Constructor must be called with the new operator/);
+    assert.throws(function () {Parser();}, /Constructor must be called with the new operator/);
   });
 });

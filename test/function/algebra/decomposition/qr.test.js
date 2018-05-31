@@ -1,7 +1,7 @@
 // test lup
 var assert = require('assert'),
-    approx = require('../../../../tools/approx'),
-    math = require('../../../../index');
+  approx = require('../../../../tools/approx'),
+  math = require('../../../../index');
     
 /**
  * Tests whether `Q` and `R` are the valid QR decomposition of `A`.
@@ -86,10 +86,10 @@ function assertValidQRDecomposition(A, Q, R) {
   
   // All elements on leading diagonal of R are positive
   for (var i = 0; i < Math.min(rows, cols); i++) {
-    var diagonalElement = math.subset(R, math.index(i, i))
+    var diagonalElement = math.subset(R, math.index(i, i));
     
     assert(!math.isNegative(math.re(diagonalElement)), 
-    'R has elements on the leading diagonal with a negative real part (R[' + i + '][' + i + '] = ' + diagonalElement + ')');
+      'R has elements on the leading diagonal with a negative real part (R[' + i + '][' + i + '] = ' + diagonalElement + ')');
   }
 }
 describe('qr', function () {
@@ -107,9 +107,9 @@ describe('qr', function () {
     assertValidQRDecomposition(m, r.Q, r.R);
     
     var m2 = [
-     [7.507, 9.868, 5.057], 
-     [4.482, 2.536, 9.744], 
-     [6.527, 1.094, 3.321],
+      [7.507, 9.868, 5.057], 
+      [4.482, 2.536, 9.744], 
+      [6.527, 1.094, 3.321],
     ];
     
     var r2 = math.qr(m2);
@@ -246,7 +246,7 @@ describe('qr', function () {
     // verify
     assertValidQRDecomposition(m, r.Q, r.R);
   });
-/*
+  /*
   it('should decompose matrix, n x n, dense format', function () {
     var m = math.matrix(
       [

@@ -86,12 +86,12 @@ describe('acosh', function() {
   });
 
   it('should throw an error if called with a unit', function() {
-    assert.throws(function () {acosh(unit('45deg'))});
-    assert.throws(function () {acosh(unit('5 celsius'))});
+    assert.throws(function () {acosh(unit('45deg'));});
+    assert.throws(function () {acosh(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {acosh('string')});
+    assert.throws(function () {acosh('string');});
   });
 
   it('should calculate the arccos element-wise for arrays and matrices', function() {
@@ -101,8 +101,8 @@ describe('acosh', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {acosh()}, /TypeError: Too few arguments/);
-    assert.throws(function () {acosh(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {acosh();}, /TypeError: Too few arguments/);
+    assert.throws(function () {acosh(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX acosh', function () {

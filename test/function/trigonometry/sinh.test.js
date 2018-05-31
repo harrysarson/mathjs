@@ -79,11 +79,11 @@ describe('sinh', function() {
   });
 
   it('should throw an error if called with an invalid unit', function() {
-    assert.throws(function () {sinh(unit('5 celsius'))});
+    assert.throws(function () {sinh(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {sinh('string')});
+    assert.throws(function () {sinh('string');});
   });
 
   var sinh123 = [1.1752011936438014, 3.626860407847, 10.01787492741];
@@ -97,12 +97,12 @@ describe('sinh', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {sinh()}, /TypeError: Too few arguments/);
-    assert.throws(function () {sinh(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {sinh();}, /TypeError: Too few arguments/);
+    assert.throws(function () {sinh(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an error in case of invalid type of arguments', function() {
-    assert.throws(function () {sinh(null)}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {sinh(null);}, /TypeError: Unexpected type of argument/);
   });
 
   it('should LaTeX sinh', function () {

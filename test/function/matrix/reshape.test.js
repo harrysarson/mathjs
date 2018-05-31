@@ -1,7 +1,7 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    Matrix = math.type.Matrix;
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  Matrix = math.type.Matrix;
 
 describe('reshape', function() {
 
@@ -17,15 +17,15 @@ describe('reshape', function() {
     var three = math.bignumber(3);
     var array = [zero, one, two, three];
     assert.deepEqual(math.reshape(array, [two, two]),
-        [[zero,one], [two, three]]);
+      [[zero,one], [two, three]]);
   });
 
   it('should reshape a matrix', function() {
     var matrix = math.matrix([[0,1,2],[3,4,5]]);
     assert.deepEqual(math.reshape(matrix, [3, 2]),
-        math.matrix([[0,1], [2,3], [4,5]]));
+      math.matrix([[0,1], [2,3], [4,5]]));
     assert.deepEqual(math.reshape(matrix, math.matrix([3, 2])),
-        math.matrix([[0,1], [2,3], [4,5]]));
+      math.matrix([[0,1], [2,3], [4,5]]));
   });
 
   it('should reshape a flat single-element array into multiple dimensions', function() {
@@ -44,20 +44,20 @@ describe('reshape', function() {
   });
 
   it('should throw an error on invalid arguments', function() {
-    assert.throws(function () {math.reshape()}, /Too few arguments/);
-    assert.throws(function () {math.reshape([])}, /Too few arguments/);
-    assert.throws(function () {math.reshape([], 2)}, TypeError);
-    assert.throws(function () {math.reshape([], [], 4)}, /Too many arguments/);
+    assert.throws(function () {math.reshape();}, /Too few arguments/);
+    assert.throws(function () {math.reshape([]);}, /Too few arguments/);
+    assert.throws(function () {math.reshape([], 2);}, TypeError);
+    assert.throws(function () {math.reshape([], [], 4);}, /Too many arguments/);
 
-    assert.throws(function () {math.reshape([], ['no number'])}, /Invalid size/);
-    assert.throws(function () {math.reshape([], [2.3])}, /Invalid size/);
+    assert.throws(function () {math.reshape([], ['no number']);}, /Invalid size/);
+    assert.throws(function () {math.reshape([], [2.3]);}, /Invalid size/);
 
-    assert.throws(function () {math.reshape([1, 2], [])}, error.DimensionError);
-    assert.throws(function () {math.reshape([1, 2], [0])}, error.DimensionError);
-    assert.throws(function () {math.reshape([1, 2], [0,0])}, error.DimensionError);
-    assert.throws(function () {math.reshape([[1, 2]], [0])}, error.DimensionError);
-    assert.doesNotThrow(function () {math.reshape([[1, 2]], [2,1])});
-    assert.doesNotThrow(function () {math.reshape([[1, 2]], [2])});
+    assert.throws(function () {math.reshape([1, 2], []);}, error.DimensionError);
+    assert.throws(function () {math.reshape([1, 2], [0]);}, error.DimensionError);
+    assert.throws(function () {math.reshape([1, 2], [0,0]);}, error.DimensionError);
+    assert.throws(function () {math.reshape([[1, 2]], [0]);}, error.DimensionError);
+    assert.doesNotThrow(function () {math.reshape([[1, 2]], [2,1]);});
+    assert.doesNotThrow(function () {math.reshape([[1, 2]], [2]);});
   });
 
   it('should LaTeX reshape', function () {
@@ -74,34 +74,34 @@ describe('reshape', function() {
 
     var matrix = math.matrix([[0,1,2],[3,4,5]], 'sparse');
     assert.deepEqual(math.reshape(matrix, [3, 2]).toArray(),
-        [[0,1], [2,3], [4,5]]);
+      [[0,1], [2,3], [4,5]]);
 
     assert.deepEqual(math.reshape(matrix, [6, 1]).toArray(),
-        [[0],[1],[2],[3],[4],[5]]);
+      [[0],[1],[2],[3],[4],[5]]);
 
     assert.deepEqual(math.reshape(matrix, [1, 6]).toArray(),
-        [[0,1,2,3,4,5]]);
+      [[0,1,2,3,4,5]]);
 
     matrix = math.matrix([[0,1,2,3,4,5]], 'sparse');
     assert.deepEqual(math.reshape(matrix, [3, 2]).toArray(),
-        [[0,1], [2,3], [4,5]]);
+      [[0,1], [2,3], [4,5]]);
 
     matrix = math.matrix([[0],[1],[2],[3],[4],[5]], 'sparse');
     assert.deepEqual(math.reshape(matrix, [3, 2]).toArray(),
-        [[0,1], [2,3], [4,5]]);
+      [[0,1], [2,3], [4,5]]);
 
   });
 
   it('should throw on attempting to reshape an ImmutableDenseMatrix', function() {
     var immutableMatrix = new math.type.ImmutableDenseMatrix([[1,2],[3,4]]);
     assert.throws(function() { math.reshape(immutableMatrix, [1, 4]); },
-        /Cannot invoke reshape on an Immutable Matrix instance/);
+      /Cannot invoke reshape on an Immutable Matrix instance/);
   });
 
   it('should throw on attempting to reshape a Matrix (abstract type)', function() {
     var matrix = new math.type.Matrix([[1,2],[3,4]]);
     assert.throws(function() { math.reshape(matrix, [1, 4]); },
-        /Cannot invoke reshape on a Matrix interface/);
+      /Cannot invoke reshape on a Matrix interface/);
   });
 
 });

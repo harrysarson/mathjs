@@ -1,8 +1,8 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    matrix = math.matrix,
-    flatten = math.flatten;
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  matrix = math.matrix,
+  flatten = math.flatten;
 
 describe('flatten', function() {
 
@@ -42,9 +42,9 @@ describe('flatten', function() {
   });
 
   it('should throw an error on invalid arguments', function () {
-    assert.throws(function () {flatten()}, /TypeError: Too few arguments/);
-    assert.throws(function () {flatten([],2)}, /TypeError: Too many arguments/);
-    assert.throws(function () {flatten("str")}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {flatten();}, /TypeError: Too few arguments/);
+    assert.throws(function () {flatten([],2);}, /TypeError: Too many arguments/);
+    assert.throws(function () {flatten("str");}, /TypeError: Unexpected type of argument/);
   });
 
   it('should LaTeX flatten', function () {

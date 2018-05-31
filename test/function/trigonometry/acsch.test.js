@@ -1,16 +1,16 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    pi = math.pi,
-    acsch = math.acsch,
-    csch = math.csch,
-    complex = math.complex,
-    matrix = math.matrix,
-    unit = math.unit,
-    bigmath = math.create({number: 'BigNumber', precision: 20}),
-    acschBig = bigmath.acsch,
-    Big = bigmath.bignumber;
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  pi = math.pi,
+  acsch = math.acsch,
+  csch = math.csch,
+  complex = math.complex,
+  matrix = math.matrix,
+  unit = math.unit,
+  bigmath = math.create({number: 'BigNumber', precision: 20}),
+  acschBig = bigmath.acsch,
+  Big = bigmath.bignumber;
 
 describe('acsch', function() {
   it('should return the hyperbolic arccsc of a boolean', function () {
@@ -70,12 +70,12 @@ describe('acsch', function() {
   });
 
   it('should throw an error if called with a unit', function() {
-    assert.throws(function () {acsch(unit('45deg'))});
-    assert.throws(function () {acsch(unit('5 celsius'))});
+    assert.throws(function () {acsch(unit('45deg'));});
+    assert.throws(function () {acsch(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {acsch('string')});
+    assert.throws(function () {acsch('string');});
   });
 
   it('should calculate the arccsc element-wise for arrays and matrices', function() {
@@ -85,8 +85,8 @@ describe('acsch', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {acsch()}, /TypeError: Too few arguments/);
-    assert.throws(function () {acsch(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {acsch();}, /TypeError: Too few arguments/);
+    assert.throws(function () {acsch(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX acsch', function () {

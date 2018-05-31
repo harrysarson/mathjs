@@ -1,6 +1,6 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index');
+  error = require('../../../lib/error/index'),
+  math = require('../../../index');
 
 describe('filter', function() {
 
@@ -39,7 +39,7 @@ describe('filter', function() {
     var output = [];
     math.filter([1,2,3], math.typed('callback', {
       'number': function (value) {
-        output.push(value + 2)
+        output.push(value + 2);
       }
     }));
     assert.deepEqual(output, [3,4,5]);
@@ -49,7 +49,7 @@ describe('filter', function() {
     var output = [];
     math.filter([1,2,3], math.typed('callback', {
       'number, Array': function (value, index) {
-        output.push(value + 2)
+        output.push(value + 2);
       }
     }));
     assert.deepEqual(output, [3,4,5]);
@@ -59,7 +59,7 @@ describe('filter', function() {
     var output = [];
     math.filter([1,2,3], math.typed('callback', {
       'number, Array, Array': function (value, index, array) {
-        output.push(value + 2)
+        output.push(value + 2);
       }
     }));
     assert.deepEqual(output, [3,4,5]);
@@ -78,19 +78,19 @@ describe('filter', function() {
     function isPositive (x) {
       return x > 0;
     }
-    assert.throws(function() { math.filter(math.matrix([[6, -2],[-1, 4]]), isPositive) }, /Only one dimensional matrices supported/);
+    assert.throws(function() { math.filter(math.matrix([[6, -2],[-1, 4]]), isPositive); }, /Only one dimensional matrices supported/);
   });
 
   it('should throw an error if called with unsupported type', function() {
-    assert.throws(function() { math.filter(2, /regexp/) });
-    assert.throws(function() { math.filter('string', /regexp/) });
-    assert.throws(function() { math.filter([], 'string') });
-    assert.throws(function() { math.filter([], {}) });
+    assert.throws(function() { math.filter(2, /regexp/); });
+    assert.throws(function() { math.filter('string', /regexp/); });
+    assert.throws(function() { math.filter([], 'string'); });
+    assert.throws(function() { math.filter([], {}); });
   });
 
   it('should throw an error if called with invalid number of arguments', function() {
-    assert.throws(function() { math.filter([], /reg/, 'foo') });
-    assert.throws(function() { math.filter([]) });
+    assert.throws(function() { math.filter([], /reg/, 'foo'); });
+    assert.throws(function() { math.filter([]); });
   });
 
   it('should LaTeX filter', function () {

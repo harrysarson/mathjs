@@ -1,6 +1,6 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index');
+  error = require('../../../lib/error/index'),
+  math = require('../../../index');
 
 describe('clone', function() {
 
@@ -21,8 +21,8 @@ describe('clone', function() {
   });
 
   it('should throw an error on wrong number of arguments', function() {
-    assert.throws (function () {math.clone()}, /TypeError: Too few arguments/);
-    assert.throws (function () {math.clone(2, 4)}, /TypeError: Too many arguments/);
+    assert.throws (function () {math.clone();}, /TypeError: Too few arguments/);
+    assert.throws (function () {math.clone(2, 4);}, /TypeError: Too many arguments/);
   });
 
   it('should clone a bignumber', function() {

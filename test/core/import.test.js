@@ -26,8 +26,8 @@ describe('import', function() {
   });
 
   it('should not override existing functions', function() {
-    assert.throws(function () {math.import({myvalue: 10})},
-        /Error: Cannot import "myvalue": already exists/);
+    assert.throws(function () {math.import({myvalue: 10});},
+      /Error: Cannot import "myvalue": already exists/);
     assert.equal(math.myvalue, 42);
   });
 
@@ -87,13 +87,13 @@ describe('import', function() {
   });
 
   it('should throw an error in case of wrong number of arguments', function () {
-    assert.throws (function () {math.import()}, /ArgumentsError/);
-    assert.throws (function () {math.import('', {}, 3)}, /ArgumentsError/);
+    assert.throws (function () {math.import();}, /ArgumentsError/);
+    assert.throws (function () {math.import('', {}, 3);}, /ArgumentsError/);
   });
 
   it('should throw an error in case of wrong type of arguments', function () {
-    assert.throws(function () {math.import(2)}, /TypeError: Factory, Object, or Array expected/);
-    assert.throws(function () {math.import(function () {})}, /TypeError: Factory, Object, or Array expected/);
+    assert.throws(function () {math.import(2);}, /TypeError: Factory, Object, or Array expected/);
+    assert.throws(function () {math.import(function () {});}, /TypeError: Factory, Object, or Array expected/);
   });
 
   it('should ignore properties on Object', function () {
@@ -141,7 +141,7 @@ describe('import', function() {
     assert.equal(math.foo(2), 'foo(number)');
     assert.equal(math.foo('bar'), 'foo(string)');
     assert.throws(function () {
-      math.foo(new Date())
+      math.foo(new Date());
     }, /TypeError: Unexpected type of argument in function foo/);
 
   });
@@ -168,10 +168,10 @@ describe('import', function() {
     assert.deepEqual(Object.keys(math.foo.signatures).sort(), ['string']);
     assert.equal(math.foo('bar'), 'foo(string)');
     assert.throws(function () {
-      math.foo(new Date())
+      math.foo(new Date());
     }, /TypeError: Unexpected type of argument in function foo/);
     assert.throws(function () {
-      math.foo(new Date())
+      math.foo(new Date());
     }, /TypeError: Unexpected type of argument in function foo/);
 
   });
@@ -192,7 +192,7 @@ describe('import', function() {
           'string': function (x) {
             return 'foo(string)';
           }
-        })
+        });
       }
     });
 
@@ -200,7 +200,7 @@ describe('import', function() {
     assert.equal(math.foo(2), 'foo(number)');
     assert.equal(math.foo('bar'), 'foo(string)');
     assert.throws(function () {
-      math.foo(new Date())
+      math.foo(new Date());
     }, /TypeError: Unexpected type of argument in function foo/);
 
   });
@@ -229,7 +229,7 @@ describe('import', function() {
 
   it('should override a function with transform for one without', function() {
     function mean () {
-      return 'test'
+      return 'test';
     }
 
     math.import({mean: mean}, {override: true});

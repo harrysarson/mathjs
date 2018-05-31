@@ -26,14 +26,14 @@ describe('AccessorNode', function() {
   });
 
   it ('should throw an error when calling with wrong arguments', function () {
-    assert.throws(function () {new AccessorNode()}, TypeError);
-    assert.throws(function () {new AccessorNode('a', new IndexNode([]))}, TypeError);
-    assert.throws(function () {new AccessorNode(new Node, new IndexNode([2, 3]))}, TypeError);
-    assert.throws(function () {new AccessorNode(new Node, new IndexNode([new Node(), 3]))}, TypeError);
+    assert.throws(function () {new AccessorNode();}, TypeError);
+    assert.throws(function () {new AccessorNode('a', new IndexNode([]));}, TypeError);
+    assert.throws(function () {new AccessorNode(new Node, new IndexNode([2, 3]));}, TypeError);
+    assert.throws(function () {new AccessorNode(new Node, new IndexNode([new Node(), 3]));}, TypeError);
   });
 
   it ('should throw an error when calling without new operator', function () {
-    assert.throws(function () {AccessorNode(new Node(), new IndexNode([]))}, SyntaxError);
+    assert.throws(function () {AccessorNode(new Node(), new IndexNode([]));}, SyntaxError);
   });
 
   it ('should get the name of an AccessorNode', function () {
@@ -64,8 +64,8 @@ describe('AccessorNode', function() {
     var index = new IndexNode([
       new ConstantNode(2),
       new RangeNode(
-          new ConstantNode(1),
-          new SymbolNode('end')
+        new ConstantNode(1),
+        new SymbolNode('end')
       )
     ]);
     var n = new AccessorNode(a, index);
@@ -98,7 +98,7 @@ describe('AccessorNode', function() {
     var scope = {
       a: [1,2,3]
     };
-    assert.throws(function () { expr.eval(scope) }, /Index out of range \(4 > 3\)/);
+    assert.throws(function () { expr.eval(scope); }, /Index out of range \(4 > 3\)/);
   });
 
   it ('should throw a one-based index error when out of range (Matrix)', function () {
@@ -110,7 +110,7 @@ describe('AccessorNode', function() {
     var scope = {
       a: math.matrix([1,2,3])
     };
-    assert.throws(function () { expr.eval(scope) }, /Index out of range \(4 > 3\)/);
+    assert.throws(function () { expr.eval(scope); }, /Index out of range \(4 > 3\)/);
   });
 
   it ('should throw a one-based index error when out of range (string)', function () {
@@ -122,7 +122,7 @@ describe('AccessorNode', function() {
     var scope = {
       a: 'hey'
     };
-    assert.throws(function () { expr.eval(scope) }, /Index out of range \(4 > 3\)/);
+    assert.throws(function () { expr.eval(scope); }, /Index out of range \(4 > 3\)/);
   });
 
   it ('should throw an error when applying a matrix index onto an object', function () {
@@ -134,7 +134,7 @@ describe('AccessorNode', function() {
     var scope = {
       a: {}
     };
-    assert.throws(function () { expr.eval(scope) }, /Cannot apply a numeric index as object property/);
+    assert.throws(function () { expr.eval(scope); }, /Cannot apply a numeric index as object property/);
   });
 
   it ('should throw an error when applying an index onto a scalar', function () {
@@ -146,7 +146,7 @@ describe('AccessorNode', function() {
     var scope = {
       a: 42
     };
-    assert.throws(function () { expr.eval(scope) }, /Cannot apply index: unsupported type of object/);
+    assert.throws(function () { expr.eval(scope); }, /Cannot apply index: unsupported type of object/);
   });
 
   it ('should compile a AccessorNode with negative step range and context parameters', function () {
@@ -154,9 +154,9 @@ describe('AccessorNode', function() {
     var index = new IndexNode([
       new ConstantNode(2),
       new RangeNode(
-          new SymbolNode('end'),
-          new ConstantNode(1),
-          new ConstantNode(-1)
+        new SymbolNode('end'),
+        new ConstantNode(1),
+        new ConstantNode(-1)
       )
     ]);
     var n = new AccessorNode(a, index);
@@ -173,8 +173,8 @@ describe('AccessorNode', function() {
     var index = new IndexNode([
       new SymbolNode('end'),
       new RangeNode(
-          new ConstantNode(1),
-          new SymbolNode('end')
+        new ConstantNode(1),
+        new SymbolNode('end')
       )
     ]);
     var n = new AccessorNode(a, index);
@@ -191,7 +191,7 @@ describe('AccessorNode', function() {
     var b = new bigmath.expression.node.ConstantNode(2);
     var c = new bigmath.expression.node.ConstantNode(1);
     var n = new bigmath.expression.node.AccessorNode(a,
-        new bigmath.expression.node.IndexNode([b, c]));
+      new bigmath.expression.node.IndexNode([b, c]));
     var expr = n.compile();
 
     var scope = {
@@ -207,19 +207,19 @@ describe('AccessorNode', function() {
     var index = new IndexNode([b, c]);
     var n = new AccessorNode(a, index);
 
-    assert.deepEqual(n.filter(function (node) {return node.isAccessorNode}),  [n]);
-    assert.deepEqual(n.filter(function (node) {return node.isSymbolNode}),    [a]);
-    assert.deepEqual(n.filter(function (node) {return node.isRangeNode}),     []);
-    assert.deepEqual(n.filter(function (node) {return node.isConstantNode}),  [b, c]);
-    assert.deepEqual(n.filter(function (node) {return node.isConstantNode && node.value == '2'}),  [b]);
-    assert.deepEqual(n.filter(function (node) {return node.isConstantNode && node.value == '4'}),  []);
+    assert.deepEqual(n.filter(function (node) {return node.isAccessorNode;}),  [n]);
+    assert.deepEqual(n.filter(function (node) {return node.isSymbolNode;}),    [a]);
+    assert.deepEqual(n.filter(function (node) {return node.isRangeNode;}),     []);
+    assert.deepEqual(n.filter(function (node) {return node.isConstantNode;}),  [b, c]);
+    assert.deepEqual(n.filter(function (node) {return node.isConstantNode && node.value == '2';}),  [b]);
+    assert.deepEqual(n.filter(function (node) {return node.isConstantNode && node.value == '4';}),  []);
   });
 
   it ('should filter an empty AccessorNode', function () {
     var n = new AccessorNode(new SymbolNode('a'), new IndexNode([]));
 
-    assert.deepEqual(n.filter(function (node) {return node.isAccessorNode}),  [n]);
-    assert.deepEqual(n.filter(function (node) {return node.isConstantNode}), []);
+    assert.deepEqual(n.filter(function (node) {return node.isAccessorNode;}),  [n]);
+    assert.deepEqual(n.filter(function (node) {return node.isConstantNode;}), []);
   });
 
   it ('should run forEach on an AccessorNode', function () {
@@ -280,7 +280,7 @@ describe('AccessorNode', function() {
 
     assert.throws(function () {
       n.map(function () {});
-    }, /Callback function must return a Node/)
+    }, /Callback function must return a Node/);
   });
 
   it ('should transform an IndexNodes object', function () {
@@ -381,7 +381,7 @@ describe('AccessorNode', function() {
     assert.equal(n.toString(), 'a[2, 1]');
 
     var n2 = new AccessorNode(a, new IndexNode([]));
-    assert.equal(n2.toString(), 'a[]')
+    assert.equal(n2.toString(), 'a[]');
   });
 
   it ('should stringify an AccessorNode with parentheses', function () {
@@ -411,7 +411,7 @@ describe('AccessorNode', function() {
         return string;
       }
       else if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')'
+        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')';
       }
     };
 
@@ -435,7 +435,7 @@ describe('AccessorNode', function() {
     assert.equal(n.toTex(), ' a_{2,1}');
 
     var n2 = new AccessorNode(a, new IndexNode([]));
-    assert.equal(n2.toTex(), ' a_{}')
+    assert.equal(n2.toTex(), ' a_{}');
   });
 
   it ('should LaTeX an AccessorNode with custom toTex', function () {
@@ -450,7 +450,7 @@ describe('AccessorNode', function() {
         return latex;
       }
       else if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)'
+        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)';
       }
     };
 

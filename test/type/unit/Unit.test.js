@@ -64,7 +64,7 @@ describe('Unit', function() {
     it('should ignore properties on Object.prototype', function() {
       Object.prototype.foo = Unit.UNITS['meter'];
 
-      assert.throws(function () {new Unit(1, 'foo')}, /Unit "foo" not found/);
+      assert.throws(function () {new Unit(1, 'foo');}, /Unit "foo" not found/);
 
       delete Object.prototype.foo;
     });
@@ -82,15 +82,15 @@ describe('Unit', function() {
       assert.throws(function () { new Unit(0, 3); });
     });
 
-  it('should flag unit as already simplified', function() {
+    it('should flag unit as already simplified', function() {
       unit1 = new Unit(9.81, "kg m/s^2");
-    assert.equal(unit1.isUnitListSimplified, true);
-    assert.equal(unit1.toString(), "9.81 (kg m) / s^2");
+      assert.equal(unit1.isUnitListSimplified, true);
+      assert.equal(unit1.toString(), "9.81 (kg m) / s^2");
 
       unit1 = new Unit(null, "kg m/s^2");
-    assert.equal(unit1.isUnitListSimplified, true);
-    assert.equal(unit1.toString(), "(kg m) / s^2");
-  });
+      assert.equal(unit1.isUnitListSimplified, true);
+      assert.equal(unit1.toString(), "(kg m) / s^2");
+    });
 
   });
 
@@ -255,7 +255,7 @@ describe('Unit', function() {
     it ('should simplify units before returning a numeric value', function () {
       var cm = new Unit(1, 'gram');
       var m = new Unit(1, 'kilogram');
-      var product = cm.multiply(m)
+      var product = cm.multiply(m);
       assert.deepEqual(product.toNumeric(), 0.001);
     });
   });
@@ -424,19 +424,19 @@ describe('Unit', function() {
 
     it ('should throw an error when converting to an incompatible unit', function () {
       var u1 = new Unit(5000, 'cm');
-      assert.throws(function () {u1.to('kg')}, /Units do not match/);
+      assert.throws(function () {u1.to('kg');}, /Units do not match/);
       var u1 = new Unit(5000, 'N s');
-      assert.throws(function () {u1.to('kg^5 / s')}, /Units do not match/);
+      assert.throws(function () {u1.to('kg^5 / s');}, /Units do not match/);
     });
 
     it ('should throw an error when converting to a unit having a value', function () {
       var u1 = new Unit(5000, 'cm');
-      assert.throws(function () {u1.to(new Unit(4, 'm'))}, /Cannot convert to a unit with a value/);
+      assert.throws(function () {u1.to(new Unit(4, 'm'));}, /Cannot convert to a unit with a value/);
     });
 
     it ('should throw an error when converting to an unsupported type of argument', function () {
       var u1 = new Unit(5000, 'cm');
-      assert.throws(function () {u1.to(new Date())}, /String or Unit expected as parameter/);
+      assert.throws(function () {u1.to(new Date());}, /String or Unit expected as parameter/);
     });
   });
 
@@ -566,7 +566,7 @@ describe('Unit', function() {
       assert.equal(math.divide(d, e).type, 'Unit');
 
       math.config(origConfig);
-    })
+    });
 
     it('should convert units to appropriate _numeric_ values when they cancel out with {predictable: false}', function() {
       var origConfig = math.config();
@@ -640,25 +640,25 @@ describe('Unit', function() {
 
     it('toJSON', function () {
       assert.deepEqual(new Unit(5, 'cm').toJSON(),
-          {'mathjs': 'Unit', value: 5, unit: 'cm', fixPrefix: false});
+        {'mathjs': 'Unit', value: 5, unit: 'cm', fixPrefix: false});
       assert.deepEqual(new Unit(5, 'cm').to('mm').toJSON(),
-          {'mathjs': 'Unit', value: 50, unit: 'mm', fixPrefix: true});
+        {'mathjs': 'Unit', value: 50, unit: 'mm', fixPrefix: true});
       assert.deepEqual(new Unit(5, 'kN').to('kg m s ^ -2').toJSON(),
-          {'mathjs': 'Unit', value: 5000, unit: '(kg m) / s^2', fixPrefix: true});
+        {'mathjs': 'Unit', value: 5000, unit: '(kg m) / s^2', fixPrefix: true});
       assert.deepEqual(new Unit(math.fraction(0.375), 'cm').toJSON(),
-          {
-            mathjs: 'Unit',
-            value: math.fraction(0.375), // Note that value is not serialized at this point, that will be done by JSON.stringify
-            unit: 'cm',
-            fixPrefix: false
-          });
+        {
+          mathjs: 'Unit',
+          value: math.fraction(0.375), // Note that value is not serialized at this point, that will be done by JSON.stringify
+          unit: 'cm',
+          fixPrefix: false
+        });
       approx.deepEqual(new Unit(math.complex(2, 4), 'g').toJSON(),
-          {
-            mathjs: 'Unit',
-            value: math.complex(2, 4),
-            unit: 'g',
-            fixPrefix: false
-          });
+        {
+          mathjs: 'Unit',
+          value: math.complex(2, 4),
+          unit: 'g',
+          fixPrefix: false
+        });
 
       var str = JSON.stringify(new Unit(math.fraction(0.375), 'cm'));
       assert.deepEqual(str, '{"mathjs":"Unit","value":{"mathjs":"Fraction","n":3,"d":8},"unit":"cm","fixPrefix":false}');
@@ -689,7 +689,7 @@ describe('Unit', function() {
         unit: 'cm',
         fixPrefix: false
       });
-      assert.deepEqual(u7, new Unit(math.fraction(0.375), 'cm'))
+      assert.deepEqual(u7, new Unit(math.fraction(0.375), 'cm'));
 
       var u8 = Unit.fromJSON({
         mathjs: 'Unit',
@@ -927,21 +927,21 @@ describe('Unit', function() {
     });
 
     it('should throw an exception when parsing an invalid unit', function() {
-      assert.throws(function () {Unit.parse('.meter')}, /Unexpected "\."/);
-      assert.throws(function () {Unit.parse('5e')}, /Unit "e" not found/);
-      assert.throws(function () {Unit.parse('5e.')}, /Unit "e" not found/);
-      assert.throws(function () {Unit.parse('5e1.3')}, /Unexpected "\."/);
-      assert.throws(function () {Unit.parse('5')}, /contains no units/);
-      assert.throws(function () {Unit.parse('')}, /contains no units/);
-      assert.throws(function () {Unit.parse('meter.')}, /Unexpected "\."/);
-      assert.throws(function () {Unit.parse('meter/')}, /Trailing characters/);
-      assert.throws(function () {Unit.parse('/meter')}, /Unexpected "\/"/);
-      assert.throws(function () {Unit.parse('1 */ s')}, /Unexpected "\/"/);
-      assert.throws(function () {Unit.parse('45 kg 34 m')}, /Unexpected "3"/);
+      assert.throws(function () {Unit.parse('.meter');}, /Unexpected "\."/);
+      assert.throws(function () {Unit.parse('5e');}, /Unit "e" not found/);
+      assert.throws(function () {Unit.parse('5e.');}, /Unit "e" not found/);
+      assert.throws(function () {Unit.parse('5e1.3');}, /Unexpected "\."/);
+      assert.throws(function () {Unit.parse('5');}, /contains no units/);
+      assert.throws(function () {Unit.parse('');}, /contains no units/);
+      assert.throws(function () {Unit.parse('meter.');}, /Unexpected "\."/);
+      assert.throws(function () {Unit.parse('meter/');}, /Trailing characters/);
+      assert.throws(function () {Unit.parse('/meter');}, /Unexpected "\/"/);
+      assert.throws(function () {Unit.parse('1 */ s');}, /Unexpected "\/"/);
+      assert.throws(function () {Unit.parse('45 kg 34 m');}, /Unexpected "3"/);
     });
 
     it('should throw an exception when parsing an invalid type of argument', function() {
-      assert.throws(function () {Unit.parse(123)}, /TypeError: Invalid argument in Unit.parse, string expected/);
+      assert.throws(function () {Unit.parse(123);}, /TypeError: Invalid argument in Unit.parse, string expected/);
     });
 
     it('should parse the value of the unit as Fraction or BigNumber when math.js is configured so', function() {
@@ -1135,7 +1135,7 @@ describe('Unit', function() {
       assert.equal(new Unit(20000, 'grad').toString(), '20 kgrad');
       assert.equal(new Unit(20000, 'gradian').toString(), '20 kilogradian');
       assert.equal(new Unit(20000, 'gradians').toString(), '20 kilogradians');
-    })
+    });
 
   });
 

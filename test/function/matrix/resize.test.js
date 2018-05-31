@@ -1,8 +1,8 @@
 // test resize
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    Matrix = math.type.Matrix;
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  Matrix = math.type.Matrix;
 
 describe('resize', function() {
 
@@ -36,15 +36,15 @@ describe('resize', function() {
     var three = math.bignumber(3);
     var array = [one, two, three];
     assert.deepEqual(math.resize(array, [three, two], zero),
-        [[one,zero], [two, zero], [three, zero]]);
+      [[one,zero], [two, zero], [three, zero]]);
   });
 
   it('should resize a matrix', function() {
     var matrix = math.matrix([[0,1,2],[3,4,5]]);
     assert.deepEqual(math.resize(matrix, [3, 2]),
-        math.matrix([[0,1], [3,4], [0,0]]));
+      math.matrix([[0,1], [3,4], [0,0]]));
     assert.deepEqual(math.resize(matrix, math.matrix([3, 2])),
-        math.matrix([[0,1], [3,4], [0,0]]));
+      math.matrix([[0,1], [3,4], [0,0]]));
 
     // content should be cloned
     var x = math.complex(2, 3);
@@ -103,22 +103,22 @@ describe('resize', function() {
   });
 
   it('should throw an error on invalid arguments', function() {
-    assert.throws(function () {math.resize()});
-    assert.throws(function () {math.resize([])});
-    assert.throws(function () {math.resize([], 2)});
-    assert.throws(function () {math.resize([], [], 4, 555)});
+    assert.throws(function () {math.resize();});
+    assert.throws(function () {math.resize([]);});
+    assert.throws(function () {math.resize([], 2);});
+    assert.throws(function () {math.resize([], [], 4, 555);});
 
-    assert.throws(function () {math.resize([], ['no number'])}, /Invalid size/);
-    assert.throws(function () {math.resize([], [2.3])}, /Invalid size/);
+    assert.throws(function () {math.resize([], ['no number']);}, /Invalid size/);
+    assert.throws(function () {math.resize([], [2.3]);}, /Invalid size/);
 
-    assert.throws(function () {math.resize('hello', [])});
-    assert.throws(function () {math.resize('hello', [2,3])});
-    assert.throws(function () {math.resize('hello', [8], 'charzzz')});
-    assert.throws(function () {math.resize('hello', [8], 2)});
+    assert.throws(function () {math.resize('hello', []);});
+    assert.throws(function () {math.resize('hello', [2,3]);});
+    assert.throws(function () {math.resize('hello', [8], 'charzzz');});
+    assert.throws(function () {math.resize('hello', [8], 2);});
 
 
-    assert.throws(function () {math.resize('hello', ['no number'])}, /Invalid size/);
-    assert.throws(function () {math.resize('hello', [2.3])}, /Invalid size/);
+    assert.throws(function () {math.resize('hello', ['no number']);}, /Invalid size/);
+    assert.throws(function () {math.resize('hello', [2.3]);}, /Invalid size/);
   });
 
   it('should LaTeX resize', function () {

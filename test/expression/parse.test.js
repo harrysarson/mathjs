@@ -98,7 +98,7 @@ describe('parse', function() {
     // should not allow the "holes"
     assert.throws(function () {
       math.eval('\uD835\uDCA3 = 1', scope);
-    })
+    });
 
   });
 
@@ -173,7 +173,7 @@ describe('parse', function() {
 
       var scope = {a: [[1,2],[3,4]]};
       assert.deepEqual(parse('a[\n1\n,\n1\n]=\n100').compile().eval(scope), 100);
-      assert.deepEqual(scope, {a: [[100,2],[3,4]]})
+      assert.deepEqual(scope, {a: [[100,2],[3,4]]});
     });
 
   });
@@ -383,28 +383,28 @@ describe('parse', function() {
       approx.deepEqual(parseAndEval('-6 celsius'), new Unit(-6, 'celsius'));
       approx.deepEqual(parseAndEval('--6 celsius'), new Unit(6, 'celsius'));
       approx.deepEqual(parseAndEval('-6 celsius to fahrenheit'),
-          new Unit(21.2, 'fahrenheit').to('fahrenheit'));
+        new Unit(21.2, 'fahrenheit').to('fahrenheit'));
     });
 
     it('should convert units', function() {
       var scope = {};
       approx.deepEqual(parseAndEval('(5.08 cm * 1000) to inch', scope),
-          math.unit(2000, 'inch').to('inch'));
+        math.unit(2000, 'inch').to('inch'));
       approx.deepEqual(parseAndEval('a = (5.08 cm * 1000) to mm', scope),
-          math.unit(50800, 'mm').to('mm'));
+        math.unit(50800, 'mm').to('mm'));
       approx.deepEqual(parseAndEval('a to inch', scope),
-          math.unit(2000, 'inch').to('inch'));
+        math.unit(2000, 'inch').to('inch'));
 
       approx.deepEqual(parseAndEval('10 celsius to fahrenheit'),
-          math.unit(50, 'fahrenheit').to('fahrenheit'));
+        math.unit(50, 'fahrenheit').to('fahrenheit'));
       approx.deepEqual(parseAndEval('20 celsius to fahrenheit'),
-          math.unit(68, 'fahrenheit').to('fahrenheit'));
+        math.unit(68, 'fahrenheit').to('fahrenheit'));
       approx.deepEqual(parseAndEval('50 fahrenheit to celsius'),
-          math.unit(10, 'celsius').to('celsius'));
+        math.unit(10, 'celsius').to('celsius'));
     });
 
     it('should create units and aliases', function() {
-      var myMath = math.create()
+      var myMath = math.create();
       myMath.eval('createUnit("knot", {definition: "0.514444444 m/s", aliases: ["knots", "kt", "kts"]})');
       assert.equal(myMath.eval('5 knot').toString(), '5 knot');
       assert.equal(myMath.eval('5 knots').toString(), '5 knots');
@@ -413,12 +413,12 @@ describe('parse', function() {
 
     it('should evaluate operator "to" with correct precedence ', function () {
       approx.deepEqual(parseAndEval('5.08 cm * 1000 to inch'),
-          new Unit(2000, 'inch').to('inch'));
+        new Unit(2000, 'inch').to('inch'));
     });
 
     it('should evaluate operator "in" (alias of "to") ', function () {
       approx.deepEqual(parseAndEval('5.08 cm in inch'),
-          new Unit(2, 'inch').to('inch'));
+        new Unit(2, 'inch').to('inch'));
     });
 
     it('should evaluate unit "in" (should not conflict with operator "in")', function () {
@@ -771,8 +771,8 @@ describe('parse', function() {
     });
 
     it('should throw an error in case of invalid property with dot notation', function () {
-      assert.throws(function () {parseAndEval('obj. +foo')}, /SyntaxError: Property name expected after dot \(char 6\)/);
-      assert.throws(function () {parseAndEval('obj.["foo"]')}, /SyntaxError: Property name expected after dot \(char 5\)/);
+      assert.throws(function () {parseAndEval('obj. +foo');}, /SyntaxError: Property name expected after dot \(char 6\)/);
+      assert.throws(function () {parseAndEval('obj.["foo"]');}, /SyntaxError: Property name expected after dot \(char 5\)/);
     });
 
     it('should create an empty object', function () {
@@ -788,7 +788,7 @@ describe('parse', function() {
     });
 
     it('should create an object with child object', function () {
-      assert.deepEqual(parseAndEval('{a:{b:2}}'), {a:{b:2}})
+      assert.deepEqual(parseAndEval('{a:{b:2}}'), {a:{b:2}});
     });
 
     it('should get a property from a just created object', function () {
@@ -803,9 +803,9 @@ describe('parse', function() {
 
     it('should not parse a function assignment in an accessor node', function () {
       assert.throws(function () {
-        var scope = {}
+        var scope = {};
         var obj = parseAndEval('a["b"](x)=x^2', scope);
-      }, /SyntaxError: Invalid left hand side of assignment operator =/)
+      }, /SyntaxError: Invalid left hand side of assignment operator =/);
     });
 
     it('should parse an object containing a variable assignment', function () {
@@ -815,8 +815,8 @@ describe('parse', function() {
     });
 
     it('should throw an exception in case of invalid object key', function () {
-      assert.throws(function () {parseAndEval('{a b: 2}')}, /SyntaxError: Colon : expected after object key \(char 4\)/);
-      assert.throws(function () {parseAndEval('{a: }')}, /SyntaxError: Value expected \(char 5\)/);
+      assert.throws(function () {parseAndEval('{a b: 2}');}, /SyntaxError: Colon : expected after object key \(char 4\)/);
+      assert.throws(function () {parseAndEval('{a: }');}, /SyntaxError: Value expected \(char 5\)/);
     });
 
   });
@@ -838,7 +838,7 @@ describe('parse', function() {
       assert.deepEqual(parseAndEval('i'), new Complex(0, 1));
       approx.equal(parseAndEval('pi'), Math.PI);
       approx.equal(parseAndEval('e'), Math.E);
-    })
+    });
 
     it('should parse constants', function() {
       assert.strictEqual(parse('true').type, 'ConstantNode');
@@ -858,7 +858,7 @@ describe('parse', function() {
     // helper function to create a ConstantNode with empty comment
     function createConstantNode (value) {
       var c = new ConstantNode(value);
-      c.comment = ''
+      c.comment = '';
       return c;
     }
   });
@@ -1120,7 +1120,7 @@ describe('parse', function() {
 
       assert.deepEqual(parseAndEval('[1,2;3,4] [2,2]'), 4);                       // index
       assert.deepEqual(parseAndEval('([1,2;3,4])[2,2]'), 4);                      // index
-      assert.throws(function () {parseAndEval('2[1,2,3]')}, /Unexpected operator/);// index
+      assert.throws(function () {parseAndEval('2[1,2,3]');}, /Unexpected operator/);// index
     });
 
     it('should tell the OperatorNode about implicit multiplications', function() {
@@ -1685,14 +1685,14 @@ describe('parse', function() {
 
     it('should evaluate function "to" ', function () {
       approx.deepEqual(parseAndEval('to(5.08 cm * 1000, inch)'),
-          math.unit(2000, 'inch').to('inch'));
+        math.unit(2000, 'inch').to('inch'));
     });
 
     it('should evaluate function "sort" with a custom sort function', function () {
       var scope = {};
       parseAndEval('sortByLength(a, b) = size(a)[1] - size(b)[1]', scope);
       assert.deepEqual(parseAndEval('sort(["Langdon", "Tom", "Sara"], sortByLength)', scope),
-          math.matrix(["Tom", "Sara", "Langdon"]));
+        math.matrix(["Tom", "Sara", "Langdon"]));
     });
 
   });
@@ -1727,32 +1727,32 @@ describe('parse', function() {
 
     it('should create a range from bignumbers', function() {
       assert.deepEqual(bigmath.eval('4:6'),
-          bigmath.matrix([new BigNumber(4), new BigNumber(5), new BigNumber(6)]));
+        bigmath.matrix([new BigNumber(4), new BigNumber(5), new BigNumber(6)]));
       assert.deepEqual(bigmath.eval('0:2:4'),
-          bigmath.matrix([new BigNumber(0), new BigNumber(2), new BigNumber(4)]));
+        bigmath.matrix([new BigNumber(0), new BigNumber(2), new BigNumber(4)]));
     });
 
     it('should create a matrix with bignumbers', function() {
       assert.deepEqual(bigmath.eval('[0.1, 0.2]'),
-          bigmath.matrix([new BigNumber(0.1), new BigNumber(0.2)]));
+        bigmath.matrix([new BigNumber(0.1), new BigNumber(0.2)]));
     });
 
     it('should get an element from a matrix with bignumbers', function() {
       var scope = {};
       assert.deepEqual(bigmath.eval('a=[0.1, 0.2]', scope),
-          bigmath.matrix([new BigNumber(0.1), new BigNumber(0.2)]));
+        bigmath.matrix([new BigNumber(0.1), new BigNumber(0.2)]));
 
       assert.deepEqual(bigmath.eval('a[1]', scope), new BigNumber(0.1));
       assert.deepEqual(bigmath.eval('a[:]', scope),
-          bigmath.matrix([new BigNumber(0.1), new BigNumber(0.2)]));
+        bigmath.matrix([new BigNumber(0.1), new BigNumber(0.2)]));
       assert.deepEqual(bigmath.eval('a[1:2]', scope),
-          bigmath.matrix([new BigNumber(0.1), new BigNumber(0.2)]));
+        bigmath.matrix([new BigNumber(0.1), new BigNumber(0.2)]));
     });
 
     it('should replace elements in a matrix with bignumbers', function() {
       var scope = {};
       assert.deepEqual(bigmath.eval('a=[0.1, 0.2]', scope),
-          bigmath.matrix([new BigNumber(0.1), new BigNumber(0.2)]));
+        bigmath.matrix([new BigNumber(0.1), new BigNumber(0.2)]));
 
       bigmath.eval('a[1] = 0.3', scope);
       assert.deepEqual(scope.a, bigmath.matrix([new BigNumber(0.3), new BigNumber(0.2)]));
@@ -1978,31 +1978,31 @@ describe('parse', function() {
 
   describe ('expose test functions', function () {
     it('should expose isAlpha', function() {
-      assert.ok('should expose isAlpha', typeof math.expression.parse.isAlpha === 'function')
+      assert.ok('should expose isAlpha', typeof math.expression.parse.isAlpha === 'function');
     });
 
     it('should expose isValidLatinOrGreek', function() {
-      assert.ok('should expose isAlpha', typeof math.expression.parse.isValidLatinOrGreek === 'function')
+      assert.ok('should expose isAlpha', typeof math.expression.parse.isValidLatinOrGreek === 'function');
     });
 
     it('should expose isValidMathSymbol', function() {
-      assert.ok('should expose isAlpha', typeof math.expression.parse.isValidMathSymbol === 'function')
+      assert.ok('should expose isAlpha', typeof math.expression.parse.isValidMathSymbol === 'function');
     });
 
     it('should expose isWhitespace', function() {
-      assert.ok('should expose isAlpha', typeof math.expression.parse.isWhitespace === 'function')
+      assert.ok('should expose isAlpha', typeof math.expression.parse.isWhitespace === 'function');
     });
 
     it('should expose isDecimalMark', function() {
-      assert.ok('should expose isAlpha', typeof math.expression.parse.isDecimalMark === 'function')
+      assert.ok('should expose isAlpha', typeof math.expression.parse.isDecimalMark === 'function');
     });
 
     it('should expose isDigitDot', function() {
-      assert.ok('should expose isAlpha', typeof math.expression.parse.isDigitDot === 'function')
+      assert.ok('should expose isAlpha', typeof math.expression.parse.isDigitDot === 'function');
     });
 
     it('should expose isDigit', function() {
-      assert.ok('should expose isAlpha', typeof math.expression.parse.isDigit === 'function')
+      assert.ok('should expose isAlpha', typeof math.expression.parse.isDigit === 'function');
     });
 
     it('should allow overriding isAlpha', function() {
@@ -2010,7 +2010,7 @@ describe('parse', function() {
 
       // override isAlpha with one accepting $ characters too
       math.expression.parse.isAlpha = function (c, cPrev, cNext) {
-        return /^[a-zA-Z_$]$/.test(c)
+        return /^[a-zA-Z_$]$/.test(c);
       };
 
       var node = math.expression.parse('$foo');
@@ -2018,7 +2018,7 @@ describe('parse', function() {
       assert.equal(result, 42);
 
       // restore original isAlpha
-      math.expression.parse.isAlpha = originalIsAlpha
+      math.expression.parse.isAlpha = originalIsAlpha;
     });
 
   });
@@ -2027,7 +2027,7 @@ describe('parse', function() {
     var mathClone = math.create();
 
     try {
-      mathClone.eval('f(x)=1;config({clone:f})')
+      mathClone.eval('f(x)=1;config({clone:f})');
     }
     catch (err) {}
 

@@ -30,7 +30,7 @@ describe('RangeNode', function() {
   it ('should throw an error when calling without new operator', function () {
     var start = new ConstantNode(0);
     var end = new ConstantNode(10);
-    assert.throws(function () {RangeNode([start, end])}, SyntaxError);
+    assert.throws(function () {RangeNode([start, end]);}, SyntaxError);
   });
 
   it ('should throw an error creating a RangeNode with wrong number or type of arguments', function () {
@@ -60,11 +60,11 @@ describe('RangeNode', function() {
     var step = new ConstantNode(2);
     var n = new RangeNode(start, end, step);
 
-    assert.deepEqual(n.filter(function (node) {return node instanceof RangeNode}),  [n]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof SymbolNode}),  []);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode}),  [start, end, step]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '2'}),  [step]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '4'}),  []);
+    assert.deepEqual(n.filter(function (node) {return node instanceof RangeNode;}),  [n]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof SymbolNode;}),  []);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode;}),  [start, end, step]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '2';}),  [step]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '4';}),  []);
   });
 
   it ('should run forEach on a RangeNode', function () {
@@ -125,7 +125,7 @@ describe('RangeNode', function() {
 
     assert.throws(function () {
       n.map(function () {});
-    }, /Callback function must return a Node/)
+    }, /Callback function must return a Node/);
   });
 
   it ('should transform a RangeNodes start', function () {
@@ -301,7 +301,7 @@ describe('RangeNode', function() {
           + ' with steps of ' + node.step.toString(options);
       }
       else if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')'
+        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')';
       }
     };
 
@@ -364,7 +364,7 @@ describe('RangeNode', function() {
           + ' with steps of ' + node.step.toTex(options);
       }
       else if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)'
+        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)';
       }
     };
 

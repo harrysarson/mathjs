@@ -20,19 +20,19 @@ describe('dot', function() {
   });
 
   it('should throw an error for unsupported types of arguments', function() {
-    assert.throws(function () {math.dot([2, 4, 1], 2)}, TypeError);
+    assert.throws(function () {math.dot([2, 4, 1], 2);}, TypeError);
   });
 
   it('should throw an error for multi dimensional matrix input', function() {
-    assert.throws(function () {math.dot([[1,2],[3,4]], [[1,2],[3,4]])}, /Vector expected/);
+    assert.throws(function () {math.dot([[1,2],[3,4]], [[1,2],[3,4]]);}, /Vector expected/);
   });
 
   it('should throw an error in case of vectors with unequal length', function() {
-    assert.throws(function () {math.dot([2, 3], [1,2,3])}, /Vectors must have equal length \(2 != 3\)/);
+    assert.throws(function () {math.dot([2, 3], [1,2,3]);}, /Vectors must have equal length \(2 != 3\)/);
   });
 
   it('should throw an error in case of empty vectors', function() {
-    assert.throws(function () {math.dot([], [])}, /Cannot calculate the dot product of empty vectors/);
+    assert.throws(function () {math.dot([], []);}, /Cannot calculate the dot product of empty vectors/);
   });
 
   it('should LaTeX dot', function () {

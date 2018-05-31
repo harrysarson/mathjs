@@ -6,7 +6,7 @@ var math = require('../index');
 // configure the default type of numbers as BigNumbers
 math.config({
   number: 'BigNumber',  // Default type of number:
-                        // 'number' (default), 'BigNumber', or 'Fraction'
+  // 'number' (default), 'BigNumber', or 'Fraction'
   precision: 20         // Number of significant digits for BigNumbers
 });
 

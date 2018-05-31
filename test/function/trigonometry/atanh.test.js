@@ -89,12 +89,12 @@ describe('atanh', function() {
   });
 
   it('should throw an error if called with a unit', function() {
-    assert.throws(function () {atanh(unit('45deg'))});
-    assert.throws(function () {atanh(unit('5 celsius'))});
+    assert.throws(function () {atanh(unit('45deg'));});
+    assert.throws(function () {atanh(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {atanh('string')});
+    assert.throws(function () {atanh('string');});
   });
 
   it('should calculate the arctan element-wise for arrays and matrices', function() {
@@ -104,8 +104,8 @@ describe('atanh', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {atanh()}, /TypeError: Too few arguments/);
-    assert.throws(function () {atanh(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {atanh();}, /TypeError: Too few arguments/);
+    assert.throws(function () {atanh(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX atanh', function () {

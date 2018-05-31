@@ -1,9 +1,9 @@
 // test xgcd
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index').create({matrix: 'Array'}),
-    gcd = math.gcd,
-    xgcd = math.xgcd;
+  error = require('../../../lib/error/index'),
+  math = require('../../../index').create({matrix: 'Array'}),
+  gcd = math.gcd,
+  xgcd = math.xgcd;
 
 describe('xgcd', function() {
 
@@ -88,14 +88,14 @@ describe('xgcd', function() {
   });
 
   it('should throw an error if used with wrong number of arguments', function() {
-    assert.throws(function () {xgcd(1)});
-    assert.throws(function () {xgcd(1, 2, 3)});
+    assert.throws(function () {xgcd(1);});
+    assert.throws(function () {xgcd(1, 2, 3);});
   });
 
   it('should throw an error for non-integer numbers', function() {
     assert.throws(function () {xgcd(2, 4.1); }, /Parameters in function xgcd must be integer numbers/);
     assert.throws(function () {xgcd(2.3, 4); }, /Parameters in function xgcd must be integer numbers/);
-  })
+  });
 
   it('should throw an error when used with a complex number', function() {
     assert.throws(function () {xgcd(math.complex(1,3),2); }, TypeError, 'Function xgcd(complex, number) not supported');

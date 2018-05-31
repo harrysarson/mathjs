@@ -1,9 +1,9 @@
 // test size
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    size = math.size,
-    matrix = math.matrix;
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  size = math.size,
+  matrix = math.matrix;
 
 describe('size', function() {
 
@@ -53,12 +53,12 @@ describe('size', function() {
   });
 
   it('should throw an error if called with an invalid number of arguments', function() {
-    assert.throws(function () {size()}, /TypeError: Too few arguments/);
-    assert.throws(function () {size(1,2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {size();}, /TypeError: Too few arguments/);
+    assert.throws(function () {size(1,2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an error if called with invalid type of arguments', function() {
-    assert.throws(function () {size(new Date())}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {size(new Date());}, /TypeError: Unexpected type of argument/);
   });
 
   it('should LaTeX size', function () {

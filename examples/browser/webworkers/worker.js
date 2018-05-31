@@ -5,8 +5,8 @@ var parser = math.parser();
 
 self.addEventListener('message', function(event) {
   var request = JSON.parse(event.data),
-      result = null,
-      err = null;
+    result = null,
+    err = null;
 
   try {
     // evaluate the expression

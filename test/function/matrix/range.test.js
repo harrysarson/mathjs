@@ -1,10 +1,10 @@
 var assert = require('assert'),
-    approx = require('../../../tools/approx'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    range = math.range,
-    matrix = math.matrix,
-    bignumber = math.bignumber;
+  approx = require('../../../tools/approx'),
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  range = math.range,
+  matrix = math.matrix,
+  bignumber = math.bignumber;
 
 describe('range', function() {
 
@@ -16,11 +16,11 @@ describe('range', function() {
   });
 
   it('should throw an error in case of invalid string', function() {
-    assert.throws(function () {range('1:2:6:4')}, /is no valid range/);
-    assert.throws(function () {range('1')}, /is no valid range/);
-    assert.throws(function () {range('1,3:4')}, /is no valid range/);
-    assert.throws(function () {range('1:2,4')}, /is no valid range/);
-    assert.throws(function () {range('1:a')}, /is no valid range/);
+    assert.throws(function () {range('1:2:6:4');}, /is no valid range/);
+    assert.throws(function () {range('1');}, /is no valid range/);
+    assert.throws(function () {range('1,3:4');}, /is no valid range/);
+    assert.throws(function () {range('1:2,4');}, /is no valid range/);
+    assert.throws(function () {range('1:a');}, /is no valid range/);
   });
 
   it('should create a range start:1:end if called with 2 numbers', function() {
@@ -83,7 +83,7 @@ describe('range', function() {
 
   it('should throw an error when parsing a an invalid string to a bignumber range', function() {
     var bigmath = math.create({number: 'BigNumber'});
-    assert.throws(function () {bigmath.range('1:a')}, /is no valid range/);
+    assert.throws(function () {bigmath.range('1:a');}, /is no valid range/);
   });
 
   describe ('option includeEnd', function () {
@@ -109,42 +109,42 @@ describe('range', function() {
     });
 
     it('should throw an error in case of invalid type of include end', function () {
-      assert.throws(function () {range(0,10,2, 0)}, /TypeError: Unexpected type of argument/);
-      assert.throws(function () {range(0,10,2, 1)}, /TypeError: Unexpected type of argument/);
-      assert.throws(function () {range(0,10,2, 'str')}, /TypeError: Unexpected type of argument/);
+      assert.throws(function () {range(0,10,2, 0);}, /TypeError: Unexpected type of argument/);
+      assert.throws(function () {range(0,10,2, 1);}, /TypeError: Unexpected type of argument/);
+      assert.throws(function () {range(0,10,2, 'str');}, /TypeError: Unexpected type of argument/);
     });
   });
 
   it('should throw an error if called with an invalid string', function() {
-    assert.throws(function () {range('invalid range')}, SyntaxError);
+    assert.throws(function () {range('invalid range');}, SyntaxError);
   });
 
   it('should throw an error if called with a unit', function() {
-    assert.throws(function () {range(math.unit('5cm'))}, TypeError);
+    assert.throws(function () {range(math.unit('5cm'));}, TypeError);
   });
 
   it('should throw an error if called with a complex number', function() {
-    assert.throws(function () {range(math.complex(2,3))}, TypeError);
+    assert.throws(function () {range(math.complex(2,3));}, TypeError);
   });
 
   it('should throw an error if called with one invalid argument', function() {  
-    assert.throws(function () {range(math.unit('5cm'), 2)}, TypeError);
-    assert.throws(function () {range(2, math.complex(2,3))}, TypeError);
-    assert.throws(function () {range(2, new Date(), 3)}, TypeError);
-    assert.throws(function () {range(2, 1, math.unit('5cm'))}, TypeError);
-    assert.throws(function () {range(math.complex(2,3), 1, 3)}, TypeError);
+    assert.throws(function () {range(math.unit('5cm'), 2);}, TypeError);
+    assert.throws(function () {range(2, math.complex(2,3));}, TypeError);
+    assert.throws(function () {range(2, new Date(), 3);}, TypeError);
+    assert.throws(function () {range(2, 1, math.unit('5cm'));}, TypeError);
+    assert.throws(function () {range(math.complex(2,3), 1, 3);}, TypeError);
   });
 
   it('should throw an error if called with an invalid number of arguments', function() {
-    assert.throws(function () {range()}, /TypeError: Too few arguments/);
+    assert.throws(function () {range();}, /TypeError: Too few arguments/);
 
-    assert.throws(function () {range(1,2,3,true,5)}, /TypeError: Too many arguments/);
+    assert.throws(function () {range(1,2,3,true,5);}, /TypeError: Too many arguments/);
   });
 
   // FIXME: should give the right error
   it.skip('should not cast a single number or boolean to string', function() {
-    assert.throws(function () {range(2)}, /TypeError: Too few arguments/);
-    assert.throws(function () {range(boolean)}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {range(2);}, /TypeError: Too few arguments/);
+    assert.throws(function () {range(boolean);}, /TypeError: Unexpected type of argument/);
   });
 
 

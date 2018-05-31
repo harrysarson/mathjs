@@ -177,10 +177,10 @@ describe('SparseMatrix', function() {
     it.skip('should throw an error when the dimensions of the input array are invalid', function () {
       assert.throws(function () {
         new SparseMatrix(
-            [
-              [1, 2],
-              [4, 5, 6]
-            ]);
+          [
+            [1, 2],
+            [4, 5, 6]
+          ]);
       }, /DimensionError: Dimension mismatch \(3 != 2\)/);
     });
 
@@ -594,7 +594,7 @@ describe('SparseMatrix', function() {
     });
   });
   
-   describe('reshape', function () {
+  describe('reshape', function () {
 
     it('should reshape the matrix properly', function () {
       var m = new SparseMatrix([[1,2,3],[4,5,6]]);

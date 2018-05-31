@@ -1,8 +1,8 @@
 var assert = require('assert'),
-    math = require('../../../index'),
-    matrix = math.matrix,
-    sparse = math.sparse,
-    lcm = math.lcm;
+  math = require('../../../index'),
+  matrix = math.matrix,
+  sparse = math.sparse,
+  lcm = math.lcm;
 
 describe('lcm', function() {
 

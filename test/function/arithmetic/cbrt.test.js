@@ -72,15 +72,15 @@ describe('cbrt', function() {
 
   it('should return all three roots of a complex number', function() {
     approx.deepEqual(cbrt(complex('2 + 3i'), true), math.matrix([
-        complex('1.4519 + 0.4934i'),
-        complex('-1.1532 + 1.0106i'),
-        complex('-0.2986 - 1.5040i')
+      complex('1.4519 + 0.4934i'),
+      complex('-1.1532 + 1.0106i'),
+      complex('-0.2986 - 1.5040i')
     ]));
 
     approx.deepEqual(cbrt(complex('8i'), true), math.matrix([
-        complex(' 1.7321 + i'),
-        complex('-1.7321 + i'),
-        complex('-2i')
+      complex(' 1.7321 + i'),
+      complex('-1.7321 + i'),
+      complex('-2i')
     ]));
 
     math.config({matrix: 'Array'});
@@ -120,8 +120,8 @@ describe('cbrt', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {cbrt()}, /TypeError: Too few arguments/);
-    assert.throws(function () {cbrt(1, true, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {cbrt();}, /TypeError: Too few arguments/);
+    assert.throws(function () {cbrt(1, true, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an in case of wrong type of arguments', function() {

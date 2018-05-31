@@ -6,7 +6,7 @@ var math = require('../index');
 // configure the default type of numbers as Fractions
 math.config({
   number: 'Fraction'   // Default type of number:
-                       // 'number' (default), 'BigNumber', or 'Fraction'
+  // 'number' (default), 'BigNumber', or 'Fraction'
 });
 
 console.log('basic usage');

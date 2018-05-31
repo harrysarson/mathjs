@@ -28,20 +28,20 @@ describe('eval', function() {
   });
 
   it('should throw an error if wrong number of arguments', function() {
-    assert.throws(function () {math.eval()},  /TypeError: Too few arguments/);
-    assert.throws(function () {math.eval('', {}, 3)}, /TypeError: Too many arguments/);
+    assert.throws(function () {math.eval();},  /TypeError: Too few arguments/);
+    assert.throws(function () {math.eval('', {}, 3);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an error with a unit', function() {
-    assert.throws(function () {math.eval(new Unit(5, 'cm'))}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {math.eval(new Unit(5, 'cm'));}, /TypeError: Unexpected type of argument/);
   });
 
   it('should throw an error with a complex number', function() {
-    assert.throws(function () {math.eval(new Complex(2,3))}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {math.eval(new Complex(2,3));}, /TypeError: Unexpected type of argument/);
   });
 
   it('should throw an error with a boolean', function() {
-    assert.throws(function () {math.eval(true)}, TypeError);
+    assert.throws(function () {math.eval(true);}, TypeError);
   });
 
   it('should handle the given scope', function() {

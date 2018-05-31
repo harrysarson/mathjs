@@ -1,6 +1,6 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index');
+  error = require('../../../lib/error/index'),
+  math = require('../../../index');
 
 describe('forEach', function() {
 
@@ -22,7 +22,7 @@ describe('forEach', function() {
     var output = [];
     math.forEach([1,2,3], math.typed('callback', {
       'number': function (value) {
-        output.push(value + 2)
+        output.push(value + 2);
       }
     }));
     assert.deepEqual(output, [3,4,5]);
@@ -32,7 +32,7 @@ describe('forEach', function() {
     var output = [];
     math.forEach([1,2,3], math.typed('callback', {
       'number, Array': function (value, index) {
-        output.push(value + 2)
+        output.push(value + 2);
       }
     }));
     assert.deepEqual(output, [3,4,5]);
@@ -42,7 +42,7 @@ describe('forEach', function() {
     var output = [];
     math.forEach([1,2,3], math.typed('callback', {
       'number, Array, Array': function (value, index, array) {
-        output.push(value + 2)
+        output.push(value + 2);
       }
     }));
     assert.deepEqual(output, [3,4,5]);
@@ -67,12 +67,12 @@ describe('forEach', function() {
   });
 
   it('should throw an error if called with unsupported type', function() {
-    assert.throws(function() { math.forEach(1, function() {}) });
-    assert.throws(function() { math.forEach('arr', function() {}) });
+    assert.throws(function() { math.forEach(1, function() {}); });
+    assert.throws(function() { math.forEach('arr', function() {}); });
   });
 
   it('should throw an error if called with invalid number of arguments', function() {
-    assert.throws(function() { math.forEach([1, 2, 3]) });
+    assert.throws(function() { math.forEach([1, 2, 3]); });
   });
 
   it('should LaTeX forEach', function () {

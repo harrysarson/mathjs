@@ -161,18 +161,18 @@ describe('Complex', function () {
     });
 
     it('should throw an exception if called with an invalid string', function() {
-      assert.throws(function () {Complex('')});
-      assert.throws(function () {Complex('2r')});
-      assert.throws(function () {Complex('str')});
-      assert.throws(function () {Complex('2ia')});
-      assert.throws(function () {Complex('3e + 4i')});
-      assert.throws(function () {Complex('3 + 4i foo')});
-      assert.throws(function () {Complex('3e1.2 + 4i')});
-      assert.throws(function () {Complex('3e1.2i')});
-      assert.throws(function () {Complex('.')});
-      assert.throws(function () {Complex('2 + .i')}); 
-      assert.throws(function () {Complex('4i foo')});
-      assert.throws(function () {Complex('i foo')});
+      assert.throws(function () {Complex('');});
+      assert.throws(function () {Complex('2r');});
+      assert.throws(function () {Complex('str');});
+      assert.throws(function () {Complex('2ia');});
+      assert.throws(function () {Complex('3e + 4i');});
+      assert.throws(function () {Complex('3 + 4i foo');});
+      assert.throws(function () {Complex('3e1.2 + 4i');});
+      assert.throws(function () {Complex('3e1.2i');});
+      assert.throws(function () {Complex('.');});
+      assert.throws(function () {Complex('2 + .i');}); 
+      assert.throws(function () {Complex('4i foo');});
+      assert.throws(function () {Complex('i foo');});
     });
 
 
@@ -243,18 +243,18 @@ describe('Complex', function () {
 
     it('should accept angle units for phi properly', function() {
       var fromDeg = Complex.fromPolar(1, new Unit(90, 'deg')),
-          fromRad = Complex.fromPolar(1, new Unit(0, 'rad')),
-          fromGrad = Complex.fromPolar(1, new Unit(100, 'grad'));
+        fromRad = Complex.fromPolar(1, new Unit(0, 'rad')),
+        fromGrad = Complex.fromPolar(1, new Unit(100, 'grad'));
       assert.equal(fromDeg.im, 1);
       assert.equal(fromGrad.im, 1);
       assert.equal(fromRad.im, 0);
     });
 
     it('should only accept an object with r and phi keys for 1 argument', function() {
-      assert.throws(function() { Complex({}) }, /Invalid Param/);
-      assert.throws(function() { Complex({r: 1}) }, /Invalid Param/);
-      assert.throws(function() { Complex({phi: 1}) }, /Invalid Param/);
-      assert.throws(function() { Complex("") }, /Invalid Param/);
+      assert.throws(function() { Complex({}); }, /Invalid Param/);
+      assert.throws(function() { Complex({r: 1}); }, /Invalid Param/);
+      assert.throws(function() { Complex({phi: 1}); }, /Invalid Param/);
+      assert.throws(function() { Complex(""); }, /Invalid Param/);
     });
 
   });

@@ -58,7 +58,7 @@ describe('acsc', function() {
 
     var arg4 = Big(1.00000001);
     assert.deepEqual(acscBig(arg4), Big('1.570654905439248565373629613450057180739125884090554026623514'));
-                              // wolfram 1.5706549054392485653736296134500571807391258840905540266235145245693842219005187990359787187421573662444504948773
+    // wolfram 1.5706549054392485653736296134500571807391258840905540266235145245693842219005187990359787187421573662444504948773
     assert.deepEqual(arg4, Big(1.00000001));
 
     assert.ok(acscBig(Big(0.5)).isNaN());
@@ -112,12 +112,12 @@ describe('acsc', function() {
   });
 
   it('should throw an error if called with a unit', function() {
-    assert.throws(function () {acsc(unit('45deg'))});
-    assert.throws(function () {acsc(unit('5 celsius'))});
+    assert.throws(function () {acsc(unit('45deg'));});
+    assert.throws(function () {acsc(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {acsc('string')});
+    assert.throws(function () {acsc('string');});
   });
 
   it('should calculate the arccsc element-wise for arrays and matrices', function() {
@@ -127,8 +127,8 @@ describe('acsc', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {acsc()}, /TypeError: Too few arguments/);
-    assert.throws(function () {acsc(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {acsc();}, /TypeError: Too few arguments/);
+    assert.throws(function () {acsc(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTex acsc', function () {

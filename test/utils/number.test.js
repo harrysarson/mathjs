@@ -1,7 +1,7 @@
 // test number utils
 var assert = require('assert'),
-    approx = require('../../tools/approx'),
-    number = require('../../lib/utils/number');
+  approx = require('../../tools/approx'),
+  number = require('../../lib/utils/number');
 
 describe('number', function() {
 
@@ -179,9 +179,9 @@ describe('number', function() {
         assert.equal(number.format(1.3e-22, options), '0.00');
 
         assert.equal(number.format(5.6789e-30, {notation: 'fixed', precision: 32}),
-            '0.00000000000000000000000000000568');
+          '0.00000000000000000000000000000568');
         assert.equal(number.format(5.6999e-30, {notation: 'fixed', precision: 32}),
-            '0.00000000000000000000000000000570');
+          '0.00000000000000000000000000000570');
       });
 
       it('exponential notation', function () {
@@ -349,7 +349,7 @@ describe('number', function() {
 
       it('should throw an error on unknown notation', function () {
         assert.throws(function () {
-          number.format(123, {notation: 'non existing'})
+          number.format(123, {notation: 'non existing'});
         });
       });
 
@@ -474,14 +474,14 @@ describe('number', function() {
       });
 
       it('should should throw an error on invalid input', function () {
-        assert.throws(function () {number.splitNumber('2.3.4')}, /SyntaxError/);
-        assert.throws(function () {number.splitNumber('2.3ee')}, /SyntaxError/);
-        assert.throws(function () {number.splitNumber('2.3e4.3')}, /SyntaxError/);
-        assert.throws(function () {number.splitNumber('2.3a')}, /SyntaxError/);
-        assert.throws(function () {number.splitNumber('foo')}, /SyntaxError/);
-        assert.throws(function () {number.splitNumber(NaN)}, /SyntaxError/);
-        assert.throws(function () {number.splitNumber('NaN')}, /SyntaxError/);
-        assert.throws(function () {number.splitNumber(new Date())}, /SyntaxError/);
+        assert.throws(function () {number.splitNumber('2.3.4');}, /SyntaxError/);
+        assert.throws(function () {number.splitNumber('2.3ee');}, /SyntaxError/);
+        assert.throws(function () {number.splitNumber('2.3e4.3');}, /SyntaxError/);
+        assert.throws(function () {number.splitNumber('2.3a');}, /SyntaxError/);
+        assert.throws(function () {number.splitNumber('foo');}, /SyntaxError/);
+        assert.throws(function () {number.splitNumber(NaN);}, /SyntaxError/);
+        assert.throws(function () {number.splitNumber('NaN');}, /SyntaxError/);
+        assert.throws(function () {number.splitNumber(new Date());}, /SyntaxError/);
       });
 
     });

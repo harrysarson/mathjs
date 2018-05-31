@@ -45,8 +45,8 @@ describe('log1p', function() {
   });
 
   it('should throw an error if invalid number of arguments', function() {
-    assert.throws(function () {log1p()}, /TypeError: Too few arguments in function log1p \(expected: any, index: 0\)/);
-    assert.throws(function () {log1p(1, 2, 3)}, /TypeError: Too many arguments in function log1p \(expected: 2, actual: 3\)/);
+    assert.throws(function () {log1p();}, /TypeError: Too few arguments in function log1p \(expected: any, index: 0\)/);
+    assert.throws(function () {log1p(1, 2, 3);}, /TypeError: Too many arguments in function log1p \(expected: 2, actual: 3\)/);
   });
 
   it('should return the log1p of positive bignumbers', function() {
@@ -84,11 +84,11 @@ describe('log1p', function() {
   });
 
   it('should throw an error when used on a unit', function() {
-    assert.throws(function () {log1p(unit('5cm'))});
+    assert.throws(function () {log1p(unit('5cm'));});
   });
 
   it('should throw an error when used on a string', function() {
-    assert.throws(function () {log1p('text')});
+    assert.throws(function () {log1p('text');});
   });
 
   it('should return the log1p of each element of a matrix', function() {
@@ -96,7 +96,7 @@ describe('log1p', function() {
     approx.deepEqual(log1p([0,1,2,3]), res);
     approx.deepEqual(log1p(matrix([0,1,2,3])), matrix(res));
     approx.deepEqual(log1p(matrix([[0,1],[2,3]])),
-        matrix([[0, 0.693147180559945], [1.098612288668110, 1.386294361119891]]));
+      matrix([[0, 0.693147180559945], [1.098612288668110, 1.386294361119891]]));
   });
 
   it('should LaTeX log1p', function () {

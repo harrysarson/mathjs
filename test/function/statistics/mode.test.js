@@ -1,7 +1,7 @@
 var assert = require('assert'),
-    math = require('../../../index'),
-    mode = math.mode,
-    DenseMatrix = math.type.DenseMatrix;
+  math = require('../../../index'),
+  mode = math.mode,
+  DenseMatrix = math.type.DenseMatrix;
 ;
 
 describe('mode', function() {
@@ -40,8 +40,8 @@ describe('mode', function() {
   });
   
   it('should throw appropriate error if no parameters are assigned', function() {
-    assert.throws(function() {mode([])});
-    assert.throws(function() {mode()});
+    assert.throws(function() {mode([]);});
+    assert.throws(function() {mode();});
   });
   
   /* TODO :

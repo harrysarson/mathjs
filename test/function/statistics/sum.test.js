@@ -18,7 +18,7 @@ describe('sum', function() {
 
   it('should return the sum of big numbers', function() {
     assert.deepEqual(sum(new BigNumber(1),new BigNumber(3),new BigNumber(5),new BigNumber(2)),
-        new BigNumber(11));
+      new BigNumber(11));
   });
 
   it('should return the sum of strings (convert them to numbers)', function() {
@@ -63,11 +63,11 @@ describe('sum', function() {
   });
 
   it('should throw an error if called with invalid number of arguments', function() {
-    assert.throws(function() {sum()});
+    assert.throws(function() {sum();});
   });
 
   it('should throw an error if called with not yet supported argument dim', function() {
-    assert.throws(function() {sum([], 2)}, /not yet supported/);
+    assert.throws(function() {sum([], 2);}, /not yet supported/);
   });
 
   it('should return zero if called with an empty array', function() {
@@ -85,9 +85,9 @@ describe('sum', function() {
   });
 
   it('should throw an error if called with invalid type of arguments', function() {
-    assert.throws(function() {sum(new Date(), 2)}, /Cannot calculate sum, unexpected type of argument/);
-    assert.throws(function() {sum(2, 3, null)}, /Cannot calculate sum, unexpected type of argument/);
-    assert.throws(function() {sum([2, 3, null])}, /Cannot calculate sum, unexpected type of argument/);
+    assert.throws(function() {sum(new Date(), 2);}, /Cannot calculate sum, unexpected type of argument/);
+    assert.throws(function() {sum(2, 3, null);}, /Cannot calculate sum, unexpected type of argument/);
+    assert.throws(function() {sum([2, 3, null]);}, /Cannot calculate sum, unexpected type of argument/);
   });
 
   it('should LaTeX sum', function () {

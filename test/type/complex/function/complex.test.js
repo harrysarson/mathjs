@@ -58,7 +58,7 @@ describe('complex', function() {
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {complex('no valid complex number')}, SyntaxError);
+    assert.throws(function () {complex('no valid complex number');}, SyntaxError);
   });
 
   it('should create a complex value from a boolean', function() {
@@ -66,7 +66,7 @@ describe('complex', function() {
   });
 
   it('should throw an error if called with a unit', function() {
-    assert.throws(function () {complex(math.unit('5cm'))}, /TypeError: Unexpected type of argument in function complex \(expected: number or Complex or BigNumber or string or Array or Matrix or null or Object or Fraction or boolean, actual: Unit, index: 0\)/);
+    assert.throws(function () {complex(math.unit('5cm'));}, /TypeError: Unexpected type of argument in function complex \(expected: number or Complex or BigNumber or string or Array or Matrix or null or Object or Fraction or boolean, actual: Unit, index: 0\)/);
   });
 
   it('should accept two numbers as arguments', function() {
@@ -77,12 +77,12 @@ describe('complex', function() {
   });
 
   it('should throw an error if passed two argument, one is invalid', function() {
-    assert.throws(function () {complex(new Date(), 2)}, TypeError);
-    assert.throws(function () {complex(2, new Date())}, TypeError);
+    assert.throws(function () {complex(new Date(), 2);}, TypeError);
+    assert.throws(function () {complex(2, new Date());}, TypeError);
   });
 
   it('should throw an error if called with more than 2 arguments', function() {
-    assert.throws(function () {complex(2,3,4)}, /TypeError: Too many arguments/);
+    assert.throws(function () {complex(2,3,4);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX complex', function () {

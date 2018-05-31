@@ -27,12 +27,12 @@ describe('ArrayNode', function() {
   });
 
   it ('should throw an error when calling without new operator', function () {
-    assert.throws(function () {ArrayNode()}, SyntaxError);
+    assert.throws(function () {ArrayNode();}, SyntaxError);
   });
 
   it ('should throw an error on wrong constructor arguments', function () {
-    assert.throws(function () {new ArrayNode(2)}, TypeError);
-    assert.throws(function () {new ArrayNode([2, 3])}, TypeError);
+    assert.throws(function () {new ArrayNode(2);}, TypeError);
+    assert.throws(function () {new ArrayNode([2, 3]);}, TypeError);
   });
 
   it ('should evaluate an ArrayNode', function () {
@@ -86,11 +86,11 @@ describe('ArrayNode', function() {
     var c = new ConstantNode(2);
     var d = new ArrayNode([a, b, c]);
 
-    assert.deepEqual(d.filter(function (node) {return node instanceof ArrayNode}),     [d]);
-    assert.deepEqual(d.filter(function (node) {return node instanceof SymbolNode}),    [b]);
-    assert.deepEqual(d.filter(function (node) {return node instanceof RangeNode}),     []);
-    assert.deepEqual(d.filter(function (node) {return node instanceof ConstantNode}),  [a, c]);
-    assert.deepEqual(d.filter(function (node) {return node instanceof ConstantNode && node.value == '2'}),  [c]);
+    assert.deepEqual(d.filter(function (node) {return node instanceof ArrayNode;}),     [d]);
+    assert.deepEqual(d.filter(function (node) {return node instanceof SymbolNode;}),    [b]);
+    assert.deepEqual(d.filter(function (node) {return node instanceof RangeNode;}),     []);
+    assert.deepEqual(d.filter(function (node) {return node instanceof ConstantNode;}),  [a, c]);
+    assert.deepEqual(d.filter(function (node) {return node instanceof ConstantNode && node.value == '2';}),  [c]);
   });
 
   it ('should run forEach on an ArrayNode', function () {
@@ -148,7 +148,7 @@ describe('ArrayNode', function() {
 
     assert.throws(function () {
       c.map(function () {});
-    }, /Callback function must return a Node/)
+    }, /Callback function must return a Node/);
   });
 
   it ('should transform an ArrayNodes parameters', function () {
@@ -192,23 +192,23 @@ describe('ArrayNode', function() {
       count++;
 
       switch(count) {
-        case 1:
-          assert.strictEqual(node, c);
-          assert.strictEqual(path, null);
-          assert.strictEqual(parent, null);
-          break;
+      case 1:
+        assert.strictEqual(node, c);
+        assert.strictEqual(path, null);
+        assert.strictEqual(parent, null);
+        break;
 
-        case 2:
-          assert.strictEqual(node, a);
-          assert.strictEqual(path, 'items[0]');
-          assert.strictEqual(parent, c);
-          break;
+      case 2:
+        assert.strictEqual(node, a);
+        assert.strictEqual(path, 'items[0]');
+        assert.strictEqual(parent, c);
+        break;
 
-        case 3:
-          assert.strictEqual(node, b);
-          assert.strictEqual(path, 'items[1]');
-          assert.strictEqual(parent, c);
-          break;
+      case 3:
+        assert.strictEqual(node, b);
+        assert.strictEqual(path, 'items[1]');
+        assert.strictEqual(parent, c);
+        break;
       }
     });
 
@@ -266,7 +266,7 @@ describe('ArrayNode', function() {
         return string;
       }
       else if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')'
+        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')';
       }
     };
 
@@ -320,7 +320,7 @@ describe('ArrayNode', function() {
         return latex;
       }
       else if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)'
+        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)';
       }
     };
 

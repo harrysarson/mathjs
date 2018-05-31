@@ -68,7 +68,7 @@ describe('floor', function() {
   });
 
   it('should throw an error with a unit', function() {
-    assert.throws(function () {floor(unit('5cm'))}, TypeError, 'Function floor(unit) not supported');
+    assert.throws(function () {floor(unit('5cm'));}, TypeError, 'Function floor(unit) not supported');
   });
 
   it('should convert a string to a number', function() {
@@ -81,8 +81,8 @@ describe('floor', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {floor()}, /TypeError: Too few arguments/);
-    assert.throws(function () {floor(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {floor();}, /TypeError: Too few arguments/);
+    assert.throws(function () {floor(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an in case of wrong type of arguments', function() {

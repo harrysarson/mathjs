@@ -9,7 +9,7 @@ describe('abs', function () {
   });
 
   it('should not support null', function () {
-    assert.throws(function () {math.abs(null) }, /Unexpected type of argument/);
+    assert.throws(function () {math.abs(null); }, /Unexpected type of argument/);
   });
 
   it('should return the abs value of a number', function () {
@@ -66,7 +66,7 @@ describe('abs', function () {
     a1 = math.abs(math.matrix([-2,-1,0,1,2]));
     assert.ok(a1 instanceof math.type.Matrix);
     assert.deepEqual(a1.size(), [5]);
-    assert.deepEqual(a1.valueOf(), [2,1,0,1,2])
+    assert.deepEqual(a1.valueOf(), [2,1,0,1,2]);
   });
 
   it('should return the absolute value of a unit', function () {
@@ -87,8 +87,8 @@ describe('abs', function () {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {math.abs()}, /TypeError: Too few arguments/);
-    assert.throws(function () {math.abs(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {math.abs();}, /TypeError: Too few arguments/);
+    assert.throws(function () {math.abs(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an in case of wrong type of arguments', function() {

@@ -1,9 +1,9 @@
 // test rightLogShift
 var assert = require('assert'),
-    math = require('../../../index'),
-    matrix = math.matrix,
-    sparse = math.sparse,
-    rightLogShift = math.rightLogShift;
+  math = require('../../../index'),
+  matrix = math.matrix,
+  sparse = math.sparse,
+  rightLogShift = math.rightLogShift;
 
 describe('rightLogShift', function () {
 

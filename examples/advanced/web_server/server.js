@@ -42,13 +42,13 @@ app.get('/mathjs', function (req, res) {
   }
 
   pool.exec('evaluate', [expr])
-      .timeout(TIMEOUT)
-      .then(function (result) {
-        res.send(result);
-      })
-      .catch(function (err) {
-        res.status(400).send(formatError(err));
-      });
+    .timeout(TIMEOUT)
+    .then(function (result) {
+      res.send(result);
+    })
+    .catch(function (err) {
+      res.status(400).send(formatError(err));
+    });
 });
 
 /**

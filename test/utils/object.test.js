@@ -1,7 +1,7 @@
 // test object utils
 var assert = require('assert'),
-    approx = require('../../tools/approx'),
-    object = require('../../lib/utils/object');
+  approx = require('../../tools/approx'),
+  object = require('../../lib/utils/object');
 
 describe ('object', function () {
 
@@ -60,7 +60,7 @@ describe ('object', function () {
 
     it('should (deep) clone arrays', function () {
       var d = new Date(2014,0,1);
-      var arr = [1, 2, d, {a: 3}]
+      var arr = [1, 2, d, {a: 3}];
       var clone = object.clone(arr);
 
       assert.deepEqual(arr, clone);
@@ -77,7 +77,7 @@ describe ('object', function () {
     });
 
     it('should throw an error in case of an unsupported type', function () {
-      assert.throws(function () {object.clone(/a regexp/)}, /Cannot clone/);
+      assert.throws(function () {object.clone(/a regexp/);}, /Cannot clone/);
     });
   });
 
@@ -124,9 +124,9 @@ describe ('object', function () {
     });
 
     it ('should throw an error when deep extending an array (is not yet supported)', function () {
-      assert.throws(function () {object.deepExtend({}, [])}, /Arrays are not supported by deepExtend/);
-      assert.throws(function () {object.deepExtend({}, {a: []})}, /Arrays are not supported by deepExtend/);
-      assert.throws(function () {object.deepExtend({}, {a: {b: []}})}, /Arrays are not supported by deepExtend/);
+      assert.throws(function () {object.deepExtend({}, []);}, /Arrays are not supported by deepExtend/);
+      assert.throws(function () {object.deepExtend({}, {a: []});}, /Arrays are not supported by deepExtend/);
+      assert.throws(function () {object.deepExtend({}, {a: {b: []}});}, /Arrays are not supported by deepExtend/);
     });
 
     it('should ignore inherited properties when deep extending an object', function () {
@@ -285,5 +285,5 @@ describe ('object', function () {
       assert.equal(object.isFactory({name: 'foo', factory: function () {}, foo: 'bar'}), true);
     });
 
-  })
+  });
 });

@@ -1,14 +1,14 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    pi = math.pi,
-    complex = math.complex,
-    matrix = math.matrix,
-    unit = math.unit,
-    coth = math.coth,
-    bigmath = math.create({precision: 20}),
-    biggermath = math.create({number: 'BigNumber', precision: 21});
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  pi = math.pi,
+  complex = math.complex,
+  matrix = math.matrix,
+  unit = math.unit,
+  coth = math.coth,
+  bigmath = math.create({precision: 20}),
+  biggermath = math.create({number: 'BigNumber', precision: 21});
 
 describe('coth', function() {
   it('should return the coth of a boolean', function () {
@@ -53,11 +53,11 @@ describe('coth', function() {
   });
 
   it('should throw an error if called with an invalid unit', function() {
-    assert.throws(function () {coth(unit('5 celsius'))});
+    assert.throws(function () {coth(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {coth('string')});
+    assert.throws(function () {coth('string');});
   });
 
   var coth123 = [1.3130352854993, 1.0373147207275, 1.0049698233137];
@@ -71,8 +71,8 @@ describe('coth', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {coth()}, /TypeError: Too few arguments/);
-    assert.throws(function () {coth(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {coth();}, /TypeError: Too few arguments/);
+    assert.throws(function () {coth(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX coth', function () {

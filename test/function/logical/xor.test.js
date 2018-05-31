@@ -1,12 +1,12 @@
 // test xor
 var assert = require('assert'),
-    math = require('../../../index'),
-    bignumber = math.bignumber,
-    complex = math.complex,
-    matrix = math.matrix,
-    sparse = math.sparse,
-    unit = math.unit,
-    xor = math.xor;
+  math = require('../../../index'),
+  bignumber = math.bignumber,
+  complex = math.complex,
+  matrix = math.matrix,
+  sparse = math.sparse,
+  unit = math.unit,
+  xor = math.xor;
 
 describe('xor', function () {
 
@@ -193,16 +193,16 @@ describe('xor', function () {
   });
 
   it('should throw an error in case of invalid number of arguments', function () {
-    assert.throws(function () {xor(1)}, /TypeError: Too few arguments/);
-    assert.throws(function () {xor(1, 2, 3)}, /TypeError: Too many arguments/);
+    assert.throws(function () {xor(1);}, /TypeError: Too few arguments/);
+    assert.throws(function () {xor(1, 2, 3);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an error in case of invalid type of arguments', function () {
-    assert.throws(function () {xor(2, null)}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {xor(new Date(), true)}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {xor(true, new Date())}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {xor(true, undefined)}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {xor(undefined, true)}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {xor(2, null);}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {xor(new Date(), true);}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {xor(true, new Date());}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {xor(true, undefined);}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {xor(undefined, true);}, /TypeError: Unexpected type of argument/);
   });
 
   it('should LaTeX xor', function () {

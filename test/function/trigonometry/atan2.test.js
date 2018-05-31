@@ -1,17 +1,17 @@
 // test atan2
 var assert = require('assert'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    pi = math.pi,
-    complex = math.complex,
-    matrix = math.matrix,
-    sparse = math.sparse,
-    unit = math.unit,
-    divide = math.divide,
-    atan2 = math.atan2,
-    bigmath = math.create({precision: 20}),
-    Big = bigmath.bignumber,
-    atan2Big = bigmath.atan2;
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  pi = math.pi,
+  complex = math.complex,
+  matrix = math.matrix,
+  sparse = math.sparse,
+  unit = math.unit,
+  divide = math.divide,
+  atan2 = math.atan2,
+  bigmath = math.create({precision: 20}),
+  Big = bigmath.bignumber,
+  atan2Big = bigmath.atan2;
 
 describe('atan2', function() {
 
@@ -141,9 +141,9 @@ describe('atan2', function() {
     // array, matrix, range
     approx.deepEqual(divide(atan2([1, 0, -1], [1, 0, -1]), pi), [0.25, 0, -0.75]);
     approx.deepEqual(divide(atan2(
-        matrix([1,0,-1]),
-        matrix([1,0,-1])), pi),
-        matrix([0.25, 0, -0.75]));
+      matrix([1,0,-1]),
+      matrix([1,0,-1])), pi),
+    matrix([0.25, 0, -0.75]));
     assert.equal(atan2(0, 2) / pi, 0);
     assert.equal(atan2(0, -2) / pi, 1);
   });

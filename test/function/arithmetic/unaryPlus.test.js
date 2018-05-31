@@ -94,13 +94,13 @@ describe('unaryPlus', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {math.unaryPlus()}, /TypeError: Too few arguments/);
-    assert.throws(function () {math.unaryPlus(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {math.unaryPlus();}, /TypeError: Too few arguments/);
+    assert.throws(function () {math.unaryPlus(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an error in case of invalid type of argument', function() {
-    assert.throws(function () {math.unaryPlus(new Date())}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {math.unaryPlus(null)}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {math.unaryPlus(new Date());}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {math.unaryPlus(null);}, /TypeError: Unexpected type of argument/);
   });
 
   it('should LaTeX unaryPlus', function () {

@@ -32,11 +32,11 @@ describe('Chain', function() {
 
   it('should chain operations with matrices', function() {
     assert.deepEqual(new Chain(math.matrix([[1,2],[3,4]]))
-        .subset(math.index(0,0), 8)
-        .multiply(3).done(), math.matrix([[24, 6], [9, 12]]));
+      .subset(math.index(0,0), 8)
+      .multiply(3).done(), math.matrix([[24, 6], [9, 12]]));
     assert.deepEqual(new Chain([[1,2],[3,4]])
-        .subset(math.index(0,0), 8)
-        .multiply(3).done(), [[24, 6], [9, 12]]);
+      .subset(math.index(0,0), 8)
+      .multiply(3).done(), [[24, 6], [9, 12]]);
   });
 
   it('should get string representation', function() {
@@ -70,7 +70,7 @@ describe('Chain', function() {
   });
 
   it('should create a proxy for imported functions', function() {
-    math.import({hello: function (a) { return a + '!'}});
+    math.import({hello: function (a) { return a + '!';}});
     var a = new Chain('hello').hello().done();
     assert.strictEqual(a, 'hello!');
   });
@@ -81,12 +81,12 @@ describe('Chain', function() {
   });
 
   it('should throw an error if called with wrong input', function() {
-    assert.throws(function () {new Chain().add(2).done()}, TypeError);
-    assert.throws(function () {new Chain(undefined).add(2).done()}, TypeError);
+    assert.throws(function () {new Chain().add(2).done();}, TypeError);
+    assert.throws(function () {new Chain(undefined).add(2).done();}, TypeError);
   });
 
   it('should throw an error if constructed without new keyword', function() {
-    assert.throws(function () {Chain()}, SyntaxError);
+    assert.throws(function () {Chain();}, SyntaxError);
   });
 
   it ('should not clear inherited properties', function () {

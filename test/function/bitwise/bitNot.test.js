@@ -1,8 +1,8 @@
 // test bitNot
 var assert = require('assert'),
-    math = require('../../../index'),
-    bignumber = math.bignumber,
-    bitNot = math.bitNot;
+  math = require('../../../index'),
+  bignumber = math.bignumber,
+  bitNot = math.bitNot;
 
 describe('bitNot', function () {
   it('should return bitwise not of a boolean', function () {
@@ -32,7 +32,7 @@ describe('bitNot', function () {
   });
 
   it('should throw an error if used with a unit', function() {
-    assert.throws(function () {bitNot(math.unit('5cm'))}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {bitNot(math.unit('5cm'));}, /TypeError: Unexpected type of argument/);
   });
 
   it('should perform element-wise bitwise not on a matrix', function () {
@@ -48,14 +48,14 @@ describe('bitNot', function () {
   });
 
   it('should throw an error in case of invalid number of arguments', function () {
-    assert.throws(function () {bitNot()}, /TypeError: Too few arguments/);
-    assert.throws(function () {bitNot(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {bitNot();}, /TypeError: Too few arguments/);
+    assert.throws(function () {bitNot(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an error in case of invalid type of argument', function () {
-    assert.throws(function () {bitNot(null)}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {bitNot(new Date())}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {bitNot(undefined)}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {bitNot(null);}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {bitNot(new Date());}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {bitNot(undefined);}, /TypeError: Unexpected type of argument/);
   });
 
   it('should LaTeX bitNot', function () {

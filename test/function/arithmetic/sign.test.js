@@ -65,8 +65,8 @@ describe('sign', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {math.sign()}, /TypeError: Too few arguments/);
-    assert.throws(function () {math.sign(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {math.sign();}, /TypeError: Too few arguments/);
+    assert.throws(function () {math.sign(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an in case of wrong type of arguments', function() {

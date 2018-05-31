@@ -68,8 +68,8 @@ describe('log2', function() {
   });
 
   it('should throw an error if used with a wrong number of arguments', function() {
-    assert.throws(function () {log2()}, /TypeError: Too few arguments/);
-    assert.throws(function () {log2(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {log2();}, /TypeError: Too few arguments/);
+    assert.throws(function () {log2(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should return the log base 2 of a complex number', function() {
@@ -83,11 +83,11 @@ describe('log2', function() {
   });
 
   it('should throw an error when used on a unit', function() {
-    assert.throws(function () {log2(unit('5cm'))});
+    assert.throws(function () {log2(unit('5cm'));});
   });
 
   it('should throw an error when used on a string', function() {
-    assert.throws(function () {log2('text')});
+    assert.throws(function () {log2('text');});
   });
 
   it('should return the log base 2 of each element of a matrix', function() {
@@ -95,9 +95,9 @@ describe('log2', function() {
     approx.deepEqual(log2([1,2,3,4]), res);
     approx.deepEqual(log2(matrix([1,2,3,4])), matrix(res));
     approx.deepEqual(math.divide(log2(matrix([1,2,3,4])), math.LOG2E),
-        matrix([0, 0.693147180559945, 1.098612288668110, 1.386294361119891]));
+      matrix([0, 0.693147180559945, 1.098612288668110, 1.386294361119891]));
     approx.deepEqual(log2(matrix([[1,2],[3,4]])),
-        matrix([[0, 1], [1.584962500721156, 2]]));
+      matrix([[0, 1], [1.584962500721156, 2]]));
   });
 
   it('should LaTeX log2', function () {

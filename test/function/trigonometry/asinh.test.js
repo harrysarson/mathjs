@@ -1,17 +1,17 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    pi = math.pi,
-    asinh = math.asinh,
-    sinh = math.sinh,
-    complex = math.complex,
-    matrix = math.matrix,
-    unit = math.unit,
-    bigmath = math.create({number: 'BigNumber', precision: 20}),
-    biggermath = math.create({precision: 21}),
-    asinhBig = bigmath.asinh,
-    Big = bigmath.bignumber;
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  pi = math.pi,
+  asinh = math.asinh,
+  sinh = math.sinh,
+  complex = math.complex,
+  matrix = math.matrix,
+  unit = math.unit,
+  bigmath = math.create({number: 'BigNumber', precision: 20}),
+  biggermath = math.create({precision: 21}),
+  asinhBig = bigmath.asinh,
+  Big = bigmath.bignumber;
 
 describe('asinh', function() {
   it('should return the hyperbolic arcsin of a boolean', function () {
@@ -71,12 +71,12 @@ describe('asinh', function() {
   });
 
   it('should throw an error if called with a unit', function() {
-    assert.throws(function () {asinh(unit('45deg'))});
-    assert.throws(function () {asinh(unit('5 celsius'))});
+    assert.throws(function () {asinh(unit('45deg'));});
+    assert.throws(function () {asinh(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {asinh('string')});
+    assert.throws(function () {asinh('string');});
   });
 
   it('should calculate the arcsin element-wise for arrays and matrices', function() {
@@ -86,8 +86,8 @@ describe('asinh', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {asinh()}, /TypeError: Too few arguments/);
-    assert.throws(function () {asinh(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {asinh();}, /TypeError: Too few arguments/);
+    assert.throws(function () {asinh(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX asinh', function () {

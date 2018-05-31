@@ -1,7 +1,7 @@
 // test format
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index');
+  error = require('../../../lib/error/index'),
+  math = require('../../../index');
 
 describe('format', function() {
 
@@ -130,8 +130,8 @@ describe('format', function() {
   });
 
   it('should throw an error on wrong number of arguments', function() {
-    assert.throws (function () {math.format()}, /TypeError: Too few arguments/);
-    assert.throws (function () {math.format(1, 2, 3)}, /TypeError: Too many arguments/);
+    assert.throws (function () {math.format();}, /TypeError: Too few arguments/);
+    assert.throws (function () {math.format(1, 2, 3);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX format', function () {

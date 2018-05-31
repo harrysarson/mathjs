@@ -20,7 +20,7 @@ describe('hypot', function() {
     assert.deepEqual(hypot(bignumber(3), bignumber(4)), bignumber(5));
     assert.deepEqual(hypot(bignumber(3), bignumber(-4)), bignumber(5));
     assert.deepEqual(hypot(bignumber(3), bignumber(4), bignumber(5)),
-        bignumber('7.07106781186547524400844362104849039284835937688474036588339869'));
+      bignumber('7.07106781186547524400844362104849039284835937688474036588339869'));
     assert.deepEqual(hypot(bignumber(-2)), bignumber(2));
   });
 
@@ -37,8 +37,8 @@ describe('hypot', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {hypot()}, /TypeError: Too few arguments/);
-    assert.throws(function () {hypot([], 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {hypot();}, /TypeError: Too few arguments/);
+    assert.throws(function () {hypot([], 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an error in case of unsupported types', function () {

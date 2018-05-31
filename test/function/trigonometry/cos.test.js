@@ -1,14 +1,14 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    pi = math.pi,
-    complex = math.complex,
-    matrix = math.matrix,
-    unit = math.unit,
-    cos = math.cos,
-    bigmath = math.create({number: 'BigNumber', precision: 15}),
-    biggermath = math.create({number: 'BigNumber', precision: 238});
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  pi = math.pi,
+  complex = math.complex,
+  matrix = math.matrix,
+  unit = math.unit,
+  cos = math.cos,
+  bigmath = math.create({number: 'BigNumber', precision: 15}),
+  biggermath = math.create({number: 'BigNumber', precision: 238});
 
 
 describe('cos', function() {
@@ -73,7 +73,7 @@ describe('cos', function() {
 
   it('should return the cosine of a complex number', function() {
     var re = 4.18962569096881,
-        im = 9.10922789375534;
+      im = 9.10922789375534;
     approx.deepEqual(cos(complex('2+3i')), complex(-re, -im));
     approx.deepEqual(cos(complex('2-3i')), complex(-re, im));
     approx.deepEqual(cos(complex('-2+3i')), complex(-re, im));
@@ -95,11 +95,11 @@ describe('cos', function() {
   });
 
   it('should throw an error if called with an invalid unit', function() {
-    assert.throws(function () {cos(unit('5 celsius'))});
+    assert.throws(function () {cos(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {cos('string')});
+    assert.throws(function () {cos('string');});
   });
 
   var cos123 = [0.540302305868140, -0.41614683654714, -0.989992496600445];
@@ -113,8 +113,8 @@ describe('cos', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {cos()}, /TypeError: Too few arguments/);
-    assert.throws(function () {cos(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {cos();}, /TypeError: Too few arguments/);
+    assert.throws(function () {cos(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX cos', function () {

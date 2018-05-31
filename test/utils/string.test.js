@@ -30,8 +30,8 @@ describe ('string', function () {
   });
   
   it('should escape special HTML characters', function() {
-	assert.equal(string.escape('&<>"\''), '&amp;&lt;&gt;&quot;&#39;');
-	assert.equal(string.escape('<script src="script.js?version=1.0&type=js">'), '&lt;script src=&quot;script.js?version=1.0&amp;type=js&quot;&gt;');
+    assert.equal(string.escape('&<>"\''), '&amp;&lt;&gt;&quot;&#39;');
+    assert.equal(string.escape('<script src="script.js?version=1.0&type=js">'), '&lt;script src=&quot;script.js?version=1.0&amp;type=js&quot;&gt;');
   });
 
   describe('format', function () {
@@ -112,8 +112,8 @@ describe ('string', function () {
     });
 
     it ('should format a function', function () {
-      assert.equal(string.format(function (a, b) {return a + b}), 'function');
-      var f = function (a, b) {return a + b};
+      assert.equal(string.format(function (a, b) {return a + b;}), 'function');
+      var f = function (a, b) {return a + b;};
       f.syntax = 'f(x, y)';
       assert.equal(string.format(f), 'f(x, y)');
     });

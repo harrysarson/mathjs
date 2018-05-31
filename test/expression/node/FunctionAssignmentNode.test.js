@@ -27,14 +27,14 @@ describe('FunctionAssignmentNode', function() {
   });
 
   it ('should throw an error when calling without new operator', function () {
-    assert.throws(function () {FunctionAssignmentNode('f', ['x'], new ConstantNode(2))}, SyntaxError);
+    assert.throws(function () {FunctionAssignmentNode('f', ['x'], new ConstantNode(2));}, SyntaxError);
   });
 
   it ('should throw an error on wrong constructor arguments', function () {
-    assert.throws(function () {new FunctionAssignmentNode()}, TypeError);
-    assert.throws(function () {new FunctionAssignmentNode('a')}, TypeError);
-    assert.throws(function () {new FunctionAssignmentNode('a', ['x'])}, TypeError);
-    assert.throws(function () {new FunctionAssignmentNode(null, ['x'], new ConstantNode(2))}, TypeError);
+    assert.throws(function () {new FunctionAssignmentNode();}, TypeError);
+    assert.throws(function () {new FunctionAssignmentNode('a');}, TypeError);
+    assert.throws(function () {new FunctionAssignmentNode('a', ['x']);}, TypeError);
+    assert.throws(function () {new FunctionAssignmentNode(null, ['x'], new ConstantNode(2));}, TypeError);
   });
 
   it ('should compile a FunctionAssignmentNode', function () {
@@ -64,9 +64,9 @@ describe('FunctionAssignmentNode', function() {
     assert.equal(typeof scope.f, 'function');
     assert.equal(scope.f(3), 5);
     assert.equal(scope.f(5), 7);
-    assert.throws(function () { scope.f(new Date())}, /Unexpected type of argument in function f/);
-    assert.throws(function () { scope.f(2, 2)}, /Too many arguments in function f/);
-    assert.throws(function () { scope.f()}, /Too few arguments in function f/);
+    assert.throws(function () { scope.f(new Date());}, /Unexpected type of argument in function f/);
+    assert.throws(function () { scope.f(2, 2);}, /Too many arguments in function f/);
+    assert.throws(function () { scope.f();}, /Too few arguments in function f/);
   });
 
   it ('should eval a recursive FunctionAssignmentNode', function () {
@@ -102,20 +102,20 @@ describe('FunctionAssignmentNode', function() {
     var two = new ConstantNode(2);
 
     var n1 = new ConditionalNode(
-        new OperatorNode('<=', 'smallerEq', [x, zero]),
-        zero,
-        new ConditionalNode(
-            new OperatorNode('<=', 'smallerEq', [x, two]),
-            one,
-            new OperatorNode('+', 'add', [
-              new FunctionNode(new SymbolNode('fib'), [
-                new OperatorNode('-', 'subtract', [ x, one ])
-              ]),
-              new FunctionNode(new SymbolNode('fib'), [
-                new OperatorNode('-', 'subtract', [ x, two ])
-              ])
-            ])
-        )
+      new OperatorNode('<=', 'smallerEq', [x, zero]),
+      zero,
+      new ConditionalNode(
+        new OperatorNode('<=', 'smallerEq', [x, two]),
+        one,
+        new OperatorNode('+', 'add', [
+          new FunctionNode(new SymbolNode('fib'), [
+            new OperatorNode('-', 'subtract', [ x, one ])
+          ]),
+          new FunctionNode(new SymbolNode('fib'), [
+            new OperatorNode('-', 'subtract', [ x, two ])
+          ])
+        ])
+      )
     );
 
     var n2 = new FunctionAssignmentNode('fib', ['x'], n1);
@@ -140,7 +140,7 @@ describe('FunctionAssignmentNode', function() {
   it ('should pass function arguments in scope to functions with rawArgs', function () {
     var outputScope = function (args, math, scope) {
       return scope;
-    }
+    };
     outputScope.rawArgs = true;
     math.import({ outputScope: outputScope }, { override: true });
 
@@ -157,12 +157,12 @@ describe('FunctionAssignmentNode', function() {
   it ('should pass function arguments in scope to functions with rawArgs returned by another function', function () {
     var outputScope = function (args, math, scope) {
       return scope;
-    }
+    };
 
     outputScope.rawArgs = true;
     var returnOutputScope = function () {
-      return outputScope
-    }
+      return outputScope;
+    };
 
     math.import({
       outputScope: outputScope,
@@ -181,11 +181,11 @@ describe('FunctionAssignmentNode', function() {
 
   it ('should pass function arguments in scope to functions with rawArgs and transform', function () {
     var outputScope = function (x) {
-      return 'should not occur'
-    }
+      return 'should not occur';
+    };
     outputScope.transform = function (args, math, scope) {
       return scope;
-    }
+    };
     outputScope.transform.rawArgs = true;
     math.import({ outputScope: outputScope }, { override: true });
 
@@ -205,25 +205,25 @@ describe('FunctionAssignmentNode', function() {
     var o = new OperatorNode('+', 'add', [a, x]);
     var n = new FunctionAssignmentNode('f', ['x'], o);
 
-    assert.deepEqual(n.filter(function (node) {return node instanceof FunctionAssignmentNode}),  [n]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof SymbolNode}),    [x]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof RangeNode}),     []);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode}),  [a]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '2'}),  [a]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '4'}),  []);
+    assert.deepEqual(n.filter(function (node) {return node instanceof FunctionAssignmentNode;}),  [n]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof SymbolNode;}),    [x]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof RangeNode;}),     []);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode;}),  [a]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '2';}),  [a]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '4';}),  []);
   });
 
   it ('should throw an error when creating a FunctionAssignmentNode with a reserved keyword', function () {
     assert.throws(function () {
       new FunctionAssignmentNode('end', ['x'], new ConstantNode(2));
-    }, /Illegal function name/)
+    }, /Illegal function name/);
   });
 
   it ('should filter a FunctionAssignmentNode without expression', function () {
     var e = new FunctionAssignmentNode('f', ['x'], new ConstantNode(2));
 
-    assert.deepEqual(e.filter(function (node) {return node instanceof FunctionAssignmentNode}),  [e]);
-    assert.deepEqual(e.filter(function (node) {return node instanceof SymbolNode}),    []);
+    assert.deepEqual(e.filter(function (node) {return node instanceof FunctionAssignmentNode;}),  [e]);
+    assert.deepEqual(e.filter(function (node) {return node instanceof SymbolNode;}),    []);
   });
 
   it ('should run forEach on a FunctionAssignmentNode', function () {
@@ -272,7 +272,7 @@ describe('FunctionAssignmentNode', function() {
 
     assert.throws(function () {
       n.map(function () {});
-    }, /Callback function must return a Node/)
+    }, /Callback function must return a Node/);
   });
 
   it ('should transform a FunctionAssignmentNodes (nested) parameters', function () {
@@ -324,15 +324,15 @@ describe('FunctionAssignmentNode', function() {
 
   it ('test equality another Node', function () {
     var a = new FunctionAssignmentNode('f', ['x'],
-        new OperatorNode('+', 'add', [new ConstantNode(2), new SymbolNode('x')]));
+      new OperatorNode('+', 'add', [new ConstantNode(2), new SymbolNode('x')]));
     var b = new FunctionAssignmentNode('f', ['x'],
-        new OperatorNode('+', 'add', [new ConstantNode(2), new SymbolNode('x')]));
+      new OperatorNode('+', 'add', [new ConstantNode(2), new SymbolNode('x')]));
     var c = new FunctionAssignmentNode('g', ['x'],
-        new OperatorNode('+', 'add', [new ConstantNode(2), new SymbolNode('x')]));
+      new OperatorNode('+', 'add', [new ConstantNode(2), new SymbolNode('x')]));
     var d = new FunctionAssignmentNode('f', ['y'],
-        new OperatorNode('+', 'add', [new ConstantNode(2), new SymbolNode('x')]));
+      new OperatorNode('+', 'add', [new ConstantNode(2), new SymbolNode('x')]));
     var e = new FunctionAssignmentNode('f', ['x'],
-        new OperatorNode('+', 'add', [new ConstantNode(3), new SymbolNode('x')]));
+      new OperatorNode('+', 'add', [new ConstantNode(3), new SymbolNode('x')]));
     var f = new SymbolNode('add');
 
     assert.strictEqual(a.equals(null), false);
@@ -381,7 +381,7 @@ describe('FunctionAssignmentNode', function() {
         return string;
       }
       else if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')'
+        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')';
       }
     };
 
@@ -395,8 +395,8 @@ describe('FunctionAssignmentNode', function() {
   it('toJSON and fromJSON', function () {
     var expr = new SymbolNode('add');
     var node = new FunctionAssignmentNode('f', [
-        {name: 'x', type: 'number'},
-        'y'
+      {name: 'x', type: 'number'},
+      'y'
     ], expr);
 
     var json = node.toJSON();
@@ -447,7 +447,7 @@ describe('FunctionAssignmentNode', function() {
         return latex;
       }
       else if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)'
+        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)';
       }
     };
 

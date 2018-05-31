@@ -45,9 +45,9 @@ describe('fraction', function () {
   });
 
   it('should throw an error in case of NaN or Infinity', function () {
-    assert.throws(function () {math.fraction(Infinity)}, /Error: Infinity cannot be represented as a fraction/);
-    assert.throws(function () {math.fraction(-Infinity)}, /Error: -Infinity cannot be represented as a fraction/);
-    assert.throws(function () {math.fraction(NaN)}, /Error: NaN cannot be represented as a fraction/);
+    assert.throws(function () {math.fraction(Infinity);}, /Error: Infinity cannot be represented as a fraction/);
+    assert.throws(function () {math.fraction(-Infinity);}, /Error: -Infinity cannot be represented as a fraction/);
+    assert.throws(function () {math.fraction(NaN);}, /Error: NaN cannot be represented as a fraction/);
   });
 
 });

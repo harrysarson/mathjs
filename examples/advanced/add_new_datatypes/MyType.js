@@ -41,4 +41,4 @@ exports.name = 'MyType';
 exports.path = 'type';        // will be imported into math.type.MyType
 exports.factory = factory;
 exports.lazy = false;         // disable lazy loading as this factory has side
-                              // effects: it adds a type and a conversion.
+// effects: it adds a type and a conversion.

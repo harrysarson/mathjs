@@ -1,7 +1,7 @@
 // test print
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index');
+  error = require('../../../lib/error/index'),
+  math = require('../../../index');
 
 describe('print', function() {
 
@@ -53,16 +53,16 @@ describe('print', function() {
 
   it('should interpolate values from a nested object in a template (array template)', function() {
     assert.equal(math.print('hello, $0.0 $0.1!', [
-        ['first', 'last']
+      ['first', 'last']
     ]), 'hello, first last!');
   });
 
   it('should interpolate values from a nested object in a template (mixed array/object template)', function() {
     assert.equal(math.print('hello$1.separator $0.0 $0.1!', [
-        ['first', 'last'],
-        {
-          separator: ','
-        }
+      ['first', 'last'],
+      {
+        separator: ','
+      }
     ]), 'hello, first last!');
   });
 
@@ -92,13 +92,13 @@ describe('print', function() {
   });
 
   it('should throw an error on wrong number of arguments', function() {
-    assert.throws (function () {math.print()}, /TypeError: Too few arguments/);
-    assert.throws (function () {math.print('')}, /TypeError: Too few arguments/);
-    assert.throws (function () {math.print('', {}, 6, 2)}, /TypeError: Too many arguments/);
+    assert.throws (function () {math.print();}, /TypeError: Too few arguments/);
+    assert.throws (function () {math.print('');}, /TypeError: Too few arguments/);
+    assert.throws (function () {math.print('', {}, 6, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an error on wrong type of arguments', function() {
-    assert.throws (function () {math.print('', 2)}, /TypeError: Unexpected type of argument/);
+    assert.throws (function () {math.print('', 2);}, /TypeError: Unexpected type of argument/);
   });
 
   it('should LaTeX print', function () {

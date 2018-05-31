@@ -43,8 +43,8 @@ describe('divide', function() {
     assert.deepEqual(divide(0.3, bignumber(0.2)), bignumber(1.5));
     assert.deepEqual(divide(bignumber('2.6e5000'), 2), bignumber('1.3e5000'));
 
-    assert.throws(function () {divide(1/3, bignumber(2))}, /Cannot implicitly convert a number with >15 significant digits to BigNumber/);
-    assert.throws(function () {divide(bignumber(1), 1/3)}, /Cannot implicitly convert a number with >15 significant digits to BigNumber/);
+    assert.throws(function () {divide(1/3, bignumber(2));}, /Cannot implicitly convert a number with >15 significant digits to BigNumber/);
+    assert.throws(function () {divide(bignumber(1), 1/3);}, /Cannot implicitly convert a number with >15 significant digits to BigNumber/);
 
   });
 
@@ -183,7 +183,7 @@ describe('divide', function() {
   });
 
   it('should divide a matrix by a matrix containing a scalar', function() {
-    assert.throws(function () {divide(a, [[1]])});
+    assert.throws(function () {divide(a, [[1]]);});
   });
 
   /*

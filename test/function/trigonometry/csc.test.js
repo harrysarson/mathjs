@@ -1,14 +1,14 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    pi = math.pi,
-    complex = math.complex,
-    matrix = math.matrix,
-    unit = math.unit,
-    csc = math.csc,
-    bigmath = math.create({number: 'BigNumber', precision: 20}),
-    biggermath = math.create({number: 'BigNumber', precision: 21});
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  pi = math.pi,
+  complex = math.complex,
+  matrix = math.matrix,
+  unit = math.unit,
+  csc = math.csc,
+  bigmath = math.create({number: 'BigNumber', precision: 20}),
+  biggermath = math.create({number: 'BigNumber', precision: 21});
 
 describe('csc', function() {
   it('should return the cosecant of a boolean', function () {
@@ -66,11 +66,11 @@ describe('csc', function() {
   });
 
   it('should throw an error if called with an invalid unit', function() {
-    assert.throws(function () {csc(unit('5 celsius'))});
+    assert.throws(function () {csc(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {csc('string')});
+    assert.throws(function () {csc('string');});
   });
 
   var csc123 = [1.18839510577812, 1.09975017029462, 7.08616739573719];
@@ -84,8 +84,8 @@ describe('csc', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {csc()}, /TypeError: Too few arguments/);
-    assert.throws(function () {csc(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {csc();}, /TypeError: Too few arguments/);
+    assert.throws(function () {csc(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX csc', function () {

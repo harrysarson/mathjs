@@ -1,14 +1,14 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    pi = math.pi,
-    complex = math.complex,
-    matrix = math.matrix,
-    unit = math.unit,
-    csch = math.csch,
-    bigmath = math.create({precision: 20}),
-    biggermath = math.create({number: 'BigNumber', precision: 22});
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  pi = math.pi,
+  complex = math.complex,
+  matrix = math.matrix,
+  unit = math.unit,
+  csch = math.csch,
+  bigmath = math.create({precision: 20}),
+  biggermath = math.create({number: 'BigNumber', precision: 22});
 
 describe('csch', function() {
   it('should return the csch of a boolean', function () {
@@ -56,11 +56,11 @@ describe('csch', function() {
   });
 
   it('should throw an error if called with an invalid unit', function() {
-    assert.throws(function () {csch(unit('5 celsius'))});
+    assert.throws(function () {csch(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {csch('string')});
+    assert.throws(function () {csch('string');});
   });
 
   var csch123 = [0.85091812823932, 0.27572056477178, 0.099821569668823];
@@ -74,8 +74,8 @@ describe('csch', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {csch()}, /TypeError: Too few arguments/);
-    assert.throws(function () {csch(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {csch();}, /TypeError: Too few arguments/);
+    assert.throws(function () {csch(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX csch', function () {

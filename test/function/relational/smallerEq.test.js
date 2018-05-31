@@ -1,12 +1,12 @@
 // test smaller
 var assert = require('assert'),
-    math = require('../../../index'),
-    bignumber = math.bignumber,
-    complex = math.complex,
-    matrix = math.matrix,
-    sparse = math.sparse,
-    unit = math.unit,
-    smallerEq = math.smallerEq;
+  math = require('../../../index'),
+  bignumber = math.bignumber,
+  complex = math.complex,
+  matrix = math.matrix,
+  sparse = math.sparse,
+  unit = math.unit,
+  smallerEq = math.smallerEq;
 
 describe('smallerEq', function() {
 
@@ -124,7 +124,7 @@ describe('smallerEq', function() {
     assert.equal(smallerEq('10', '2'), false);
     assert.equal(smallerEq('1e3', '1000'), true);
 
-    assert.throws(function () {smallerEq('A', 'B')}, /Cannot convert "A" to a number/);
+    assert.throws(function () {smallerEq('A', 'B');}, /Cannot convert "A" to a number/);
   });
 
   describe('Array', function () {

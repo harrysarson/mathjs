@@ -1,9 +1,9 @@
 // test inv
 var assert = require('assert'),
-    approx = require('../../../tools/approx'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    inv = math.inv;
+  approx = require('../../../tools/approx'),
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  inv = math.inv;
 
 describe('inv', function() {
 
@@ -61,27 +61,27 @@ describe('inv', function() {
   });
 
   it('should throw an error in case of non-square matrices', function() {
-    assert.throws(function () {inv([1,2,3])}, /Matrix must be square/);
-    assert.throws(function () {inv([[1,2,3], [4,5,6]])}, /Matrix must be square/);
+    assert.throws(function () {inv([1,2,3]);}, /Matrix must be square/);
+    assert.throws(function () {inv([[1,2,3], [4,5,6]]);}, /Matrix must be square/);
   });
 
   it('should throw an error in case of multi dimensional matrices', function() {
-    assert.throws(function () {inv([[[1,2,3], [4,5,6]]])}, /Matrix must be two dimensional/);
+    assert.throws(function () {inv([[[1,2,3], [4,5,6]]]);}, /Matrix must be two dimensional/);
   });
 
   it('should throw an error in case of non-invertable matrices', function() {
-    assert.throws(function () {inv([[0]])}, /Cannot calculate inverse, determinant is zero/);
-    assert.throws(function () {inv([[1,0], [0,0]])}, /Cannot calculate inverse, determinant is zero/);
-    assert.throws(function () {inv([[1,1,1], [1,0,0], [0,0,0]])}, /Cannot calculate inverse, determinant is zero/);
+    assert.throws(function () {inv([[0]]);}, /Cannot calculate inverse, determinant is zero/);
+    assert.throws(function () {inv([[1,0], [0,0]]);}, /Cannot calculate inverse, determinant is zero/);
+    assert.throws(function () {inv([[1,1,1], [1,0,0], [0,0,0]]);}, /Cannot calculate inverse, determinant is zero/);
   });
 
   it('should throw an error in case of wrong number of arguments', function() {
-    assert.throws(function () {inv()}, /TypeError: Too few arguments/);
-    assert.throws(function () {inv([], [])}, /TypeError: Too many arguments/);
+    assert.throws(function () {inv();}, /TypeError: Too few arguments/);
+    assert.throws(function () {inv([], []);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an error in case of invalid type of arguments', function() {
-    assert.throws(function () {math.concat(inv(new Date()))}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {math.concat(inv(new Date()));}, /TypeError: Unexpected type of argument/);
   });
 
   it('should avoid issues with elements that are almost zero', function() {
@@ -111,7 +111,7 @@ describe('inv', function() {
     ]);
     
     
-  })
+  });
 
   it('should  LaTeX inv', function () {
     var expression = math.parse('inv([[1,2],[3,4]])');

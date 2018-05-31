@@ -1,14 +1,14 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    pi = math.pi,
-    complex = math.complex,
-    matrix = math.matrix,
-    unit = math.unit,
-    sech = math.sech,
-    bigmath = math.create({precision: 20}),
-    biggermath = math.create({number: 'BigNumber', precision: 21});
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  pi = math.pi,
+  complex = math.complex,
+  matrix = math.matrix,
+  unit = math.unit,
+  sech = math.sech,
+  bigmath = math.create({precision: 20}),
+  biggermath = math.create({number: 'BigNumber', precision: 21});
 
 describe('sech', function() {
   it('should return the sech of a boolean', function () {
@@ -54,11 +54,11 @@ describe('sech', function() {
   });
 
   it('should throw an error if called with an invalid unit', function() {
-    assert.throws(function () {sech(unit('5 celsius'))});
+    assert.throws(function () {sech(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {sech('string')});
+    assert.throws(function () {sech('string');});
   });
 
   var sech123 = [0.64805427366389, 0.26580222883408, 0.099327927419433];
@@ -72,8 +72,8 @@ describe('sech', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {sech()}, /TypeError: Too few arguments/);
-    assert.throws(function () {sech(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {sech();}, /TypeError: Too few arguments/);
+    assert.throws(function () {sech(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX sech', function () {

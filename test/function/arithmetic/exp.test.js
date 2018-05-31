@@ -1,12 +1,12 @@
 // test exp
 var assert = require('assert'),
-    approx = require('../../../tools/approx'),
-    math = require('../../../index'),
-    complex = math.complex,
-    matrix = math.matrix,
-    sparse = math.sparse,
-    unit = math.unit,
-    exp = math.exp;
+  approx = require('../../../tools/approx'),
+  math = require('../../../index'),
+  complex = math.complex,
+  matrix = math.matrix,
+  sparse = math.sparse,
+  unit = math.unit,
+  exp = math.exp;
 
 describe('exp', function() {
 
@@ -52,8 +52,8 @@ describe('exp', function() {
 
     // test some logic identities
     var multiply = math.multiply,
-        pi = math.pi,
-        i = math.i;
+      pi = math.pi,
+      i = math.i;
     approx.deepEqual(exp(multiply( 0.5, multiply(pi, i))), complex(0, 1));
     approx.deepEqual(exp(multiply( 1,   multiply(pi, i))), complex(-1, 0));
     approx.deepEqual(exp(multiply( 1.5, multiply(pi, i))), complex(0, -1));

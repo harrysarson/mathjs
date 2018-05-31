@@ -1,10 +1,10 @@
 // test squeeze
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    squeeze = math.squeeze,
-    size = math.size,
-    matrix = math.matrix;
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  squeeze = math.squeeze,
+  size = math.size,
+  matrix = math.matrix;
 
 describe('squeeze', function() {
 
@@ -28,8 +28,8 @@ describe('squeeze', function() {
   });
 
   it('should throw an error if called with an invalid number of arguments', function() {
-    assert.throws(function () {squeeze()}, /TypeError: Too few arguments/);
-    assert.throws(function () {squeeze(1,2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {squeeze();}, /TypeError: Too few arguments/);
+    assert.throws(function () {squeeze(1,2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX squeeze', function () {

@@ -34,8 +34,8 @@ describe('square', function() {
   });
 
   it('should throw an error if used with wrong number of arguments', function() {
-    assert.throws(function () {square()}, /TypeError: Too few arguments/);
-    assert.throws(function () {square(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {square();}, /TypeError: Too few arguments/);
+    assert.throws(function () {square(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an in case of wrong type of arguments', function() {
@@ -55,7 +55,7 @@ describe('square', function() {
   });
 
   it('should throw an error when used with a string', function() {
-    assert.throws(function () {square('text')});
+    assert.throws(function () {square('text');});
   });
 
   it('should return the square of each element in a matrix', function() {

@@ -47,13 +47,13 @@ describe('range', function() {
     });
 
     it('should throw an error when created without new keyword', function() {
-      assert.throws(function () {Range(0,10)}, /Constructor must be called with the new operator/)
+      assert.throws(function () {Range(0,10);}, /Constructor must be called with the new operator/);
     });
 
     it('should throw an error for wrong type of arguments', function() {
-      assert.throws(function () {new Range('str', 10, 1)}, /Parameter start must be a number/)
-      assert.throws(function () {new Range(0, 'str', 1)}, /Parameter end must be a number/)
-      assert.throws(function () {new Range(0, 10, 'str')}, /Parameter step must be a number/)
+      assert.throws(function () {new Range('str', 10, 1);}, /Parameter start must be a number/);
+      assert.throws(function () {new Range(0, 'str', 1);}, /Parameter end must be a number/);
+      assert.throws(function () {new Range(0, 10, 'str');}, /Parameter step must be a number/);
     });
   });
 
@@ -199,10 +199,10 @@ describe('range', function() {
         assert.strictEqual(range, r);
         return 'range[' + index[0] + ']=' + value;
       }), [
-          'range[0]=2',
-          'range[1]=3',
-          'range[2]=4',
-          'range[3]=5'
+        'range[0]=2',
+        'range[1]=3',
+        'range[2]=4',
+        'range[3]=5'
       ]);
     });
   });

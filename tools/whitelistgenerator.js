@@ -1,12 +1,12 @@
 // generates a whitelist of safe methods and functions
 
 // math.js functions (can be used when chaining
-var math = require('../index')
+var math = require('../index');
 var chain = {
   done: true,
   valueOf: true,
   toString: true
-}
+};
 for (var name in math) {
   if (math.hasOwnProperty(name) && typeof math[name] === 'function') {
     chain[name] = true;
@@ -291,7 +291,7 @@ var groups = [
 // merge all groups into a single whitelist
 var whitelist = groups.reduce(function (whitelist, group) {
   return Object.assign(whitelist, group);
-}, {})
+}, {});
 
 var keys = Object.keys(whitelist).sort();
 var orderedWhitelist = keys.reduce(function (whitelist, key) {

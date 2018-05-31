@@ -29,27 +29,27 @@ describe('transforms', function() {
       var scope = {};
       parseAndEval('isPositive(x) = x > 0', scope);
       assert.deepEqual(parseAndEval('filter([6, -2, -1, 4, 3], isPositive)', scope),
-          math.matrix([6, 4, 3]));
+        math.matrix([6, 4, 3]));
     });
 
     it('should evaluate filter with an inline expression as callback (1)', function () {
       assert.deepEqual(parseAndEval('filter([6, -2, -1, 4, 3], x > 0)'),
-          math.matrix([6, 4, 3]));
+        math.matrix([6, 4, 3]));
     });
 
     it('should evaluate filter with an inline expression as callback (2)', function () {
       assert.deepEqual(parseAndEval('filter([6, -2, -1, 4, 3], (x > 0))'),
-          math.matrix([6, 4, 3]));
+        math.matrix([6, 4, 3]));
     });
 
     it('should evaluate filter with an inline expression as callback (3)', function () {
       assert.deepEqual(parseAndEval('filter([6, -2, -1, 4, 3], f(x) = x > 0)'),
-          math.matrix([6, 4, 3]));
+        math.matrix([6, 4, 3]));
     });
 
     it('should evaluate filter with an inline expression as callback (4)', function () {
       assert.deepEqual(parseAndEval('filter([6, 0, 1, -0.2], boolean(x))'),
-          math.matrix([6, 1, -0.2]));
+        math.matrix([6, 1, -0.2]));
     });
 
   });
@@ -92,32 +92,32 @@ describe('transforms', function() {
 
     it('should evaluate map with a callback', function () {
       assert.deepEqual(parseAndEval('map([6, 2, 3], square)'),
-          math.matrix([36, 4, 9]));
+        math.matrix([36, 4, 9]));
     });
 
     it('should evaluate map with an inline expression as callback (1)', function () {
       assert.deepEqual(parseAndEval('map([6, -2, -1, 4, 3], x > 0)'),
-          math.matrix([true, false, false, true, true]));
+        math.matrix([true, false, false, true, true]));
     });
 
     it('should evaluate map with an inline expression as callback (2)', function () {
       assert.deepEqual(parseAndEval('map([6, -2, -1, 4, 3], (x > 0))'),
-          math.matrix([true, false, false, true, true]));
+        math.matrix([true, false, false, true, true]));
     });
 
     it('should evaluate map with an inline expression as callback (3)', function () {
       assert.deepEqual(parseAndEval('map([6, -2, -1, 4, 3], f(x) = x > 0)'),
-          math.matrix([true, false, false, true, true]));
+        math.matrix([true, false, false, true, true]));
     });
 
     it('should evaluate map with an inline expression as callback (4)', function () {
       assert.deepEqual(parseAndEval('map([6, -2, -1, 4, 3], f(x, index) = index[1])'),
-          math.matrix([1, 2, 3, 4, 5]));
+        math.matrix([1, 2, 3, 4, 5]));
     });
 
     it('should evaluate map with an inline expression as callback (5)', function () {
       assert.deepEqual(parseAndEval('map([6, 0, 1, -0.2], boolean(x))'),
-          math.matrix([true, false, true, true]));
+        math.matrix([true, false, true, true]));
     });
 
   });

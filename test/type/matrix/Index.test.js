@@ -130,11 +130,11 @@ describe('Index', function () {
 
   it('toJSON', function () {
     assert.deepEqual(new Index(new Range(0, 10), 2, new ImmutableDenseMatrix([1, 2, 3])).toJSON(),
-        {'mathjs': 'Index', dimensions: [
-          new Range(0, 10, 1),
-          new ImmutableDenseMatrix([2]),
-          new ImmutableDenseMatrix([1, 2, 3])
-        ]});
+      {'mathjs': 'Index', dimensions: [
+        new Range(0, 10, 1),
+        new ImmutableDenseMatrix([2]),
+        new ImmutableDenseMatrix([1, 2, 3])
+      ]});
   });
 
   it('fromJSON', function () {

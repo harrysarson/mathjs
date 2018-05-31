@@ -27,8 +27,8 @@ describe('isNumeric', function() {
   });
 
   it('should throw an error in case of unsupported data types', function() {
-    assert.throws(function () {isNumeric(new Date())}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {isNumeric({})}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {isNumeric(new Date());}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {isNumeric({});}, /TypeError: Unexpected type of argument/);
   });
 
 });

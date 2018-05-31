@@ -1,10 +1,10 @@
 var assert = require('assert'),
-    approx = require('../../../tools/approx'),
-    math = require('../../../index'),
-    matrix = math.matrix,
-    sparse = math.sparse,
-    Unit = math.type.Unit,
-    unit = math.unit;
+  approx = require('../../../tools/approx'),
+  math = require('../../../index'),
+  matrix = math.matrix,
+  sparse = math.sparse,
+  Unit = math.type.Unit,
+  unit = math.unit;
 
 describe('to', function() {
 

@@ -1,22 +1,22 @@
 // @ts-nocheck
 var fs = require('fs'),
-    gulp = require('gulp'),
-    gutil = require('gulp-util'),
-    webpack = require('webpack'),
-    uglify = require('uglify-js'),
-    docgenerator = require('./tools/docgenerator');
+  gulp = require('gulp'),
+  gutil = require('gulp-util'),
+  webpack = require('webpack'),
+  uglify = require('uglify-js'),
+  docgenerator = require('./tools/docgenerator');
 
 var ENTRY       = './index.js',
-    HEADER      = './lib/header.js',
-    VERSION     = './lib/version.js',
-    FILE        = 'math.js',
-    FILE_MIN    = 'math.min.js',
-    FILE_MAP    = 'math.min.map',
-    DIST        = __dirname + '/dist',
-    REF_SRC     = './lib/',
-    REF_DEST    = './docs/reference/functions/',
-    REF_ROOT    = './docs/reference/',
-    MATH_JS     = DIST + '/' + FILE;
+  HEADER      = './lib/header.js',
+  VERSION     = './lib/version.js',
+  FILE        = 'math.js',
+  FILE_MIN    = 'math.min.js',
+  FILE_MAP    = 'math.min.map',
+  DIST        = __dirname + '/dist',
+  REF_SRC     = './lib/',
+  REF_DEST    = './docs/reference/functions/',
+  REF_ROOT    = './docs/reference/',
+  MATH_JS     = DIST + '/' + FILE;
 
 // generate banner with today's date and correct version
 function createBanner() {
@@ -24,8 +24,8 @@ function createBanner() {
   var version = require('./package.json').version;
 
   return String(fs.readFileSync(HEADER))
-      .replace('@@date', today)
-      .replace('@@version', version);
+    .replace('@@date', today)
+    .replace('@@version', version);
 }
 
 // generate a js file containing the version number
@@ -107,7 +107,7 @@ gulp.task('minify', ['bundle'], function () {
     }, uglifyConfig);
 
     if (result.error) {
-      throw result.error
+      throw result.error;
     }
 
     fs.writeFileSync(FILE_MIN, result.code);

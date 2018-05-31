@@ -11,7 +11,7 @@ describe ('customs', function () {
     it ('plain objects', function () {
       var object = {
         fn: function () {}
-      }
+      };
       assert.equal(customs.isSafeMethod(object, 'fn'), true);
       assert.equal(customs.isSafeMethod(object, 'toString'), true);
       assert.equal(customs.isSafeMethod(object, 'toLocaleString'), true);

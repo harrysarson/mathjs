@@ -1,14 +1,14 @@
 // test multiply
 var assert = require('assert'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    multiply = math.multiply,
-    divide = math.divide,
-    matrix = math.matrix,
-    complex = math.complex,
-    bignumber = math.bignumber,
-    i = math.i,
-    unit = math.unit;
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  multiply = math.multiply,
+  divide = math.divide,
+  matrix = math.matrix,
+  complex = math.complex,
+  bignumber = math.bignumber,
+  i = math.i,
+  unit = math.unit;
 
 describe('multiply', function() {
 
@@ -54,8 +54,8 @@ describe('multiply', function() {
     });
 
     it('should throw an error when multipling mixed fractions and bignumbers', function() {
-      assert.throws(function () {multiply(math.bignumber('2'), math.fraction(1,3))}, /Cannot implicitly convert a Fraction to BigNumber/);
-      assert.throws(function () {multiply(math.fraction(1,3), math.bignumber('2'))}, /Cannot implicitly convert a Fraction to BigNumber/);
+      assert.throws(function () {multiply(math.bignumber('2'), math.fraction(1,3));}, /Cannot implicitly convert a Fraction to BigNumber/);
+      assert.throws(function () {multiply(math.fraction(1,3), math.bignumber('2'));}, /Cannot implicitly convert a Fraction to BigNumber/);
     });
 
     it('should multiply mixed booleans and bignumbers', function() {
@@ -659,10 +659,10 @@ describe('multiply', function() {
       var m = math.matrix([[2, 0], [4, 0]], 'sparse');
 
       var r = multiply(m, 
-                       [
-        [2, 0],
-        [4, 0]
-      ]);
+        [
+          [2, 0],
+          [4, 0]
+        ]);
       assert.deepEqual(
         r.valueOf(),
         [
@@ -671,10 +671,10 @@ describe('multiply', function() {
         ]);
 
       r = multiply(m, 
-                   [
-        [2, 0, 1],
-        [4, 0, 1]
-      ]);
+        [
+          [2, 0, 1],
+          [4, 0, 1]
+        ]);
       assert.deepEqual(
         r.valueOf(),
         [
@@ -687,10 +687,10 @@ describe('multiply', function() {
       var m = math.matrix([[2, 0], [4, 0]], 'sparse');
 
       var r = multiply(m, 
-                       [
-        [2],
-        [4]
-      ]);
+        [
+          [2],
+          [4]
+        ]);
       assert.deepEqual(
         r.valueOf(),
         [

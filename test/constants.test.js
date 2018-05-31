@@ -1,6 +1,6 @@
 var assert = require('assert'),
-    math = require('../index'),
-    approx = require('../tools/approx');
+  math = require('../index'),
+  approx = require('../tools/approx');
 
 describe('constants', function() {
 
@@ -32,27 +32,27 @@ describe('constants', function() {
 
     it('should have LN10', function() {
       approx.equal(math.LN10, 2.30258509299404568401799145468436420760110148862877297603332790096757260967735248023599720508959829834196778404228624863);
-   });
+    });
 
     it('should have LOG2E', function() {
       approx.equal(math.LOG2E, 1.44269504088896340735992468100189213742664595415298593413544940693110921918118507988552662289350634449699751830965254425);
-   });
+    });
 
     it('should have LOG10E', function() {
       approx.equal(math.LOG10E, 0.43429448190325182765112891891660508229439700580366656611445378316586464920887077472922494933843174831870610674476630373);
-   });
+    });
 
     it('should have PI', function() {
       approx.equal(math.PI, 3.14159265358979);
-   });
+    });
 
     it('should have SQRT1_2', function() {
       approx.equal(math.SQRT1_2, 0.70710678118654752440084436210484903928483593768847403658833986899536623923105351942519376716382078636750692311545614851);
-   });
+    });
 
     it('should have SQRT2', function() {
       approx.equal(math.SQRT2, 1.41421356237309504880168872420969807856967187537694807317667973799073247846210703885038753432764157273501384623091229702);
-   });
+    });
 
     it('should have Infinity', function() {
       assert.strictEqual(math.Infinity, Infinity);

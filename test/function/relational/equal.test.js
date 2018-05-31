@@ -1,12 +1,12 @@
 // test equal
 var assert = require('assert'),
-    math = require('../../../index'),
-    bignumber = math.bignumber,
-    complex = math.complex,
-    matrix = math.matrix,
-    sparse = math.sparse,
-    unit = math.unit,
-    equal = math.equal;
+  math = require('../../../index'),
+  bignumber = math.bignumber,
+  complex = math.complex,
+  matrix = math.matrix,
+  sparse = math.sparse,
+  unit = math.unit,
+  equal = math.equal;
 
 describe('equal', function() {
 
@@ -143,7 +143,7 @@ describe('equal', function() {
     assert.equal(equal('1e2', '100'), true);
     assert.equal(equal(10, '8'), false);
 
-    assert.throws(function () {equal('A', 'B')}, /Cannot convert "A" to a number/);
+    assert.throws(function () {equal('A', 'B');}, /Cannot convert "A" to a number/);
   });
 
   it('should apply configuration option epsilon', function() {

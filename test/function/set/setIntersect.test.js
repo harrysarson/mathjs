@@ -8,7 +8,7 @@ describe('setIntersect', function () {
     assert.deepEqual(math.setIntersect([1, 2], [3, 4]), []);
     assert.deepEqual(math.setIntersect(["a", "b", "c"], ["c", "d"]), ["c"]);
     assert.deepEqual(math.setIntersect([1, math.complex(2,2), math.complex(3,3)],
-        [math.complex(3,3), 1]), [math.complex(3,3), 1]);
+      [math.complex(3,3), 1]), [math.complex(3,3), 1]);
     assert.deepEqual(math.setIntersect([], [3, 4]), []);
     assert.deepEqual(math.setIntersect([], []), []);
   });
@@ -19,8 +19,8 @@ describe('setIntersect', function () {
   });
   
   it('should return the same type of output as the inputs', function() {
-	assert.equal(math.typeof(math.setIntersect([1, 2, 3], [3, 4, 5])), 'Array');
-	assert.equal(math.typeof(math.setIntersect(math.matrix([1, 2, 3]), math.matrix([3, 4, 5]))), 'Matrix');
+    assert.equal(math.typeof(math.setIntersect([1, 2, 3], [3, 4, 5])), 'Array');
+    assert.equal(math.typeof(math.setIntersect(math.matrix([1, 2, 3]), math.matrix([3, 4, 5]))), 'Matrix');
   });
 
   it('should throw an error in case of invalid number of arguments', function() {

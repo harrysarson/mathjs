@@ -1,6 +1,6 @@
 var assert = require('assert'),
-    approx = require('../tools/approx'),
-    math = require('../index');
+  approx = require('../tools/approx'),
+  math = require('../index');
 
 describe('factory', function() {
 

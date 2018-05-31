@@ -30,14 +30,14 @@ describe('ConditionalNode', function() {
   });
 
   it ('should throw an error when calling without new operator', function () {
-    assert.throws(function () {ConditionalNode()}, SyntaxError);
+    assert.throws(function () {ConditionalNode();}, SyntaxError);
   });
 
   it ('should throw an error when creating without arguments', function () {
-    assert.throws(function () {new ConditionalNode()}, TypeError);
-    assert.throws(function () {new ConditionalNode(condition)}, TypeError);
-    assert.throws(function () {new ConditionalNode(condition, a)}, TypeError);
-    assert.throws(function () {new ConditionalNode(condition, null, b)}, TypeError);
+    assert.throws(function () {new ConditionalNode();}, TypeError);
+    assert.throws(function () {new ConditionalNode(condition);}, TypeError);
+    assert.throws(function () {new ConditionalNode(condition, a);}, TypeError);
+    assert.throws(function () {new ConditionalNode(condition, null, b);}, TypeError);
   });
 
   it ('should lazy evaluate a ConditionalNode', function () {
@@ -97,18 +97,18 @@ describe('ConditionalNode', function() {
     });
 
     it('should throw an error in case of unsupported type of conditions', function() {
-      assert.throws(function () {condition.compile().eval({a: {}})});
-      assert.throws(function () {condition.compile().eval({a: []})});
-      assert.throws(function () {condition.compile().eval({a: math.matrix()})});
+      assert.throws(function () {condition.compile().eval({a: {}});});
+      assert.throws(function () {condition.compile().eval({a: []});});
+      assert.throws(function () {condition.compile().eval({a: math.matrix()});});
     });
   });
 
   it ('should filter a ConditionalNode', function () {
     var n = new ConditionalNode(condition, a, b);
 
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConditionalNode}),  [n]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode}),  [condition, two, three]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '2'}),  [two]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConditionalNode;}),  [n]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode;}),  [condition, two, three]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '2';}),  [two]);
   });
 
   it ('should run forEach on a ConditionalNode', function () {
@@ -169,7 +169,7 @@ describe('ConditionalNode', function() {
 
     assert.throws(function () {
       n.map(function () {});
-    }, /Callback function must return a Node/)
+    }, /Callback function must return a Node/);
   });
 
   it ('should transform a ConditionalNodes condition', function () {
@@ -288,7 +288,7 @@ describe('ConditionalNode', function() {
           + ' else ' + node.falseExpr.toString(options);
       }
       else if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')'
+        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')';
       }
     };
 
@@ -336,7 +336,7 @@ describe('ConditionalNode', function() {
           + ' else ' + node.falseExpr.toTex(options);
       }
       else if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)'
+        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)';
       }
     };
 

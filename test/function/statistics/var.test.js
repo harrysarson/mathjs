@@ -15,7 +15,7 @@ describe('variance', function() {
 
   it('should return the variance of big numbers', function() {
     assert.deepEqual(variance(new BigNumber(2),new BigNumber(4),new BigNumber(6)),
-        new math.type.BigNumber(4));
+      new math.type.BigNumber(4));
   });
 
   it('should return the variance of complex numbers', function() {
@@ -42,7 +42,7 @@ describe('variance', function() {
   });
 
   it('should throw an error in case of unknown type of normalization', function() {
-    assert.throws(function () {variance([2,8], 'foo')}, /Unknown normalization/);
+    assert.throws(function () {variance([2,8], 'foo');}, /Unknown normalization/);
   });
 
   it('should return the variance from an 1d matrix', function() {
@@ -65,19 +65,19 @@ describe('variance', function() {
   });
 
   it('should throw an error if called with invalid number of arguments', function() {
-    assert.throws(function() {variance()});
+    assert.throws(function() {variance();});
   });
 
   it('should throw an error if called with invalid type of arguments', function() {
-    assert.throws(function() {variance(new Date(), 2)}, /Cannot calculate var, unexpected type of argument/);
-    assert.throws(function() {variance(new Unit(5, 'cm'), new Unit(10, 'cm'))}, /Cannot calculate var, unexpected type of argument/);
-    assert.throws(function() {variance(2, 3, null)}, /Cannot calculate var, unexpected type of argument/);
-    assert.throws(function() {variance([2, 3, null])}, /Cannot calculate var, unexpected type of argument/);
-    assert.throws(function() {variance([2,3,4], 5)}, /Unknown normalization "5"/);
+    assert.throws(function() {variance(new Date(), 2);}, /Cannot calculate var, unexpected type of argument/);
+    assert.throws(function() {variance(new Unit(5, 'cm'), new Unit(10, 'cm'));}, /Cannot calculate var, unexpected type of argument/);
+    assert.throws(function() {variance(2, 3, null);}, /Cannot calculate var, unexpected type of argument/);
+    assert.throws(function() {variance([2, 3, null]);}, /Cannot calculate var, unexpected type of argument/);
+    assert.throws(function() {variance([2,3,4], 5);}, /Unknown normalization "5"/);
   });
 
   it('should throw an error if called with an empty array', function() {
-    assert.throws(function() {variance([])});
+    assert.throws(function() {variance([]);});
   });
 
   it('should LaTeX var', function () {

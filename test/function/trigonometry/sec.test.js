@@ -1,14 +1,14 @@
 var assert = require('assert'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    approx = require('../../../tools/approx'),
-    pi = math.pi,
-    complex = math.complex,
-    matrix = math.matrix,
-    unit = math.unit,
-    sec = math.sec,
-    bigmath = math.create({number: 'BigNumber', precision: 20}),
-    biggermath = math.create({number: 'BigNumber', precision: 21});
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  approx = require('../../../tools/approx'),
+  pi = math.pi,
+  complex = math.complex,
+  matrix = math.matrix,
+  unit = math.unit,
+  sec = math.sec,
+  bigmath = math.create({number: 'BigNumber', precision: 20}),
+  biggermath = math.create({number: 'BigNumber', precision: 21});
 
 describe('sec', function() {
   it('should return the secant of a boolean', function () {
@@ -60,7 +60,7 @@ describe('sec', function() {
 
   it('should return the secant of a complex number', function() {
     var re = 0.0416749644111443,
-        im = 0.0906111371962376;
+      im = 0.0906111371962376;
     approx.deepEqual(sec(complex('2+3i')), complex(-re, im));
     approx.deepEqual(sec(complex('2-3i')), complex(-re, -im));
     approx.deepEqual(sec(complex('-2+3i')), complex(-re, -im));
@@ -81,11 +81,11 @@ describe('sec', function() {
   });
 
   it('should throw an error if called with an invalid unit', function() {
-    assert.throws(function () {sec(unit('5 celsius'))});
+    assert.throws(function () {sec(unit('5 celsius'));});
   });
 
   it('should throw an error if called with a string', function() {
-    assert.throws(function () {sec('string')});
+    assert.throws(function () {sec('string');});
   });
 
   var sec123 = [1.85081571768093, -2.40299796172238, -1.01010866590799];
@@ -99,8 +99,8 @@ describe('sec', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {sec()}, /TypeError: Too few arguments/);
-    assert.throws(function () {sec(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {sec();}, /TypeError: Too few arguments/);
+    assert.throws(function () {sec(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should LaTeX sec', function () {

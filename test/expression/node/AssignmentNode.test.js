@@ -27,21 +27,21 @@ describe('AssignmentNode', function() {
   });
 
   it ('should throw an error when calling without new operator', function () {
-    assert.throws(function () {AssignmentNode(new SymbolNode('a'), new Node())}, SyntaxError);
+    assert.throws(function () {AssignmentNode(new SymbolNode('a'), new Node());}, SyntaxError);
   });
 
   it ('should throw an error when creating an AssignmentNode with a reserved keyword', function () {
     assert.throws(function () {
       new AssignmentNode(new SymbolNode('end'), new Node());
-    }, /Cannot assign to symbol "end"/)
+    }, /Cannot assign to symbol "end"/);
   });
 
   it ('should throw an error on wrong constructor arguments', function () {
-    assert.throws(function () {new AssignmentNode()}, TypeError );
-    assert.throws(function () {new AssignmentNode(new Node(), new Node())}, TypeError );
-    assert.throws(function () {new AssignmentNode('a', new Node())}, TypeError );
-    assert.throws(function () {new AssignmentNode(2, new Node())}, TypeError );
-    assert.throws(function () {new AssignmentNode(new Node(), new Node(), new Node())}, TypeError );
+    assert.throws(function () {new AssignmentNode();}, TypeError );
+    assert.throws(function () {new AssignmentNode(new Node(), new Node());}, TypeError );
+    assert.throws(function () {new AssignmentNode('a', new Node());}, TypeError );
+    assert.throws(function () {new AssignmentNode(2, new Node());}, TypeError );
+    assert.throws(function () {new AssignmentNode(new Node(), new Node(), new Node());}, TypeError );
   });
 
   it ('should get the name of an AssignmentNode', function () {
@@ -126,8 +126,8 @@ describe('AssignmentNode', function() {
     var index = new IndexNode([
       new ConstantNode(2),
       new RangeNode(
-          new ConstantNode(1),
-          new SymbolNode('end')
+        new ConstantNode(1),
+        new SymbolNode('end')
       )
     ]);
     var value = new SymbolNode('b');
@@ -176,7 +176,7 @@ describe('AssignmentNode', function() {
     var scope = {
       a: 42
     };
-    assert.throws(function () { expr.eval(scope) }, /Cannot apply index: unsupported type of object/);
+    assert.throws(function () { expr.eval(scope); }, /Cannot apply index: unsupported type of object/);
   });
 
   it ('should filter an AssignmentNode', function () {
@@ -187,12 +187,12 @@ describe('AssignmentNode', function() {
     var v = new ConstantNode(2);
     var n = new AssignmentNode(a, i, v);
 
-    assert.deepEqual(n.filter(function (node) {return node.isAssignmentNode}), [n]);
-    assert.deepEqual(n.filter(function (node) {return node.isSymbolNode}),     [a]);
-    assert.deepEqual(n.filter(function (node) {return node.isConstantNode}),   [b, c, v]);
-    assert.deepEqual(n.filter(function (node) {return node.value ===  1}),     [c]);
-    assert.deepEqual(n.filter(function (node) {return node.value === 2}),      [b, v]);
-    assert.deepEqual(n.filter(function (node) {return node.name === 'q'}),     []);
+    assert.deepEqual(n.filter(function (node) {return node.isAssignmentNode;}), [n]);
+    assert.deepEqual(n.filter(function (node) {return node.isSymbolNode;}),     [a]);
+    assert.deepEqual(n.filter(function (node) {return node.isConstantNode;}),   [b, c, v]);
+    assert.deepEqual(n.filter(function (node) {return node.value ===  1;}),     [c]);
+    assert.deepEqual(n.filter(function (node) {return node.value === 2;}),      [b, v]);
+    assert.deepEqual(n.filter(function (node) {return node.name === 'q';}),     []);
   });
 
   it ('should filter an AssignmentNode without index', function () {
@@ -200,11 +200,11 @@ describe('AssignmentNode', function() {
     var v = new ConstantNode(2);
     var n = new AssignmentNode(a, v);
 
-    assert.deepEqual(n.filter(function (node) {return node.isAssignmentNode}), [n]);
-    assert.deepEqual(n.filter(function (node) {return node.isSymbolNode}),     [a]);
-    assert.deepEqual(n.filter(function (node) {return node.isConstantNode}),   [v]);
-    assert.deepEqual(n.filter(function (node) {return node.value === 2}),      [v]);
-    assert.deepEqual(n.filter(function (node) {return node.name === 'q'}),     []);
+    assert.deepEqual(n.filter(function (node) {return node.isAssignmentNode;}), [n]);
+    assert.deepEqual(n.filter(function (node) {return node.isSymbolNode;}),     [a]);
+    assert.deepEqual(n.filter(function (node) {return node.isConstantNode;}),   [v]);
+    assert.deepEqual(n.filter(function (node) {return node.value === 2;}),      [v]);
+    assert.deepEqual(n.filter(function (node) {return node.name === 'q';}),     []);
   });
 
   it ('should run forEach on an AssignmentNode', function () {
@@ -321,7 +321,7 @@ describe('AssignmentNode', function() {
 
     assert.throws(function () {
       n.map(function () {});
-    }, /Callback function must return a Node/)
+    }, /Callback function must return a Node/);
   });
 
   it ('should transform an AssignmentNodes (nested) parameters', function () {
@@ -372,29 +372,29 @@ describe('AssignmentNode', function() {
       count++;
 
       switch(count) {
-        case 1:
-          assert.strictEqual(node, a);
-          assert.strictEqual(index, null);
-          assert.strictEqual(parent, null);
-          break;
+      case 1:
+        assert.strictEqual(node, a);
+        assert.strictEqual(index, null);
+        assert.strictEqual(parent, null);
+        break;
 
-        case 2:
-          assert.strictEqual(node, object);
-          assert.strictEqual(index, 'object');
-          assert.strictEqual(parent, a);
-          break;
+      case 2:
+        assert.strictEqual(node, object);
+        assert.strictEqual(index, 'object');
+        assert.strictEqual(parent, a);
+        break;
 
-        case 3:
-          assert.strictEqual(node, i);
-          assert.strictEqual(index, 'index');
-          assert.strictEqual(parent, a);
-          break;
+      case 3:
+        assert.strictEqual(node, i);
+        assert.strictEqual(index, 'index');
+        assert.strictEqual(parent, a);
+        break;
 
-        case 4:
-          assert.strictEqual(node, value);
-          assert.strictEqual(index, 'value');
-          assert.strictEqual(parent, a);
-          break;
+      case 4:
+        assert.strictEqual(node, value);
+        assert.strictEqual(index, 'value');
+        assert.strictEqual(parent, a);
+        break;
       }
     });
 
@@ -436,25 +436,25 @@ describe('AssignmentNode', function() {
 
   it ('test equality another Node', function () {
     var a = new AssignmentNode(
-        new SymbolNode('A'),
-        new IndexNode([new ConstantNode(2), new SymbolNode('x')]),
-        new ConstantNode(3));
+      new SymbolNode('A'),
+      new IndexNode([new ConstantNode(2), new SymbolNode('x')]),
+      new ConstantNode(3));
     var b = new AssignmentNode(
-        new SymbolNode('A'),
-        new IndexNode([new ConstantNode(2), new SymbolNode('x')]),
-        new ConstantNode(3));
+      new SymbolNode('A'),
+      new IndexNode([new ConstantNode(2), new SymbolNode('x')]),
+      new ConstantNode(3));
     var c = new AssignmentNode(
-        new SymbolNode('B'),
-        new IndexNode([new ConstantNode(2), new SymbolNode('x')]),
-        new ConstantNode(3));
+      new SymbolNode('B'),
+      new IndexNode([new ConstantNode(2), new SymbolNode('x')]),
+      new ConstantNode(3));
     var d = new AssignmentNode(
-        new SymbolNode('A'),
-        new IndexNode([new ConstantNode(2)]),
-        new ConstantNode(3));
+      new SymbolNode('A'),
+      new IndexNode([new ConstantNode(2)]),
+      new ConstantNode(3));
     var e = new AssignmentNode(
-        new SymbolNode('A'),
-        new IndexNode([new ConstantNode(2), new SymbolNode('x')]),
-        new ConstantNode(4));
+      new SymbolNode('A'),
+      new IndexNode([new ConstantNode(2), new SymbolNode('x')]),
+      new ConstantNode(4));
 
     assert.strictEqual(a.equals(null), false);
     assert.strictEqual(a.equals(undefined), false);
@@ -498,7 +498,7 @@ describe('AssignmentNode', function() {
             ' equals ' + node.value.toString(options);
       }
       else if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')'
+        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')';
       }
     };
 
@@ -557,7 +557,7 @@ describe('AssignmentNode', function() {
             '\\mbox{equals}' + node.value.toTex(options);
       }
       else if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)'
+        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)';
       }
     };
 

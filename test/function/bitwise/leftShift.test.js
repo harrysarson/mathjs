@@ -1,10 +1,10 @@
 // test leftShift
 var assert = require('assert'),
-    math = require('../../../index'),
-    matrix = math.matrix,
-    sparse = math.sparse,
-    bignumber = math.bignumber,
-    leftShift = math.leftShift;
+  math = require('../../../index'),
+  matrix = math.matrix,
+  sparse = math.sparse,
+  bignumber = math.bignumber,
+  leftShift = math.leftShift;
 
 describe('leftShift', function () {
 

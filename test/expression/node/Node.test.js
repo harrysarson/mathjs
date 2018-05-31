@@ -25,15 +25,15 @@ describe('Node', function() {
   });
 
   it ('should throw an error when calling without new operator', function () {
-    assert.throws(function () {Node()}, SyntaxError);
+    assert.throws(function () {Node();}, SyntaxError);
   });
 
   it ('should filter a Node', function () {
     var n = new MyNode(2);
 
-    assert.deepEqual(n.filter(function () {return true}), [n]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof Node}), [n]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof Date}), []);
+    assert.deepEqual(n.filter(function () {return true;}), [n]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof Node;}), [n]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof Date;}), []);
   });
 
   it ('should transform a Node', function () {
@@ -162,7 +162,7 @@ describe('Node', function() {
   it ('should throw an error when compiling an abstract node', function () {
     var node = new Node();
     assert.throws(function () {
-      node.compile()
+      node.compile();
     }, /Error: Method _compile should be implemented by type Node/);
   });
 

@@ -6,7 +6,7 @@ var assert = require('assert');
 var Benchmark = require('benchmark');
 var padRight = require('pad-right');
 var math = require('../index');
-var getSafeProperty = require('../lib/utils/customs').getSafeProperty
+var getSafeProperty = require('../lib/utils/customs').getSafeProperty;
 
 // expose on window when using bundled in a browser
 if (typeof window !== 'undefined') {
@@ -25,9 +25,9 @@ var sin = getSafeProperty(math, 'sin');
 var pi = getSafeProperty(math, 'pi');
 var compiledPlainJs = {
   eval: function (scope) {
-    return 2 + 3 * ('sin' in scope ? getSafeProperty(scope, 'sin') :  sin)(('pi' in scope ? getSafeProperty(scope, 'pi') : pi) / 4) - 4 * scope['x']
+    return 2 + 3 * ('sin' in scope ? getSafeProperty(scope, 'sin') :  sin)(('pi' in scope ? getSafeProperty(scope, 'pi') : pi) / 4) - 4 * scope['x'];
   }
-}
+};
 
 var correctResult = -3.878679656440358;
 
@@ -42,37 +42,37 @@ var total = 0;
 
 var suite = new Benchmark.Suite();
 suite
-    .add(pad('(plain js) evaluate'), function() {
-      total+= compiledPlainJs.eval(scope);
-    })
+  .add(pad('(plain js) evaluate'), function() {
+    total+= compiledPlainJs.eval(scope);
+  })
 
-    .add(pad('(mathjs) evaluate'), function() {
-      total += compiled.eval(scope);
-    })
-    .add(pad('(mathjs) parse, compile, evaluate'), function() {
-      total += math.parse(expr).compile().eval(scope);
-    })
-    .add(pad('(mathjs) parse, compile'), function() {
-      var node = math.parse(expr).compile();
-    })
-    .add(pad('(mathjs) parse'), function() {
-      var node = math.parse(expr);
-    })
+  .add(pad('(mathjs) evaluate'), function() {
+    total += compiled.eval(scope);
+  })
+  .add(pad('(mathjs) parse, compile, evaluate'), function() {
+    total += math.parse(expr).compile().eval(scope);
+  })
+  .add(pad('(mathjs) parse, compile'), function() {
+    var node = math.parse(expr).compile();
+  })
+  .add(pad('(mathjs) parse'), function() {
+    var node = math.parse(expr);
+  })
 
-    .on('cycle', function(event) {
-      console.log(String(event.target));
-    })
-    .on('complete', function() {
-      // we count at total to prevent the browsers from not executing
-      // the benchmarks ("dead code") when the results would not be used.
-      if (total > 1e6) { 
-        console.log('')
-      }
-      else {
-        console.log('')
-      }
-    })
-    .run();
+  .on('cycle', function(event) {
+    console.log(String(event.target));
+  })
+  .on('complete', function() {
+    // we count at total to prevent the browsers from not executing
+    // the benchmarks ("dead code") when the results would not be used.
+    if (total > 1e6) { 
+      console.log('');
+    }
+    else {
+      console.log('');
+    }
+  })
+  .run();
 
 
 function assertApproxEqual(actual, expected, tolerance) {

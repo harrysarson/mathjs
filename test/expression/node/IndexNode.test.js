@@ -23,14 +23,14 @@ describe('IndexNode', function() {
   });
 
   it ('should throw an error when calling with wrong arguments', function () {
-    assert.throws(function () {new IndexNode()}, TypeError);
-    assert.throws(function () {new IndexNode('a')}, TypeError);
-    assert.throws(function () {new IndexNode(new Node())}, TypeError);
-    assert.throws(function () {new IndexNode([new Node(), 3])}, TypeError);
+    assert.throws(function () {new IndexNode();}, TypeError);
+    assert.throws(function () {new IndexNode('a');}, TypeError);
+    assert.throws(function () {new IndexNode(new Node());}, TypeError);
+    assert.throws(function () {new IndexNode([new Node(), 3]);}, TypeError);
   });
 
   it ('should throw an error when calling without new operator', function () {
-    assert.throws(function () {IndexNode([])}, SyntaxError);
+    assert.throws(function () {IndexNode([]);}, SyntaxError);
   });
 
 
@@ -39,18 +39,18 @@ describe('IndexNode', function() {
     var c = new ConstantNode(1);
     var n = new IndexNode([b, c]);
 
-    assert.deepEqual(n.filter(function (node) {return node instanceof IndexNode}),  [n]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof RangeNode}),     []);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode}),  [b, c]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '2'}),  [b]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '4'}),  []);
+    assert.deepEqual(n.filter(function (node) {return node instanceof IndexNode;}),  [n]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof RangeNode;}),     []);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode;}),  [b, c]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '2';}),  [b]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode && node.value == '4';}),  []);
   });
 
   it ('should filter an empty IndexNode', function () {
     var n = new IndexNode([]);
 
-    assert.deepEqual(n.filter(function (node) {return node instanceof IndexNode}),  [n]);
-    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode}), []);
+    assert.deepEqual(n.filter(function (node) {return node instanceof IndexNode;}),  [n]);
+    assert.deepEqual(n.filter(function (node) {return node instanceof ConstantNode;}), []);
   });
 
   it ('should run forEach on an IndexNode', function () {
@@ -105,7 +105,7 @@ describe('IndexNode', function() {
 
     assert.throws(function () {
       n.map(function () {});
-    }, /Callback function must return a Node/)
+    }, /Callback function must return a Node/);
   });
 
   it ('should transform an IndexNodes (nested) parameters', function () {
@@ -178,7 +178,7 @@ describe('IndexNode', function() {
     assert.equal(n.toString(), '[2, 1]');
 
     var n2 = new IndexNode([]);
-    assert.equal(n2.toString(), '[]')
+    assert.equal(n2.toString(), '[]');
   });
 
   it ('should stringify an IndexNode with dot notation', function () {
@@ -197,7 +197,7 @@ describe('IndexNode', function() {
         }).join(', ');
       }
       else if (node.type === 'ConstantNode') {
-        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')'
+        return 'const(' + node.value + ', ' + math.typeof(node.value) + ')';
       }
     };
 
@@ -235,7 +235,7 @@ describe('IndexNode', function() {
     assert.equal(n.toTex(), '_{2,1}');
 
     var n2 = new IndexNode([]);
-    assert.equal(n2.toTex(), '_{}')
+    assert.equal(n2.toTex(), '_{}');
   });
 
   it ('should LaTeX an IndexNode with dot notation', function () {
@@ -256,7 +256,7 @@ describe('IndexNode', function() {
         return latex;
       }
       else if (node.type === 'ConstantNode') {
-        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)'
+        return 'const\\left(' + node.value + ', ' + math.typeof(node.value) + '\\right)';
       }
     };
 

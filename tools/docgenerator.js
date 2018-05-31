@@ -68,12 +68,12 @@ function generateDoc(name, code) {
 
   // get text content inside block comment
   var comment = match[0].replace('/**', '')
-      .replace('*/', '')
-      .replace(/\n\s*\* ?/g, '\n')
-      .replace(/\r/g, '');
+    .replace('*/', '')
+    .replace(/\n\s*\* ?/g, '\n')
+    .replace(/\r/g, '');
 
   var lines = comment.split('\n'),
-      line = '';
+    line = '';
 
   // get next line
   function next () {
@@ -117,7 +117,7 @@ function generateDoc(name, code) {
     if (spaces) {
       lines.forEach(function (line, index) {
         lines[index] = line.substring(spaces);
-      })
+      });
     }
   }
 
@@ -249,7 +249,7 @@ function generateDoc(name, code) {
 
         // multi line description (must be non-empty and not start with @param or @return)
         while (exists() && !empty() && !/^\s*@/.test(line)) {
-          var lineTrim = line.trim()
+          var lineTrim = line.trim();
           var separator = (lineTrim[0] === '-' ? '</br>' : ' ');
           annotation.description += separator + lineTrim;
           next();
@@ -329,7 +329,7 @@ function validateDoc (doc) {
   var issues = [];
 
   function ignore(field) {
-    return IGNORE_WARNINGS[field].indexOf(doc.name) !== -1
+    return IGNORE_WARNINGS[field].indexOf(doc.name) !== -1;
   }
 
   if (!doc.name) {
@@ -425,7 +425,7 @@ function generateMarkdown (doc, functions) {
       doc.parameters.map(function (p) {
         return '`' + p.name + '` | ' +
             (p.types ? p.types.join(' &#124; ') : '') + ' | ' +
-            p.description
+            p.description;
       }).join('\n') +
       '\n\n';
 
@@ -547,9 +547,9 @@ function iteratePath (inputPath, outputPath, outputRoot) {
       var fn = functions[name];
       var syntax = SYNTAX[name] || fn.doc && fn.doc.syntax && fn.doc.syntax[0] || name;
       syntax = syntax
-          //.replace(/^math\./, '')
-          .replace(/\s+\/\/.*$/, '')
-          .replace(/;$/, '');
+      //.replace(/^math\./, '')
+        .replace(/\s+\/\/.*$/, '')
+        .replace(/;$/, '');
       if (syntax.length < 40) {
         syntax = syntax.replace(/ /g, '&nbsp;');
       }

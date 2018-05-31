@@ -151,7 +151,7 @@ describe('format', function () {
       assert.deepEqual(formatter.format(new Big(5).div(3), options), '1.6666666666666666666666666666666666666666666666667');
       assert.deepEqual(formatter.format(new Big(5e+40).div(3), options), '16666666666666666666666666666666666666666.666666667');
       assert.deepEqual(formatter.format(new Big(5e-40).div(3), options),
-          '0.00000000000000000000000000000000000000016666666666666666666666666666666666666666666666667');
+        '0.00000000000000000000000000000000000000016666666666666666666666666666666666666666666666667');
       assert.deepEqual(formatter.format(new Big(5e+60).div(3), options), '1.6666666666666666666666666666666666666666666666667e+60');
       assert.deepEqual(formatter.format(new Big(5e-60).div(3), options), '1.6666666666666666666666666666666666666666666666667e-60');
       assert.deepEqual(formatter.format(new Big(5e-80).div(3), options), '1.6666666666666666666666666666666666666666666666667e-80');
@@ -202,7 +202,7 @@ describe('format', function () {
 
     it('should throw an error on unknown notation', function () {
       assert.throws(function () {
-        formatter.format(new BigNumber(123), {notation: 'non existing'})
+        formatter.format(new BigNumber(123), {notation: 'non existing'});
       });
     });
 

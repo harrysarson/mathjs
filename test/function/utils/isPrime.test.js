@@ -41,9 +41,9 @@ describe('isPrime', function() {
   });
 
   it('should throw an error in case of unsupported data types', function() {
-    assert.throws(function () {isPrime(complex(2, 3))}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {isPrime(new Date())}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {isPrime({})}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {isPrime(complex(2, 3));}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {isPrime(new Date());}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {isPrime({});}, /TypeError: Unexpected type of argument/);
   });
 
 });

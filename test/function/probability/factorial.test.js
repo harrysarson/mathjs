@@ -1,8 +1,8 @@
 var assert = require('assert'),
-    approx = require('../../../tools/approx'),
-    error = require('../../../lib/error/index'),
-    math = require('../../../index'),
-    factorial = math.factorial;
+  approx = require('../../../tools/approx'),
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  factorial = math.factorial;
 
 describe('factorial', function() {
 

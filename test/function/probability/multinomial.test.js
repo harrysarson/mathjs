@@ -1,8 +1,8 @@
 var assert = require('assert'),
-error = require('../../../lib/error/index'),
-math = require('../../../index'),
-multinomial = math.multinomial,
-_ = require('underscore');
+  error = require('../../../lib/error/index'),
+  math = require('../../../index'),
+  multinomial = math.multinomial,
+  _ = require('underscore');
 
 describe('multinomial', function() {
 
@@ -18,15 +18,15 @@ describe('multinomial', function() {
   });
 
   it('should not work with non-integer and negative input', function() {
-    assert.throws(function() {multinomial([0.5,3])}, TypeError);
-      assert.throws(function() {multinomial([math.bignumber(3), math.bignumber(0.5)])}, TypeError);
-      assert.throws(function() {multinomial([math.bignumber(3.5), math.bignumber(-3)])}, TypeError);
-      assert.throws(function() {multinomial([math.bignumber(3.5), 1/3])}, TypeError);
-    });
+    assert.throws(function() {multinomial([0.5,3]);}, TypeError);
+    assert.throws(function() {multinomial([math.bignumber(3), math.bignumber(0.5)]);}, TypeError);
+    assert.throws(function() {multinomial([math.bignumber(3.5), math.bignumber(-3)]);}, TypeError);
+    assert.throws(function() {multinomial([math.bignumber(3.5), 1/3]);}, TypeError);
+  });
 
   it('should not work with the wrong number or type of arguments', function() {
-      assert.throws(function() {multinomial(5, 3, 2)});
-      assert.throws(function() {multinomial(true, "hello world")});
+    assert.throws(function() {multinomial(5, 3, 2);});
+    assert.throws(function() {multinomial(true, "hello world");});
   });
 
 });

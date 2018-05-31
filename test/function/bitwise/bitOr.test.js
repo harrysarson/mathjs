@@ -1,8 +1,8 @@
 // test bitOr
 var assert = require('assert'),
-    math = require('../../../index'),
-    bignumber = math.bignumber,
-    bitOr = math.bitOr;
+  math = require('../../../index'),
+  bignumber = math.bignumber,
+  bitOr = math.bitOr;
 
 describe('bitOr', function () {
 

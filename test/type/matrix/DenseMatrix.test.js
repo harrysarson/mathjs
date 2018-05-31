@@ -146,10 +146,10 @@ describe('DenseMatrix', function() {
     it('should throw an error when the dimensions of the input array are invalid', function () {
       assert.throws(function () {
         new DenseMatrix(
-            [
-              [1, 2],
-              [4, 5, 6]
-            ]);
+          [
+            [1, 2],
+            [4, 5, 6]
+          ]);
       }, /DimensionError: Dimension mismatch \(3 != 2\)/);
     });
 

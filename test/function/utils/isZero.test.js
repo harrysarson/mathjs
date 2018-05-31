@@ -77,8 +77,8 @@ describe('isZero', function() {
   });
 
   it('should throw an error in case of unsupported data types', function() {
-    assert.throws(function () {isZero(new Date())}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {isZero({})}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {isZero(new Date());}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {isZero({});}, /TypeError: Unexpected type of argument/);
   });
 
 });

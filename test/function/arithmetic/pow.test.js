@@ -96,8 +96,8 @@ describe('pow', function() {
     assert.deepEqual(pow(bignumber(2), 3), bignumber(8));
     assert.deepEqual(pow(2, bignumber(3)), bignumber(8));
 
-    assert.throws(function () {pow(1/3, bignumber(2))}, /Cannot implicitly convert a number with >15 significant digits to BigNumber/);
-    assert.throws(function () {pow(bignumber(1), 1/3)}, /Cannot implicitly convert a number with >15 significant digits to BigNumber/);
+    assert.throws(function () {pow(1/3, bignumber(2));}, /Cannot implicitly convert a number with >15 significant digits to BigNumber/);
+    assert.throws(function () {pow(bignumber(1), 1/3);}, /Cannot implicitly convert a number with >15 significant digits to BigNumber/);
   });
 
   it('should exponentiate mixed booleans and bignumbers', function() {
@@ -115,15 +115,15 @@ describe('pow', function() {
   });
 
   it('should exponentiate a fraction to an non-integer power', function() {
-    assert.throws(function () {mathPredictable.pow(fraction(3), fraction(1.5))}, /Function pow does not support non-integer exponents for fractions/);
+    assert.throws(function () {mathPredictable.pow(fraction(3), fraction(1.5));}, /Function pow does not support non-integer exponents for fractions/);
 
     assert.strictEqual(math.pow(fraction(4), 1.5), 8);
     assert.strictEqual(math.pow(fraction(4), fraction(1.5)), 8);
   });
 
   it('should throw an error if used with wrong number of arguments', function() {
-    assert.throws(function () {pow(1)}, /TypeError: Too few arguments in function pow/);
-    assert.throws(function () {pow(1, 2, 3)}, /TypeError: Too many arguments in function pow \(expected: 2, actual: 3\)/);
+    assert.throws(function () {pow(1);}, /TypeError: Too few arguments in function pow/);
+    assert.throws(function () {pow(1, 2, 3);}, /TypeError: Too many arguments in function pow \(expected: 2, actual: 3\)/);
   });
 
   it('should throw an in case of wrong type of arguments', function() {
@@ -133,7 +133,7 @@ describe('pow', function() {
   it('should handle infitie exponents', function() {
     var Ptbl = mathPredictable;
 
-     // TODO replace isNaN with complexInfinity when complex.js updates
+    // TODO replace isNaN with complexInfinity when complex.js updates
 
 
     assert.equal(math.pow( 3,  Infinity), Infinity);
@@ -219,12 +219,12 @@ describe('pow', function() {
   });
 
   it('should throw an error when doing number ^ unit', function() {
-    assert.throws(function () {pow(2, unit('5cm'))});
+    assert.throws(function () {pow(2, unit('5cm'));});
   });
 
   it('should throw an error if used with a string', function() {
-    assert.throws(function () {pow('text', 2)});
-    assert.throws(function () {pow(2, 'text')});
+    assert.throws(function () {pow('text', 2);});
+    assert.throws(function () {pow(2, 'text');});
   });
 
   it('should raise a square matrix to the power 2', function() {

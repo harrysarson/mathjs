@@ -68,7 +68,7 @@ describe('ceil', function() {
   });
 
   it('should throw an error for units', function() {
-    assert.throws(function () {ceil(unit('5cm'))}, TypeError, 'Function ceil(unit) not supported');
+    assert.throws(function () {ceil(unit('5cm'));}, TypeError, 'Function ceil(unit) not supported');
   });
 
 
@@ -82,8 +82,8 @@ describe('ceil', function() {
   });
 
   it('should throw an error in case of invalid number of arguments', function() {
-    assert.throws(function () {ceil()}, /TypeError: Too few arguments/);
-    assert.throws(function () {ceil(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {ceil();}, /TypeError: Too few arguments/);
+    assert.throws(function () {ceil(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an in case of wrong type of arguments', function() {

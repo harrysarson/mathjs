@@ -62,9 +62,9 @@ describe('isPositive', function() {
   });
 
   it('should throw an error in case of unsupported data types', function() {
-    assert.throws(function () {isPositive(complex(2, 3))}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {isPositive(new Date())}, /TypeError: Unexpected type of argument/);
-    assert.throws(function () {isPositive({})}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {isPositive(complex(2, 3));}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {isPositive(new Date());}, /TypeError: Unexpected type of argument/);
+    assert.throws(function () {isPositive({});}, /TypeError: Unexpected type of argument/);
   });
 
 });

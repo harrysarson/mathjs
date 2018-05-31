@@ -1,8 +1,8 @@
 var assert = require('assert'),
-    error = require('../../lib/error/index'),
-    math = require('../../index'),
-    approx = require('../../tools/approx'),
-    number = math.number;
+  error = require('../../lib/error/index'),
+  math = require('../../index'),
+  approx = require('../../tools/approx'),
+  number = math.number;
 
 describe('number', function() {
 
@@ -45,8 +45,8 @@ describe('number', function() {
   });
 
   it('should throw an error if called with an invalid string', function() {
-    assert.throws(function () {number('2.3.4')}, SyntaxError);
-    assert.throws(function () {number('23a')}, SyntaxError);
+    assert.throws(function () {number('2.3.4');}, SyntaxError);
+    assert.throws(function () {number('23a');}, SyntaxError);
   });
 
   it('should convert the elements of a matrix to numbers', function() {
@@ -58,18 +58,18 @@ describe('number', function() {
   });
 
   it('should throw an error if called with a wrong number of arguments', function() {
-    assert.throws(function () {number(1,2,3)}, /TypeError: Too many arguments/);
+    assert.throws(function () {number(1,2,3);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an error if called with a complex number', function() {
-    assert.throws(function () {number(math.complex(2,3))}, TypeError);
+    assert.throws(function () {number(math.complex(2,3));}, TypeError);
   });
 
   it('should throw an error with wrong type of arguments', function() {
-    assert.throws(function () {number(math.unit('5cm'))}, /Second argument with valueless unit expected/);
+    assert.throws(function () {number(math.unit('5cm'));}, /Second argument with valueless unit expected/);
     //assert.throws(function () {number(math.unit('5cm'), 2)}, TypeError); // FIXME: this should also throw an error
-    assert.throws(function () {number(math.unit('5cm'), new Date())}, TypeError);
-    assert.throws(function () {number('23', 2)}, TypeError);
+    assert.throws(function () {number(math.unit('5cm'), new Date());}, TypeError);
+    assert.throws(function () {number('23', 2);}, TypeError);
   });
 
   it('should LaTeX number', function () {

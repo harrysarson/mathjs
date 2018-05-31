@@ -46,12 +46,12 @@ describe('cube', function() {
   });
 
   it('should throw an error with strings', function() {
-    assert.throws(function () {cube('text')});
+    assert.throws(function () {cube('text');});
   });
 
   it('should throw an error if there\'s wrong number of args', function() {
-    assert.throws(function () {cube()}, /TypeError: Too few arguments/);
-    assert.throws(function () {cube(1, 2)}, /TypeError: Too many arguments/);
+    assert.throws(function () {cube();}, /TypeError: Too few arguments/);
+    assert.throws(function () {cube(1, 2);}, /TypeError: Too many arguments/);
   });
 
   it('should throw an in case of wrong type of arguments', function() {
