@@ -8,5 +8,7 @@ module.exports = {
   },
   rules: {
     'eol-last': ['error', 'always'],
+    semi: ['error', 'always'],
+    indent: ['error', 2],
   }
 };
